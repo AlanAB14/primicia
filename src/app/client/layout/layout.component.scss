@@ -1,0 +1,46 @@
+.container {
+    padding: 0 6.25rem;
+
+    @media (max-width: 1200px) {
+        padding: 0 4.25rem;
+    }
+
+    @media (max-width: 1000px) {
+        padding: 0 2.25rem;
+    }
+}
+
+.client-layout {
+    position: relative;
+
+    &-navbar {
+        padding: 0 6.25rem;
+        background-color: white;
+        @media (max-width: 1200px) {
+            padding: 0 4.25rem;
+        }
+        @media (max-width: 1000px) {
+            padding: 0 2.25rem;
+        }
+
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+    }
+
+    &-content {
+        position: relative;
+        margin-top: 8.735rem;
+
+        @media (max-width: 768px) {
+            padding-top: 4.3rem;
+            position: relative;
+        }
+    }
+
+    &-footer {
+        position: relative;
+    }
+}

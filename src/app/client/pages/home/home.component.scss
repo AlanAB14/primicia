@@ -1,0 +1,102 @@
+.intro-section {
+    padding-top: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+
+    @media (max-width: 768px) {
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+
+    &-data {
+        margin-right: 25rem;
+
+        @media (max-width: 1500px) {
+            margin-right: 15rem;
+        }
+
+        @media (max-width: 1350px) {
+            margin-right: 10rem;
+        }
+
+        @media (max-width: 1200px) {
+            margin-right: 2rem;
+        }
+
+        .intro-title {
+            padding-top: 1.75rem;
+
+            &-upper {
+                font-weight: 500;
+            }
+
+            p {
+                color: var(--blue);
+                font-size: 3.75rem;
+                font-style: normal;
+                font-weight: 700;
+                line-height: 107.1%;
+
+                @media (max-width: 1000px) {
+                    font-size: 3.5rem;
+                }
+            }
+        }
+
+        .intro-text {
+            margin: 2.1875rem 0;
+
+            p {
+                color: var(--blue);
+                font-size: 1.25rem;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 1.75rem;
+
+                @media (max-width: 1000px) {
+                    font-size: 1rem;
+                }
+            }
+        }
+
+        .intro-button {
+            @media (max-width: 768px) {
+                text-align: center;
+            }
+            button {
+                cursor: pointer;
+                border-radius: .875rem;
+                background: #031A44;
+                color: #FFF;
+                text-align: center;
+                font-size: 1.25rem;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 1.75rem;
+                outline: none;
+                border: none;
+                font-family: Space Grotesk;
+                padding: 1.25rem 2.1875rem;
+
+                @media (max-width: 1000px) {
+                    font-size: 1rem;
+                }
+                strong {
+                    font-weight: 700;
+                }
+            }
+        }
+    }
+
+    &-image {
+        img {
+            width: 22.25rem;
+            height: auto;
+
+            @media (max-width: 1000px) {
+                width: 19rem;
+            }
+        }
+    }
+}
