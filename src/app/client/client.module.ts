@@ -10,6 +10,12 @@ import { ComerciosComponent } from './pages/comercios/comercios.component';
 import { PromocionesComponent } from './pages/promociones/promociones.component';
 import { AyudaComponent } from './pages/ayuda/ayuda.component';
 import { ContactoComponent } from './pages/contacto/contacto.component';
+import { ServicioComponent } from './components/servicio/servicio.component';
+import { PromocionesTemplateComponent } from './components/promociones/promociones.component';
+import { PromocionBoxComponent } from './components/promocion-box/promocion-box.component';
+import { ContactoTemplateComponent } from './components/contacto/contacto.component';
+import { ContactoBoxComponent } from './components/contacto-box/contacto-box.component';
+import { MaterialModule } from '../material/material.module';
 
 
 @NgModule({
@@ -20,12 +26,18 @@ import { ContactoComponent } from './pages/contacto/contacto.component';
     ComerciosComponent,
     PromocionesComponent,
     AyudaComponent,
-    ContactoComponent
+    ContactoComponent,
+    ServicioComponent,
+    PromocionesTemplateComponent,
+    PromocionBoxComponent,
+    ContactoTemplateComponent,
+    ContactoBoxComponent
   ],
   imports: [
     CommonModule,
     ClientRoutingModule,
-    SharedModule
+    SharedModule,
+    MaterialModule
   ]
 })
 export class ClientModule { }

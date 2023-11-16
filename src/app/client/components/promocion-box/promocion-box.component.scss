@@ -1,0 +1,61 @@
+.promocion-box {
+    border-radius: 2.8125rem;
+    background: var(--grey);
+    padding: 3.75rem;
+    position: relative;
+    display: flex;
+
+    overflow: hidden;
+
+    &-timer {
+        display: flex;
+        flex-direction: column;
+
+        .timer-title {
+            color: var(--blue);
+            font-size: 3.5rem;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            letter-spacing: -2.24px;
+        }
+
+        &-time {
+            display: flex;
+            justify-content: space-between;
+
+            .dias {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .number {
+                color: var(--blue);
+                font-size: 8.75rem;
+                font-style: normal;
+                font-weight: 700;
+                line-height: normal;
+            }
+
+            .text {
+                color: var(--blue);
+                text-align: center;
+                font-size: 1.75rem;
+                font-style: normal;
+                font-weight: 500;
+                line-height: normal;
+                text-transform: uppercase;
+            }
+        }
+    }
+
+    &-image {
+
+        img {
+            width: 16.25rem;
+            position: absolute;
+            bottom: 0;
+            right: 1rem;
+        }
+    }
+}
