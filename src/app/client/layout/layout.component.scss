@@ -8,6 +8,9 @@
     @media (max-width: 1000px) {
         padding: 0 2.25rem;
     }
+    @media (max-width: 390px) {
+        padding: 0 1rem;
+    }
 }
 
 .client-layout {
@@ -22,6 +25,9 @@
         @media (max-width: 1000px) {
             padding: 0 2.25rem;
         }
+        @media (max-width: 390px) {
+            padding: 0 1rem;
+        }
 
         position: fixed;
         top: 0;
@@ -32,9 +38,10 @@
 
     &-content {
         position: relative;
-        margin-top: 8.735rem;
+        margin-top: 6.735rem;
 
         @media (max-width: 768px) {
+            margin-top: 0rem;
             padding-top: 4.3rem;
             position: relative;
         }

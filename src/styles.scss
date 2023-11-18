@@ -32,6 +32,9 @@ html {
   font-size: 100%;
   /* 100% = 16px */
   position: relative;
+  @media (max-width: 1200px) {
+    font-size: 90%;
+  }
 }
 
 
@@ -45,6 +48,10 @@ html {
 
 .box-title {
   display: flex;
+
+  @media (max-width: 620px) {
+    flex-direction: column;
+  }
 
   .title-section {
     color: #000;
@@ -61,6 +68,16 @@ html {
     height: fit-content;
 
     margin-right: 2rem;
+
+    @media (max-width: 620px) {
+      margin-right: 0;
+      margin-bottom: 2rem;
+      width: fit-content;
+    }
+    
+    @media (max-width: 290px) {
+      font-size: 1.75rem;
+    }
   }
 
   .bg-secondary {

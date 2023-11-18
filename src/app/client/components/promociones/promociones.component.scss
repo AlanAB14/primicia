@@ -1,5 +1,9 @@
 .promociones {
     .box-component {
         margin-top: 5rem;
+
+        @media (max-width: 455px) {
+            margin-top: 2rem;
+        }
     }
 }
