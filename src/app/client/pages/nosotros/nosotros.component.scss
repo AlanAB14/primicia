@@ -1,0 +1,104 @@
+.primicia {
+    padding-top: 8.4375rem;
+
+    &-subtitle {
+        max-width: 12.5rem;
+    }
+
+    &-box {
+        border-radius: 2.8125rem;
+        background-color: var(--black);
+        margin-top: 5.5rem;
+        color: #FFF;
+        font-family: Space Grotesk;
+        font-size: 1.125rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        padding: 4.375rem 3.75rem;
+        display: flex;
+
+        &-text {
+            padding-right: 4rem;
+
+            &-title {
+                p {
+                    font-weight: 700;
+                    margin-bottom: 1.25rem;
+                }
+            }
+
+            &-link {
+                margin-top: 1.25rem;
+                a {
+                    display: flex;
+                    align-items: center;
+                    cursor: pointer;
+                }
+
+                p {
+                    color: #73D0F6;
+                    font-family: Space Grotesk;
+                    font-size: 1.25rem;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 1.75rem;
+                }
+
+                img {
+                    width: 1.1rem;
+                    height: 1.1rem;
+                    margin-left: 1rem;
+                }
+            }
+        }
+
+        &-img {
+            position: absolute;
+            top: 14%;
+            left: 52%;
+            background-color: white;
+
+            img {
+                width: 13.125rem;
+                height: auto;
+            }
+        }
+    }
+}
+
+.no-padding {
+    padding-right: 0;
+}
+
+.padding-left {
+    padding-left: 4rem;
+}
+
+.border-primero {
+    position: relative;
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 1px;
+        height: 75%;
+        background-color: white;
+    }
+}
+
+.border-segundo {
+    position: relative;
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 25%;
+        right: 0;
+        width: 1px;
+        height: 50%;
+        background-color: white;
+    }
+}
