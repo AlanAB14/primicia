@@ -1,0 +1,24 @@
+<div class="dropdown-item" [ngClass]="{'open' : !closed}">
+    <div class="dropdown-item-header">
+        <div class="number">
+            <p>01</p>
+        </div>
+        <div class="title">
+            <p>Agencias de turismo</p>
+        </div>
+        <div class="icon">
+            <img (click)="closed = !closed" [src]="closed ? urlPlus : urlMinus" alt="plus-icon">
+        </div>
+    </div>
+    <div class="dropdown-item-body" [ngClass]="{'open-body' : !closed}">
+        <hr>
+        <div class="data">
+            <div class="empresa">
+                <p>OLIVERA VIAJES</p>
+            </div>
+            <div class="direccion">
+                <p>CATAMARCA 72</p>
+            </div>
+        </div>
+    </div>
+</div>

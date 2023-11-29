@@ -16,6 +16,7 @@ import { PromocionBoxComponent } from './components/promocion-box/promocion-box.
 import { ContactoTemplateComponent } from './components/contacto/contacto.component';
 import { ContactoBoxComponent } from './components/contacto-box/contacto-box.component';
 import { MaterialModule } from '../material/material.module';
+import { DropdownItemComponent } from './components/dropdown-item/dropdown-item.component'
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { MaterialModule } from '../material/material.module';
     PromocionesTemplateComponent,
     PromocionBoxComponent,
     ContactoTemplateComponent,
-    ContactoBoxComponent
+    ContactoBoxComponent,
+    DropdownItemComponent
   ],
   imports: [
     CommonModule,
