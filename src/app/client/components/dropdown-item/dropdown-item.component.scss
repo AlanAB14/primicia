@@ -72,6 +72,10 @@
       .concepto-item {
         min-width: 7.625rem;
 
+        @media (max-width: 843px) {
+          min-width: 6.625rem;
+        }
+
         &:not(:last-of-type) {
           margin-right: 1.5625rem;
         }
@@ -188,9 +192,18 @@
           flex-direction: column;
 
           .title-item {
+            &-header {
+              @media (max-width: 843px) {
+                font-size: 1rem;
+              }
+            }
             &-sub {
               font-size: .9375rem;
               font-weight: 400;
+
+              @media (max-width: 1090px) {
+                display: none;
+              }
             }
 
             &:not(:first-of-type) {
@@ -204,17 +217,31 @@
           flex-direction: column;
           justify-content: space-between;
           margin-right: 3.75rem;
+
+          @media (max-width: 1549px) {
+            justify-content: start;
+          }
+
           .number-item {
             display: flex;
 
             &:not(:first-of-type) {
               margin-top: 3rem;
+
+              @media (max-width: 1549px) {
+                margin-top: 4rem;
+              }
             }
 
             .number {
               min-width: 7.625rem;
               margin-left: 1.5625rem;
               text-align: center;
+
+              @media (max-width: 843px) {
+                font-size: 1rem;
+                margin-left: .75rem;
+              }
             }
           }
         }
@@ -232,7 +259,7 @@
 }
 
 .open-body {
-  max-height: 20rem;
+  max-height: 40rem;
   -webkit-transition: max-height .6s;
   -moz-transition: max-height .6s;
   -ms-transition: max-height .6s;
