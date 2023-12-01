@@ -5,5 +5,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./comercios.component.scss']
 })
 export class ComerciosComponent {
-
+  showComercios: boolean = false;
 }

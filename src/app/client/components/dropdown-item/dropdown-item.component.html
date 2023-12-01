@@ -1,23 +1,70 @@
 <div class="dropdown-item" [ngClass]="{'open' : !closed}">
     <div class="dropdown-item-header">
-        <div class="number">
-            <p>01</p>
+        <div class="number" *ngIf="numero">
+            <p>{{ numero }}</p>
         </div>
         <div class="title">
-            <p>Agencias de turismo</p>
+            <p>{{ title }}</p>
         </div>
-        <div class="icon">
+        <div class="concepto-title-box" *ngIf="concepto">
+            <div class="concepto-item">
+                <p>T.N.A.</p>
+            </div>
+            <div class="concepto-item">
+                <p>T.E.M.</p>
+            </div>
+            <div class="concepto-item">
+                <p>C.F.T.(*)</p>
+            </div>
+        </div>
+        <div class="icon" [ngClass]="{'concepto-img' : concepto}">
             <img (click)="closed = !closed" [src]="closed ? urlPlus : urlMinus" alt="plus-icon">
         </div>
     </div>
     <div class="dropdown-item-body" [ngClass]="{'open-body' : !closed}">
         <hr>
         <div class="data">
-            <div class="empresa">
-                <p>OLIVERA VIAJES</p>
+            <div class="empresa" *ngIf="empresa">
+                <p>{{ empresa }}</p>
             </div>
-            <div class="direccion">
-                <p>CATAMARCA 72</p>
+            <div class="direccion" *ngIf="direccion">
+                <p>{{ direccion }}</p>
+            </div>
+            <div class="respuesta" *ngIf="respuesta">
+                <p>{{ respuesta }}</p>
+            </div>
+            <div class="concepto-data" *ngIf="concepto">
+                <div class="titles">
+                    <div class="title-item">
+                        <div class="title-item-header">TASA DE INTERES – FINANCIACION</div>
+                        <div class="title-item-sub">Comienza a aplicarse en la fecha de vencimiento del resumen, en el caso que deba financiar saldo.</div>
+                    </div>
+                    <div class="title-item">
+                        <div class="title-item-header">TASA DE INTERES – PUNITORIOS</div>
+                        <div class="title-item-sub">Comienza a aplicarse en la fecha de vencimiento del resumen, en el caso de no haber abonado el pago mínimo.</div>
+                    </div>
+                    <div class="title-item">
+                        <div class="title-item-header">TASA DE INTERES – ADELANTOS EN EFECTIVO</div>
+                        <div class="title-item-sub">Comienza a aplicarse desde la fecha en la que se realiza el adelanto en efectivo</div>
+                    </div>
+                </div>
+                <div class="numbers">
+                    <div class="number-item">
+                        <div class="number">128,20%</div>
+                        <div class="number">10,54%</div>
+                        <div class="number">238,32%</div>
+                    </div>
+                    <div class="number-item">
+                        <div class="number">64,10%</div>
+                        <div class="number">5,27%</div>
+                        <div class="number">119,16%</div>
+                    </div>
+                    <div class="number-item">
+                        <div class="number">128,20%</div>
+                        <div class="number">10,54%</div>
+                        <div class="number">238,32%</div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

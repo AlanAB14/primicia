@@ -1,0 +1,46 @@
+.ayuda {
+    padding: 6rem 0;
+
+    &-subtitle {
+        max-width: 25.9rem;
+    }
+
+    .preguntas-section {
+        margin-top: 6.625rem;
+        position: relative;
+
+        img {
+            position: absolute;
+            right: 10%;
+            top: -12rem;
+
+            @media (max-width: 1470px) {
+                right: 0;
+            }
+
+            @media (max-width: 1340px) {
+                display: none;
+            }
+        }
+
+        &-box {
+            &:not(:last-of-type) {
+                margin-bottom: 1.875rem;
+            }
+        }
+    }
+
+    .proteccion-section {
+        margin-top: 6.625rem;
+        .box-title-proteccion {
+            margin-bottom: 3.4375rem;
+        }
+
+        &-box  {
+            &:not(:last-of-type) {
+                margin-bottom: 2.5rem;
+            }
+        }
+    }
+
+}

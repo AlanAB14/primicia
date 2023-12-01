@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-dropdown-item',
@@ -10,4 +10,12 @@ export class DropdownItemComponent {
   closed: boolean = true;
   urlPlus: string = 'assets/imgs/plus-icon.png'
   urlMinus: string = 'assets/imgs/minus-icon.png'
+
+  @Input() numero: string = '';
+  @Input() title: string = '';
+  @Input() empresa: string = '';
+  @Input() direccion: string = '';
+  @Input() respuesta: string = '';
+  @Input() concepto: boolean = false;
+
 }

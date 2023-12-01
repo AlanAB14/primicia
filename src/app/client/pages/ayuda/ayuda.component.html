@@ -1,1 +1,55 @@
-<p>ayuda works!</p>
+<div class="ayuda">
+    <div class="preguntas-frecuentas-section">
+        <div class="box-title">
+            <p class="title-section">Preguntas Frecuentes</p>
+            <p class="subtitle-section ayuda-subtitle">Aprovecha al máximo tu tarjeta con ofertas y promociones en
+                nuestros comercios adheridos.</p>
+        </div>
+        <div class="preguntas-section">
+            <img src="assets/imgs/girl-answers.png" alt="">
+            <div class="preguntas-section-box">
+                <app-dropdown-item [numero]="'01'" [title]="'¿Qué tipo de estructura jurídica tiene Primicia?'"
+                    [respuesta]="'Ualá es una empresa constituida de acuerdo a la legislación de la República Argentina como una Sociedad Anónima Unipersonal (SAU). Está inscripta en el Registro Público de Comercio de la Ciudad Autónoma de Buenos Aires y cumple con todas las obligaciones impuestas por Ley para funcionar como tal.'">
+                </app-dropdown-item>
+            </div>
+            <div class="preguntas-section-box">
+                <app-dropdown-item [numero]="'02'" [title]="'¿Cómo protege Primicias los datos de sus usuarios?'"
+                    [respuesta]="'Ejemplo de respuesta'">
+                </app-dropdown-item>
+            </div>
+            <div class="preguntas-section-box">
+                <app-dropdown-item [numero]="'03'" [title]="'¿Qué puedo comprar con la tarjeta virtual de Primicia?'"
+                    [respuesta]="'Ejemplo de respuesta'">
+                </app-dropdown-item>
+            </div>
+            <div class="preguntas-section-box">
+                <app-dropdown-item [numero]="'04'"
+                    [title]="'¿Cuál es la diferencia entre la tarjeta virtual y la física?'"
+                    [respuesta]="'Ejemplo de respuesta'">
+                </app-dropdown-item>
+            </div>
+        </div>
+
+        <div class="proteccion-section">
+            <div class="box-title box-title-proteccion">
+                <p class="title-section">Protección de los Usuarios
+                    de Servicios Financieros</p>
+                <p class="subtitle-section">Texto Ordenado Protección Usuario de Servicios Financieros del BCRA De acuerdo al texto ordenado del Banco Central de la República Argentina sobre la protección de Servicios Financieros, presentamos la información referida a costos de la tarjeta Primicia</p>
+            </div>
+            <div class="proteccion-section-box">
+                <app-dropdown-item 
+                    [title]="'Concepto'"
+                    [concepto]="true">
+                </app-dropdown-item>
+            </div>
+            <div class="proteccion-section-box">
+                <app-dropdown-item 
+                    [title]="'Concepto'"
+                    >
+                </app-dropdown-item>
+            </div>
+        </div>
+
+
+    </div>
+</div>
