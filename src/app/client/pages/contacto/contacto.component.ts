@@ -5,5 +5,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./contacto.component.scss']
 })
 export class ContactoComponent {
-
+  items: any[] = new Array(10).fill(null);
 }

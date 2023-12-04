@@ -1,0 +1,61 @@
+.contacto {
+    padding: 6rem 0;
+
+    &-formulario {
+        position: relative;
+    }
+
+    .filiales-subtitle {
+        max-width: 29.5625rem;
+    }
+
+    .filiales {
+        margin-top: 4rem;
+
+        &-content {
+            margin-top: 4rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(24.2rem, 1fr));
+            gap: 2.5rem;
+
+            &-box {
+                padding: 2.5rem 2.1875rem;
+                border-radius: 2.8125rem;
+                border: 1px solid #191A23;
+                background: #FFF;
+                box-shadow: 0px 5px 0px 0px #191A23;
+
+                &-header {
+                    display: flex;
+                    flex-direction: column;
+
+                    .title {
+                        font-size: 1.25rem;
+                        font-weight: 600;
+                    }
+                    .subtitle {
+                        font-size: 1.125rem;
+                        font-weight: 400;
+                    }
+                }
+
+                hr {
+                    border: none;
+                    border-top: 1px solid black;
+                    margin: 1.75rem 0;
+                }
+
+                &-body {
+                    ul {
+                        margin-left: 1.5rem;
+                        li {
+                            font-size: .875rem;
+                            letter-spacing: -0.28px;
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+}

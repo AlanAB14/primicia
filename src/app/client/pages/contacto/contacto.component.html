@@ -1,1 +1,30 @@
-<p>contacto works!</p>
+<div class="contacto">
+    <div class="contacto-formulario">
+        <app-contacto></app-contacto>
+    </div>
+
+    <div class="filiales">
+        <div class="box-title">
+            <p class="title-section">Filiales</p>
+            <p class="subtitle-section filiales-subtitle">Meet the skilled and experienced team behind our successful digital marketing strategies</p>
+        </div>
+
+
+        <div class="filiales-content">
+            <div *ngFor="let item of items; let i = index" class="filiales-content-box">
+                <div class="filiales-content-box-header">
+                    <div class="title">Venado Tuerto</div>
+                    <div class="subtitle">Mutual Entre Asociados 
+                        de Cooperación Mutual Patronal</div>
+                </div>
+                <hr>
+                <div class="filiales-content-box-body">
+                    <ul>
+                        <li>Mitre 664 – 03462 430655</li>
+                        <li>venadotuerto@tarjetaprimicia.com.ar</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
