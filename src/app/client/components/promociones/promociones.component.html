@@ -1,9 +1,14 @@
-<div class="promociones">
+<div class="promociones" *ngIf="promociones">
     <div class="box-title">
         <p class="title-section bg-secondary">Promociones</p>
-        <p class="subtitle-section">Miércoles Exclusivos 15% descuento. Fecha de Inicio: 01/01/2023. <strong>Fecha de Finalización: 30/09/2023...</strong></p>
+        <p class="subtitle-section">{{ promociones[0].texto }}</p>
+        <!-- <p class="subtitle-section">Miércoles Exclusivos 15% descuento. Fecha de Inicio: 01/01/2023. <strong>Fecha de Finalización: 30/09/2023...</strong></p> -->
     </div>
     <div class="box-component">
-        <app-promocion-box></app-promocion-box>
+        <app-promocion-box [promocion]="promociones[0]"></app-promocion-box>
     </div>
+</div>
+
+<div class="loader-primicia-box" *ngIf="cargandoData">
+    <span class="loader-primicia"></span>
 </div>

@@ -59,7 +59,7 @@
         </div>
     </div>
     <div class="comercios-adheridos-btn">
-        <button (click)="showComercios = !showComercios"><strong>Comercios</strong> Adheridos</button>
+        <button (click)="getData()"><strong>Comercios</strong> Adheridos</button>
     </div>
 
     <div class="comercios-adheridos-section animate__animated animate__fadeIn" *ngIf="showComercios">
@@ -90,23 +90,27 @@
                 </div>
             </div>
         </form>
-        <div class="results">
+        <!-- <div class="results" *ngFor="let filial of filialesData; let i = index">
             <div class="results-title">
                 <div class="box-title">
-                    <p class="title-section">Rufino</p>
+                    <p class="title-section">{{ filial.localidad }}</p>
                     <p class="subtitle-section comercios-subtitle">Aprovecha al máximo tu tarjeta con ofertas y promociones en
                         nuestros selectos comercios adheridos.</p>
                 </div>
             </div>
-            <div class="results-data">
-                <img src="assets/imgs/girl-comercios.png" alt="results-img">
-                <app-dropdown-item [numero]="'01'"
-                                   [title]="'Agencias de turismo'"
-                                   [empresa]="'OLIVERA VIAJES'"
-                                   [direccion]="'CATAMARCA 72'">
+            <div class="results-data" *ngFor="let comercio of filialesData.categorias; let c = index">
+                <img *ngIf="i === 0 && c === 0" src="assets/imgs/girl-comercios.png" alt="results-img">
+                <app-dropdown-item [numero]="c.toString()"
+                                   [title]="comercio.categoria"
+                                   [empresa]="comercio.nombre"
+                                   [direccion]="comercio.direccion">
                 </app-dropdown-item>
             </div>
-        </div>
+        </div> -->
     </div>
 
+</div>
+
+<div class="loader-primicia-box" *ngIf="cargandoData">
+    <span class="loader-primicia"></span>
 </div>

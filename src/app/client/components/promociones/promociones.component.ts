@@ -1,10 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
+import { Promocion } from 'src/app/interfaces/promocion.interface';
+import { PromocionService } from 'src/app/services/promocion.service';
 
 @Component({
   selector: 'app-promociones',
   templateUrl: './promociones.component.html',
   styleUrls: ['./promociones.component.scss']
 })
-export class PromocionesTemplateComponent {
+export class PromocionesTemplateComponent implements OnInit{
+  promociones!: Promocion[];
+  cargandoData: boolean = true;
+  private promocionService = inject(PromocionService)
+
+  ngOnInit(): void {
+    this.promocionService.getPromociones()
+      .subscribe( promociones => {
+        console.log(promociones[0].texto)
+        this.cargandoData = false;
+        this.promociones = promociones
+      },
+      (error) => {
+        console.log(error)
+        this.cargandoData = false;
+      })
+  }
 
 }

@@ -2,23 +2,23 @@
     <div class="promocion-box">
         <div class="promocion-box-timer">
             <div class="promocion-box-timer-title">
-                <p class="timer-title">Super Miércoles <strong>15% de Descuento</strong></p>
+                <p class="timer-title">{{ promocion.diasPromocion }} <strong>{{ promocion.promocion }}</strong></p>
             </div>
             <div class="promocion-box-timer-time">
                 <div class="dias number-box">
-                    <div class="number">24</div>
+                    <div class="number">{{ unCaracter(days) ? 0 : '' }}{{ days }}</div>
                     <div class="text">Días</div>
                 </div>
                 <div class="horas number-box">
-                    <div class="number">12</div>
+                    <div class="number">{{ unCaracter(hours) ? 0 : '' }}{{ hours }}</div>
                     <div class="text">Horas</div>
                 </div>
                 <div class="minutos number-box">
-                    <div class="number">25</div>
+                    <div class="number">{{ unCaracter(minutes) ? 0 : '' }}{{ minutes }}</div>
                     <div class="text">Minutos</div>
                 </div>
                 <div class="segundos number-box">
-                    <div class="number">45</div>
+                    <div class="number">{{ unCaracter(seconds) ? 0 : '' }}{{ seconds }}</div>
                     <div class="text">Segundos</div>
                 </div>
             </div>
