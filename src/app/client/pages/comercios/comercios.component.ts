@@ -1,8 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { forkJoin } from 'rxjs';
 import { Categoria } from 'src/app/interfaces/categorias.interface';
-import { Comercio } from 'src/app/interfaces/comercios.interface';
-import { Filial, FilialesData } from 'src/app/interfaces/filiales.interface';
+import { Comercio, ComercioData } from 'src/app/interfaces/comercios.interface';
+import { Filial } from 'src/app/interfaces/filiales.interface';
 import { ComerciosService } from 'src/app/services/comercios.service';
 import { FilialesService } from 'src/app/services/filiales.service';
 
@@ -15,7 +15,7 @@ import { FilialesService } from 'src/app/services/filiales.service';
 export class ComerciosComponent {
   showComercios: boolean = false;
   cargandoData: boolean = false;
-  filialesData: FilialesData[] = [];
+  comerciosData: ComercioData[] = [];
   filiales!: Filial[];
   comercios!: Comercio[];
   categorias!: Categoria[];
@@ -52,38 +52,40 @@ export class ComerciosComponent {
         }
         this.comerciosService.getComerciosPorCategoriaYFilial(obj)
           .subscribe( comerciosRes => {
-            this.filialesData.push({
-              localidad: filial.localidad,
-              datos: comerciosRes
-            })
+            if (comerciosRes !== null) {
+              this.comerciosData.push({
+                filial,
+                categoria: category,
+                comercios: comerciosRes
+              })
+            }
           })
       })
     })
 
-    console.log(this.filialesData)
+    console.log(this.comerciosData)
   }
 
-
-
-  isComInFilial(filial: Filial, comercio: Comercio) {
-    if (comercio.filialId === filial.id) {
-      return true;
-    } else {
-      return false;
+  filialTieneComercios(filial: Filial) {
+    const comerciosFiltrados = this.comerciosData.filter((comercios) => {
+      return filial.id === comercios.filial.id
+    })
+    if (comerciosFiltrados.length > 0) {
+      return true
+    }else {
+      return false
     }
   }
 
-  isCatInComercios(comercios: Comercio[], cat: Categoria) {
-    const existe = comercios.find(comercio => comercio.comercioId === cat.id)
-    console.log(existe)
-  }
-
-  isComInCategoria(cat: Categoria, comercio: Comercio) {
-    if (comercio.comercioId === cat.id) {
-      return true;
-    } else {
-      return false;
-    }
+  getComerciosDeCategoria(filial: Filial, categoria: Categoria): any[] {
+    // Utiliza la función filter y devuelve los elementos que cumplen con las condiciones
+    const comerciosFiltrados = this.comerciosData.filter((comercios) => {
+      return comercios.filial.id === filial.id &&
+             comercios.categoria.id === categoria.id &&
+             comercios.comercios !== null;
+    });
+    // Devuelve el array resultante
+    return comerciosFiltrados || [];
   }
 
 }

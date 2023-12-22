@@ -90,23 +90,25 @@
                 </div>
             </div>
         </form>
-        <!-- <div class="results" *ngFor="let filial of filialesData; let i = index">
-            <div class="results-title">
+        <div class="results" *ngFor="let filial of filiales; let i = index">
+            <div *ngIf="filialTieneComercios(filial)" class="results-title">
                 <div class="box-title">
                     <p class="title-section">{{ filial.localidad }}</p>
                     <p class="subtitle-section comercios-subtitle">Aprovecha al máximo tu tarjeta con ofertas y promociones en
                         nuestros selectos comercios adheridos.</p>
                 </div>
             </div>
-            <div class="results-data" *ngFor="let comercio of filialesData.categorias; let c = index">
+            <div class="results-data" *ngFor="let categoria of categorias; let c = index;">
                 <img *ngIf="i === 0 && c === 0" src="assets/imgs/girl-comercios.png" alt="results-img">
-                <app-dropdown-item [numero]="c.toString()"
-                                   [title]="comercio.categoria"
-                                   [empresa]="comercio.nombre"
-                                   [direccion]="comercio.direccion">
-                </app-dropdown-item>
+                <div *ngFor="let comercio of getComerciosDeCategoria(filial, categoria)!">
+                    <app-dropdown-item *ngIf="comercio !== []"
+                                       [numero]="categoria.id.toString()"
+                                       [title]="categoria.categoria"
+                                       [comercios]="comercio.comercios">
+                    </app-dropdown-item>
+                </div>
             </div>
-        </div> -->
+        </div>
     </div>
 
 </div>

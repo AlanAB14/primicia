@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Comercio } from '../interfaces/comercios.interface';
 import { Categoria } from '../interfaces/categorias.interface';
-import { FilialesData } from '../interfaces/filiales.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +23,6 @@ export class ComerciosService {
   }
 
   getComerciosPorCategoriaYFilial(obj: any): Observable<Comercio[]> {
-    console.log('In')
     return this.http.post<Comercio[]>(`${ this._url }/comerciosPorCategoriaYFilial`, obj)
   }
 

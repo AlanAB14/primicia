@@ -23,12 +23,12 @@
     </div>
     <div class="dropdown-item-body" [ngClass]="{'open-body' : !closed}">
         <hr>
-        <div class="data">
-            <div class="empresa" *ngIf="empresa">
-                <p>{{ empresa }}</p>
+        <div class="data" *ngFor="let comercio of comercios">
+            <div class="empresa" *ngIf="comercio.nombre">
+                <p>{{ comercio.nombre }}</p>
             </div>
-            <div class="direccion" *ngIf="direccion">
-                <p>{{ direccion }}</p>
+            <div class="direccion" *ngIf="comercio.direccion">
+                <p>{{ comercio.direccion }}</p>
             </div>
             <div class="respuesta" *ngIf="respuesta">
                 <p>{{ respuesta }}</p>
