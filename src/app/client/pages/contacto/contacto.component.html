@@ -10,21 +10,25 @@
         </div>
 
 
-        <div class="filiales-content">
-            <div *ngFor="let item of items; let i = index" class="filiales-content-box">
+        <div class="filiales-content" *ngIf="filiales">
+            <div *ngFor="let filial of filiales; let i = index" class="filiales-content-box">
                 <div class="filiales-content-box-header">
-                    <div class="title">Venado Tuerto</div>
+                    <div class="title">{{ filial.localidad }}</div>
                     <div class="subtitle">Mutual Entre Asociados 
                         de Cooperación Mutual Patronal</div>
                 </div>
                 <hr>
                 <div class="filiales-content-box-body">
                     <ul>
-                        <li>Mitre 664 – 03462 430655</li>
-                        <li>venadotuerto@tarjetaprimicia.com.ar</li>
+                        <li>{{ filial.direccion + ' - ' ?? '' }}{{ filial.telefono ?? '' }}</li>
+                        <li>{{ filial.email.toLowerCase() ?? '' }}</li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
+</div>
+
+<div class="loader-primicia-box" *ngIf="cargandoData">
+    <span class="loader-primicia"></span>
 </div>

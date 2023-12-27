@@ -1,34 +1,50 @@
 <div class="contacto-box-form">
-    <form>
+    <form [formGroup]="contactoForm" (ngSubmit)="sendData()">
         <div class="contacto-box-form-datos">
             <div class="contacto-box-form--radio">
                 <div class="radio-group">
-                    <input class="input-radio-circle" type="radio" id="opcion1" name="grupoOpciones" value="opcion1">
+                    <input formControlName="motivo" [ngClass]="{'error-border': contactoForm.controls['motivo'].errors && checkFieldError('motivo')}" class="input-radio-circle" type="radio" id="opcion1" name="motivo" value="Planes y Promociones">
                     <label for="opcion1">Planes y Promociones</label>
                 </div>
                 <div class="radio-group">
-                    <input class="input-radio-circle" type="radio" id="opcion2" name="grupoOpciones" value="opcion2">
+                    <input formControlName="motivo" [ngClass]="{'error-border': contactoForm.controls['motivo'].errors && checkFieldError('motivo')}" class="input-radio-circle" type="radio" id="opcion2" name="motivo" value="Ayuda">
                     <label for="opcion2">Ayuda</label>
                 </div>
             </div>
+            <div class="error-input error-input-radio" *ngIf="checkFieldError('motivo')">
+                Este campo es obligatorio *
+            </div>
             <div class="contacto-box-form--input">
                 <label>Nombre</label>
-                <input type="text" class="input-text" placeholder="Nombre">
+                <input formControlName="nombre" type="text" class="input-text" placeholder="Nombre">
             </div>
             <div class="contacto-box-form--input">
                 <label>Email*</label>
-                <input type="text" class="input-text" placeholder="Email">
+                <input type="text" [ngClass]="{'error-border': checkFieldError('email')}" formControlName="email" class="input-text" placeholder="Email">
+                <div class="error-input" *ngIf="checkFieldError('email') && contactoForm.get('email')!.hasError('required')">
+                    Este campo es obligatorio *
+                </div>
+                <div class="error-input" *ngIf="contactoForm.get('email')!.hasError('email')">
+                    El campo ingresado no es un email
+                </div>
             </div>
             <div class="contacto-box-form--input mensaje">
                 <label>Mensaje*</label>
-                <textarea class="input-area" placeholder="Mensaje"></textarea>
+                <textarea class="input-area" [ngClass]="{'error-border': checkFieldError('mensaje')}" formControlName="mensaje" placeholder="Mensaje"></textarea>
+                <div class="error-input" *ngIf="checkFieldError('mensaje')">
+                    Este campo es obligatorio *
+                </div>
             </div>
             <div class="contacto-box-form--button">
-                <button>Enviar mensaje</button>
+                <button type="submit">Enviar mensaje</button>
             </div>
         </div>
     </form>
     <div class="contacto-box-form-img">
         <img src="/assets/imgs/contacto/contact.png" alt="contact-img">
     </div>
+</div>
+
+<div class="loader-primicia-box" *ngIf="cargandoData">
+    <span class="loader-primicia"></span>
 </div>

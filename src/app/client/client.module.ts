@@ -17,7 +17,7 @@ import { ContactoTemplateComponent } from './components/contacto/contacto.compon
 import { ContactoBoxComponent } from './components/contacto-box/contacto-box.component';
 import { MaterialModule } from '../material/material.module';
 import { DropdownItemComponent } from './components/dropdown-item/dropdown-item.component'
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ComerciosShowComponent } from './components/comercios-show/comercios-show.component';
 
 
@@ -43,7 +43,8 @@ import { ComerciosShowComponent } from './components/comercios-show/comercios-sh
     ClientRoutingModule,
     SharedModule,
     FormsModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule
   ]
 })
 export class ClientModule { }
