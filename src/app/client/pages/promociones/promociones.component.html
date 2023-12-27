@@ -1,9 +1,16 @@
-<div class="promociones">
-    <div class="box-title">
-        <p class="title-section">Promociones</p>
-        <p class="subtitle-section comercios-subtitle">Miércoles Exclusivos 15% descuento. Fecha de Inicio: 01/01/2023. Fecha de Finalización: 30/09/2023.</p>
+<div *ngIf="promociones">
+    <div class="promociones" *ngFor="let promocion of promociones">
+        <div class="box-title">
+            <p class="title-section">Promociones</p>
+            <p class="subtitle-section comercios-subtitle">Miércoles Exclusivos 15% descuento. Fecha de Inicio: 01/01/2023. Fecha de Finalización: 30/09/2023.</p>
+        </div>
+        <div class="box-promocion">
+            <app-promocion-box [promocion]="promocion"></app-promocion-box>
+        </div>
     </div>
-    <div class="box-promocion">
-        <app-promocion-box></app-promocion-box>
-    </div>
+
+</div>
+
+<div class="loader-primicia-box" *ngIf="cargandoData">
+    <span class="loader-primicia"></span>
 </div>

@@ -17,6 +17,8 @@ import { ContactoTemplateComponent } from './components/contacto/contacto.compon
 import { ContactoBoxComponent } from './components/contacto-box/contacto-box.component';
 import { MaterialModule } from '../material/material.module';
 import { DropdownItemComponent } from './components/dropdown-item/dropdown-item.component'
+import { FormsModule } from '@angular/forms';
+import { ComerciosShowComponent } from './components/comercios-show/comercios-show.component';
 
 
 @NgModule({
@@ -33,12 +35,14 @@ import { DropdownItemComponent } from './components/dropdown-item/dropdown-item.
     PromocionBoxComponent,
     ContactoTemplateComponent,
     ContactoBoxComponent,
-    DropdownItemComponent
+    DropdownItemComponent,
+    ComerciosShowComponent
   ],
   imports: [
     CommonModule,
     ClientRoutingModule,
     SharedModule,
+    FormsModule,
     MaterialModule
   ]
 })

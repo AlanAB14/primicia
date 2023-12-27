@@ -15,8 +15,13 @@ import { FilialesService } from 'src/app/services/filiales.service';
 export class ComerciosComponent {
   showComercios: boolean = false;
   cargandoData: boolean = false;
+  filialSearch: string = '';
+  categoriaSearch: string = '';
+  promocionSearch: string = '';
   comerciosData: ComercioData[] = [];
+  comerciosDataSearch : ComercioData[] = [];
   filiales!: Filial[];
+  filialesEncontradas!: Filial[];
   comercios!: Comercio[];
   categorias!: Categoria[];
   private comerciosService = inject(ComerciosService);
@@ -31,6 +36,7 @@ export class ComerciosComponent {
     ]).subscribe(([filiales, categorias]) => {
       this.filiales = filiales;
       this.categorias = categorias;
+      console.log(filiales, categorias)
 
       this.getComerciosPorFilialYCategoria();
       this.showComercios = true;
@@ -44,11 +50,13 @@ export class ComerciosComponent {
 
   getComerciosPorFilialYCategoria() {
     this.cargandoData = true;
+    let comerciosDataObj: any;
     this.filiales.forEach(filial => {
+      comerciosDataObj
       this.categorias.forEach(category => {
         const obj = {
           filialId: filial.id,
-          comercioId: category.id 
+          categoriaId: category.id 
         }
         this.comerciosService.getComerciosPorCategoriaYFilial(obj)
           .subscribe( comerciosRes => {
@@ -62,30 +70,43 @@ export class ComerciosComponent {
           })
       })
     })
-
     console.log(this.comerciosData)
+    this.comerciosDataSearch = this.comerciosData
   }
 
-  filialTieneComercios(filial: Filial) {
-    const comerciosFiltrados = this.comerciosData.filter((comercios) => {
-      return filial.id === comercios.filial.id
-    })
-    if (comerciosFiltrados.length > 0) {
-      return true
-    }else {
-      return false
+  buscarPorFiltro() {
+    this.cargandoData = true
+    if (this.filialSearch === '' && (this.categoriaSearch === '' || this.categoriaSearch === 'Todas') && ( this.promocionSearch === '' || this.promocionSearch === 'Todas')) {
+      this.comerciosDataSearch = this.comerciosData
+      setTimeout(() => {
+        this.cargandoData = false;
+      }, 300);
+      return
     }
-  }
 
-  getComerciosDeCategoria(filial: Filial, categoria: Categoria): any[] {
-    // Utiliza la función filter y devuelve los elementos que cumplen con las condiciones
-    const comerciosFiltrados = this.comerciosData.filter((comercios) => {
-      return comercios.filial.id === filial.id &&
-             comercios.categoria.id === categoria.id &&
-             comercios.comercios !== null;
-    });
-    // Devuelve el array resultante
-    return comerciosFiltrados || [];
+    if ((this.categoriaSearch === '' || this.categoriaSearch === 'Todas')) {
+      setTimeout(() => {
+        this.cargandoData = false;
+      }, 300);
+      const comerciosDeCategoria = this.comerciosData.filter(comercio => comercio.filial.localidad.toLocaleLowerCase().includes(this.filialSearch))
+      this.comerciosDataSearch = comerciosDeCategoria;
+      return
+    }
+
+    if (this.filialSearch === '') {
+      setTimeout(() => {
+        this.cargandoData = false;
+      }, 300);
+      const comerciosDeCategoria = this.comerciosData.filter(comercio => comercio.categoria.id === Number(this.categoriaSearch))
+      this.comerciosDataSearch = comerciosDeCategoria;
+      return
+    }
+
+    setTimeout(() => {
+      this.cargandoData = false;
+    }, 300);
+    const comerciosDeCategoria = this.comerciosData.filter(comercio => comercio.categoria.id === Number(this.categoriaSearch) && comercio.filial.localidad.toLocaleLowerCase().includes(this.filialSearch))
+    this.comerciosDataSearch = comerciosDeCategoria;
   }
 
 }

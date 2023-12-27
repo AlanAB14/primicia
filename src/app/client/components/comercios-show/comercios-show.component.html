@@ -1,0 +1,19 @@
+<div class="results" *ngFor="let filial of filiales; let i = index">
+    <div *ngIf="filialTieneComercios(filial)" class="results-title">
+        <div class="box-title">
+            <p class="title-section">{{ filial.localidad }}</p>
+            <p class="subtitle-section comercios-subtitle">Aprovecha al máximo tu tarjeta con ofertas y promociones en
+                nuestros selectos comercios adheridos.</p>
+        </div>
+    </div>
+    <div class="results-data" *ngFor="let categoria of getCategoriasDeFilial(filial); let c = index;">
+        <img *ngIf="i === 0 && c === 0" src="assets/imgs/girl-comercios.png" alt="results-img">
+        <div *ngFor="let comercio of getComerciosDeCategoria(filial, categoria.categoria)">
+            <app-dropdown-item [numero]="c + 1"
+                               [promocionValida]="promocionValida"
+                               [title]="categoria.categoria.categoria"
+                               [comercios]="comercio.comercios">
+            </app-dropdown-item>
+        </div>
+    </div>
+</div>

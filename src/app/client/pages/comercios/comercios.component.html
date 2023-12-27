@@ -69,46 +69,33 @@
                     <img src="assets/imgs/search-icon.png" alt="search-icon">
                 </div>
                 <div class="comercios-adheridos-searchbar--input">
-                    <input type="text" placeholder="Ingresá la localidad">
+                    <form>
+                        <input type="text" name="filial" (keyup.enter)="buscarPorFiltro()" [(ngModel)]="filialSearch" placeholder="Ingresá la localidad">
+                    </form>
                 </div>
                 <div class="comercios-adheridos-searchbar--btn">
-                    <button>Buscar</button>
+                    <button (click)="buscarPorFiltro()">Buscar</button>
                 </div>
             </div>
             <div class="comercios-adheridos-selects">
                 <div class="select-box">
-                    <select name="accesorios" id="">
-                        <option disabled selected value="">Accesorios</option>
-                        <option value="Prueba">Prueba</option>
+                    <select (change)="buscarPorFiltro()" [(ngModel)]="categoriaSearch" name="accesorios" id="">
+                        <option disabled selected value="">Categorias</option>
+                        <option value="Todas">Todas</option>
+                        <option *ngFor="let categoria of categorias" [value]="categoria.id">{{ categoria.categoria }}</option>
                     </select>
                 </div>
                 <div class="select-box">
-                    <select name="cuotas" id="">
-                        <option disabled selected value="">Cuotas</option>
-                        <option value="Prueba">Prueba</option>
+                    <select name="promocion" [(ngModel)]="promocionSearch" id="">
+                        <option disabled selected value="">Promoción</option>
+                        <option value="Todas">Todas</option>
+                        <option value="si">Sí</option>
+                        <option value="no">No</option>
                     </select>
                 </div>
             </div>
         </form>
-        <div class="results" *ngFor="let filial of filiales; let i = index">
-            <div *ngIf="filialTieneComercios(filial)" class="results-title">
-                <div class="box-title">
-                    <p class="title-section">{{ filial.localidad }}</p>
-                    <p class="subtitle-section comercios-subtitle">Aprovecha al máximo tu tarjeta con ofertas y promociones en
-                        nuestros selectos comercios adheridos.</p>
-                </div>
-            </div>
-            <div class="results-data" *ngFor="let categoria of categorias; let c = index;">
-                <img *ngIf="i === 0 && c === 0" src="assets/imgs/girl-comercios.png" alt="results-img">
-                <div *ngFor="let comercio of getComerciosDeCategoria(filial, categoria)!">
-                    <app-dropdown-item *ngIf="comercio !== []"
-                                       [numero]="categoria.id.toString()"
-                                       [title]="categoria.categoria"
-                                       [comercios]="comercio.comercios">
-                    </app-dropdown-item>
-                </div>
-            </div>
-        </div>
+        <app-comercios-show [promocionValida]="promocionSearch" [filiales]="filiales" [categorias]="categorias" [comerciosData]="comerciosDataSearch" />
     </div>
 
 </div>

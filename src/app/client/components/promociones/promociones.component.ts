@@ -25,4 +25,14 @@ export class PromocionesTemplateComponent implements OnInit{
       })
   }
 
+  // promocionExpirada() {
+  //   const date = new Date();
+  //   console.log(this.promociones)
+  //   if (this.promociones?.length > 0 && this.promociones[0].fechaFin < date) {
+  //     return true;
+  //   }else {
+  //     return false;
+  //   }
+  // }
+
 }

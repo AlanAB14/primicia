@@ -1,7 +1,7 @@
 <div class="dropdown-item" [ngClass]="{'open' : !closed}">
     <div class="dropdown-item-header">
         <div class="number" *ngIf="numero">
-            <p>{{ numero }}</p>
+            <p>{{ completarConCero(numero) }}</p>
         </div>
         <div class="title">
             <p>{{ title }}</p>
@@ -23,16 +23,7 @@
     </div>
     <div class="dropdown-item-body" [ngClass]="{'open-body' : !closed}">
         <hr>
-        <div class="data" *ngFor="let comercio of comercios">
-            <div class="empresa" *ngIf="comercio.nombre">
-                <p>{{ comercio.nombre }}</p>
-            </div>
-            <div class="direccion" *ngIf="comercio.direccion">
-                <p>{{ comercio.direccion }}</p>
-            </div>
-            <div class="respuesta" *ngIf="respuesta">
-                <p>{{ respuesta }}</p>
-            </div>
+        <div class="otra-data">
             <div class="concepto-data" *ngIf="concepto">
                 <div class="titles">
                     <div class="title-item">
@@ -66,6 +57,21 @@
                     </div>
                 </div>
             </div>
+            <div class="respuesta" *ngIf="respuesta">
+                <p>{{ respuesta }}</p>
+            </div>
+        </div>
+        <div class="data" *ngFor="let comercio of comercios">
+            <div class="comercios-data" *ngIf="muestraPromocion(comercio.promocionId)">
+                <div class="empresa" *ngIf="comercio.nombre">
+                    <p>{{ comercio.nombre }}</p>
+                </div>
+                <div class="direccion" *ngIf="comercio.direccion">
+                    <p>{{ comercio.direccion }}</p>
+                </div>
+            </div>
+
+
         </div>
     </div>
 </div>

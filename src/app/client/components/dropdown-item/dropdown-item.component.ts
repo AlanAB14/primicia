@@ -14,16 +14,35 @@ export class DropdownItemComponent implements OnInit{
   urlMinus: string = 'assets/imgs/minus-icon.png'
 
   @Input() comercios!: Comercio[];
-  @Input() numero: string = '';
+  @Input() numero: number = 0;
   @Input() title: string = '';
   @Input() empresa: string = '';
   @Input() nombre: string = '';
   @Input() direccion: string = '';
   @Input() respuesta: string = '';
   @Input() concepto: boolean = false;
+  @Input() promocionValida!: string;
 
   ngOnInit(): void {
-    console.log('first')
+    
+  }
+
+  completarConCero(numero: number) {
+    return numero.toString().padStart(2, '0');
+  }
+
+  muestraPromocion(promocionId: number) {
+    if (this.promocionValida === '' || this.promocionValida === 'Todas') {
+      return true
+    }
+    if (this.promocionValida === 'si' && promocionId) {
+      return true
+    }
+    if (this.promocionValida === 'no' && !promocionId) {
+      return true
+    }
+
+    return false;
   }
 
 }

@@ -1,0 +1,21 @@
+.results {
+  margin-top: 5.3125rem;
+  &-data {
+      margin-top: 4.5625rem;
+      position: relative;
+  }
+  img {
+      width: 17.25rem;
+      position: absolute;
+      right: 10%;
+      top: -12.5rem;
+
+      @media (max-width: 1090px) {
+          right: 0;
+      }
+
+      @media (max-width: 920px) {
+          display: none;
+      }
+  }
+}
