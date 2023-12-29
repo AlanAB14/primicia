@@ -5,7 +5,7 @@
             <p class="subtitle-section ayuda-subtitle">Aprovecha al máximo tu tarjeta con ofertas y promociones en
                 nuestros comercios adheridos.</p>
         </div>
-        <div class="preguntas-section">
+        <div class="preguntas-section" *ngIf="preguntas">
             <img src="assets/imgs/girl-answers.png" alt="">
             <div class="preguntas-section-box">
                 <app-dropdown-item [numero]="01" [title]="'¿Qué tipo de estructura jurídica tiene Primicia?'"
@@ -53,4 +53,8 @@
 
 
     </div>
+</div>
+
+<div class="loader-primicia-box" *ngIf="cargandoData">
+    <span class="loader-primicia"></span>
 </div>
