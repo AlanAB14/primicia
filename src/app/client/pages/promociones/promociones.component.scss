@@ -1,6 +1,10 @@
 .promociones {
     padding-top: 6rem;
 
+    @media (max-width: 1400px) {
+        padding: 3.5rem 0;
+    }
+
     .box-promocion {
         margin-top: 4.75rem;
     }

@@ -1,0 +1,15 @@
+<div class="admin-section" *ngIf="!cargandoData">
+    <app-header></app-header>
+    <app-sidebar-menu></app-sidebar-menu>
+    
+    
+    <div class="content-wrapper">
+        <router-outlet (activate)="onActivate($event)"></router-outlet>
+    </div>
+</div>
+
+<div class="loader-mutual-box" *ngIf="cargandoData">
+    <span class="loader-mutual"></span>
+</div>
+
+

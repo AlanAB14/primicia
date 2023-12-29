@@ -1,6 +1,10 @@
 .primicia {
     padding-top: 6rem;
 
+    @media (max-width: 1400px) {
+        padding: 3.5rem 0;
+    }
+
     &-subtitle {
         max-width: 12.5rem;
     }
@@ -76,13 +80,18 @@
 
         &-img {
             position: absolute;
-            top: 1%;
+            top: 2%;
             left: 52.5%;
+
+            @media (max-width: 1400px) {
+                left: 54.5%;
+            }
 
             @media (max-width: 1200px) {
                 top: 3%;
                 left: 55.5%;
             }
+
 
             @media (max-width: 960px) {
                 display: none;
@@ -91,6 +100,11 @@
             img {
                 width: 13.125rem;
                 height: auto;
+
+                @media (max-width: 1400px) {
+                    width: 11rem;
+                    height: auto;
+                }
 
                 @media (max-width: 1200px) {
                     width: 10rem;

@@ -7,22 +7,23 @@ import { PromocionService } from 'src/app/services/promocion.service';
   templateUrl: './promociones.component.html',
   styleUrls: ['./promociones.component.scss']
 })
-export class PromocionesTemplateComponent implements OnInit{
+export class PromocionesTemplateComponent implements OnInit {
   promociones!: Promocion[];
-  cargandoData: boolean = true;
+  cargandoData: boolean = false;
   private promocionService = inject(PromocionService)
 
   ngOnInit(): void {
+    this.cargandoData = true;
     this.promocionService.getPromociones()
-      .subscribe( promociones => {
+      .subscribe(promociones => {
         console.log(promociones[0].texto)
-        this.cargandoData = false;
         this.promociones = promociones
-      },
-      (error) => {
-        console.log(error)
         this.cargandoData = false;
-      })
+      },
+        (error) => {
+          console.log(error)
+          this.cargandoData = false;
+        })
   }
 
   // promocionExpirada() {

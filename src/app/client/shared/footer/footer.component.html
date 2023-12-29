@@ -12,7 +12,7 @@
             </div>
             <div class="footer-component-header--links">
                 <ul>
-                    <li><a href="#">Tarjeta Primicia</a></li>
+                    <li><a [routerLink]="'nosotros'">Tarjeta Primicia</a></li>
                     <li><a [routerLink]="'/contacto'" fragment="filialesSection">Filiales</a></li>
                     <li><a [routerLink]="'contacto'">Contacto</a></li>
                     <li><a href="#">Denuncia</a></li>
@@ -36,13 +36,13 @@
                 </div>
             </div>
             <div class="footer-component-body-subscribe">
-                <input type="text" placeholder="Email">
-                <button>Suscribite</button>
+                <input type="text" [(ngModel)]="email" placeholder="Email">
+                <button (click)="subcribir()">Suscribite</button>
             </div>
         </div>
         <div class="footer-component-body-responsive">
             <ul>
-                <li><a href="#">Tarjeta Primicia</a></li>
+                <li><a [routerLink]="'nosotros'">Tarjeta Primicia</a></li>
                 <li><a [routerLink]="'/contacto'" fragment="filialesSection">Filiales</a></li>
                 <li><a [routerLink]="'contacto'">Contacto</a></li>
                 <li><a href="#">Denuncia</a></li>

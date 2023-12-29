@@ -50,9 +50,7 @@ export class ComerciosComponent {
 
   getComerciosPorFilialYCategoria() {
     this.cargandoData = true;
-    let comerciosDataObj: any;
     this.filiales.forEach(filial => {
-      comerciosDataObj
       this.categorias.forEach(category => {
         const obj = {
           filialId: filial.id,

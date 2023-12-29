@@ -1,0 +1,26 @@
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="user-panel pt-2 pb-2">
+        <img src="./assets/imgs/logo-p.png" alt="logo">
+      </div>
+  
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <li class="nav-item"
+              *ngFor="let menuItem of menuItems">
+            <a [routerLink]="menuItem.ruta" [routerLinkActive]="'active'" class="nav-link">
+              <i class="nav-icon"
+                 [ngClass]="menuItem.icon"></i>
+              <p>
+                {{ menuItem.texto }}
+              </p>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
