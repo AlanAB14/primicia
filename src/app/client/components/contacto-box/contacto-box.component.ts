@@ -37,6 +37,7 @@ export class ContactoBoxComponent {
             showConfirmButton: true,
           })
           this.cargandoData = false
+          this.contactoForm.reset();
         } else {
           Swal.fire({
             icon: 'error',
@@ -44,6 +45,7 @@ export class ContactoBoxComponent {
             showConfirmButton: true,
           })
           this.cargandoData = false
+          this.contactoForm.reset();
         }
       }, (error) => {
         console.log(error)
@@ -53,6 +55,7 @@ export class ContactoBoxComponent {
           showConfirmButton: true,
         })
         this.cargandoData = false
+        this.contactoForm.reset();
       })
   }
 

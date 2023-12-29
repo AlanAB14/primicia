@@ -19,6 +19,7 @@ import { MaterialModule } from '../material/material.module';
 import { DropdownItemComponent } from './components/dropdown-item/dropdown-item.component'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ComerciosShowComponent } from './components/comercios-show/comercios-show.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { ComerciosShowComponent } from './components/comercios-show/comercios-sh
     SharedModule,
     FormsModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule
   ]
 })
 export class ClientModule { }

@@ -171,6 +171,13 @@ html {
   }
 }
 
+button:disabled {
+  background-color: rgb(209, 209, 209) !important;
+  color: rgba(16, 16, 16, 0.3) !important;
+  border-color: rgba(118, 118, 118, 0.3) !important;
+  cursor: auto!important
+}
+
 html,
 body {
   height: 100%;

@@ -1,111 +1,149 @@
-<div class="primicia">
-    <div class="box-title">
-        <p class="title-section">Tarjeta Primicia</p>
-        <p class="subtitle-section primicia-subtitle">Su mejor opción para
-            comprar en cuotas</p>
-    </div>
-    <div class="primicia-box">
-        <div class="primicia-box-text border-primero">
-            <div class="primicia-box-text-title">
-                <p>Nuestro servicio</p>
+<div class="animate__animated animate__fadeIn">
+    <div class="primicia">
+        <div class="box-title">
+            <p class="title-section">Tarjeta Primicia</p>
+            <p class="subtitle-section primicia-subtitle">Su mejor opción para
+                comprar en cuotas</p>
+        </div>
+        <div class="primicia-box">
+            <div class="primicia-box-text border-primero">
+                <div class="primicia-box-text-title">
+                    <p>Nuestro servicio</p>
+                </div>
+                <div class="primicia-box-text-content">
+                    Tarjeta Primicia es un servicio de Mutual entre Asociados de Cooperación Mutual Patronal presentado al
+                    mercado en el año 2002. Es una tarjeta de crédito propia con marca registrada a nivel nacional.
+                </div>
+                <div class="primicia-box-text-link">
+                    <a>
+                        <p>Leer mas</p><img src="assets/imgs/primicia-leer-mas.png" alt="leer-mas">
+                    </a>
+                </div>
             </div>
-            <div class="primicia-box-text-content">
-                Tarjeta Primicia es un servicio de Mutual entre Asociados de Cooperación Mutual Patronal presentado al
-                mercado en el año 2002. Es una tarjeta de crédito propia con marca registrada a nivel nacional.
+            <div class="primicia-box-text padding-left border-segundo">
+                <div class="primicia-box-text-title">
+                    <p>Zona de influencia</p>
+                </div>
+                <div class="primicia-box-text-content">
+                    <p>
+                        La zona de influencia se encuentra desarrollada desde la Casa Central en la ciudad de Venado Tuerto
+                        hacia 30 regiones en el sur de la provincia de Santa Fe, y en las ciudades de San Nicolás de los
+                        Arroyos, Villa...
+                    </p>
+                </div>
+                <div class="primicia-box-text-link">
+                    <a>
+                        <p>Leer mas</p><img src="assets/imgs/primicia-leer-mas.png" alt="leer-mas">
+                    </a>
+                </div>
             </div>
-            <div class="primicia-box-text-link">
-                <a><p>Leer mas</p><img src="assets/imgs/primicia-leer-mas.png" alt="leer-mas"></a>
+            <div class="primicia-box-text padding-left no-padding">
+                <div class="primicia-box-text-title">
+                    <p>Política comercial</p>
+                </div>
+                <div class="primicia-box-text-content">
+                    <p>La política comercial de PRIMICIA es la expansión hacia otras regiones del país, tratando de llevar
+                        el servicio a nivel nacional, encontrándose ya en desarrollo la estrategia de ampliación hacia las
+                        zonas de influencia de las...</p>
+                </div>
+                <div class="primicia-box-text-link">
+                    <a>
+                        <p>Leer mas</p><img src="assets/imgs/primicia-leer-mas.png" alt="leer-mas">
+                    </a>
+                </div>
+            </div>
+            <div class="primicia-box-img">
+                <img src="assets/imgs/girl-primicia-filled.png" alt="">
             </div>
         </div>
-        <div class="primicia-box-text padding-left border-segundo">
-            <div class="primicia-box-text-title">
-                <p>Zona de influencia</p>
-            </div>
-            <div class="primicia-box-text-content">
-                <p>
-                    La zona de influencia se encuentra desarrollada desde la Casa Central en la ciudad de Venado Tuerto
-                    hacia 30 regiones en el sur de la provincia de Santa Fe, y en las ciudades de San Nicolás de los
-                    Arroyos, Villa...
-                </p>
-            </div>
-            <div class="primicia-box-text-link">
-                <a><p>Leer mas</p><img src="assets/imgs/primicia-leer-mas.png" alt="leer-mas"></a>
-            </div>
+    </div>
+    <div class="tarjeta">
+        <div class="box-title">
+            <p class="title-section">Solicitá tu tarjeta</p>
+            <p class="subtitle-section tarjeta-subtitle">Completá el formulario y
+                recibí la tarjeta de tus pagos</p>
         </div>
-        <div class="primicia-box-text padding-left no-padding">
-            <div class="primicia-box-text-title">
-                <p>Política comercial</p>
-            </div>
-            <div class="primicia-box-text-content">
-                <p>La política comercial de PRIMICIA es la expansión hacia otras regiones del país, tratando de llevar
-                    el servicio a nivel nacional, encontrándose ya en desarrollo la estrategia de ampliación hacia las
-                    zonas de influencia de las...</p>
-            </div>
-            <div class="primicia-box-text-link">
-                <a><p>Leer mas</p><img src="assets/imgs/primicia-leer-mas.png" alt="leer-mas"></a>
-            </div>
-        </div>
-        <div class="primicia-box-img">
-            <img src="assets/imgs/girl-primicia-filled.png" alt="">
+        <div class="tarjeta-form-box">
+            <form [formGroup]="tarjetaForm" (ngSubmit)="sendData()">
+                <div class="tarjeta-form-box-field">
+                    <label>Nombre</label>
+                    <input type="text" [ngClass]="{'error-border': checkFieldError('nombre')}" formControlName="nombre" placeholder="Nombre">
+                    <div class="error-input" *ngIf="checkFieldError('nombre')">
+                        El campo nombre es obligatorio *
+                    </div>
+                </div>
+                <div class="tarjeta-form-box-field">
+                    <label>Email*</label>
+                    <input type="text" [ngClass]="{'error-border': checkFieldError('email')}" formControlName="email" placeholder="Email">
+                    <div class="error-input" *ngIf="checkFieldError('email') && tarjetaForm.get('email')!.hasError('required')">
+                        El campo email es obligatorio *
+                    </div>
+                    <div class="error-input" *ngIf="tarjetaForm.get('email')!.hasError('email')">
+                        El campo ingresado no es un email
+                    </div>
+                </div>
+                <div class="tarjeta-form-box-field">
+                    <label>Teléfono</label>
+                    <input type="text" [ngClass]="{'error-border': checkFieldError('telefono')}" (keydown)="onKeyDown($event)" formControlName="telefono" placeholder="Teléfono">
+                    <div class="error-input" *ngIf="checkFieldError('telefono')">
+                        El campo teléfono es obligatorio *
+                    </div>
+                </div>
+                <div class="tarjeta-form-box-field">
+                    <label>Domicilio</label>
+                    <input type="text" [ngClass]="{'error-border': checkFieldError('domicilio')}" formControlName="domicilio" placeholder="Domicilio">
+                    <div class="error-input" *ngIf="checkFieldError('domicilio')">
+                        El campo domicilio es obligatorio *
+                    </div>
+                </div>
+                <div class="tarjeta-form-box-field">
+                    <label>Ciudad</label>
+                    <input type="text" [ngClass]="{'error-border': checkFieldError('ciudad')}" formControlName="ciudad" placeholder="Ciudad">
+                    <div class="error-input" *ngIf="checkFieldError('ciudad')">
+                        El campo ciudad es obligatorio *
+                    </div>
+                </div>
+                <div class="tarjeta-form-box-field">
+                    <label>D.N.I.</label>
+                    <input type="text" [ngClass]="{'error-border': checkFieldError('dni')}" (keydown)="onKeyDown($event)" (input)="onInputChange($event, 'dni')" formControlName="dni" placeholder="D.N.I.">
+                    <div class="error-input" *ngIf="checkFieldError('dni')">
+                        El campo dni es obligatorio *
+                    </div>
+                </div>
+                <div class="tarjeta-form-box-field">
+                    <label>¿Cómo recibís tus ingresos?</label>
+                    <input type="text" [ngClass]="{'error-border': checkFieldError('ingresos')}" formControlName="ingresos" placeholder="¿Cómo recibís tus ingresos?">
+                    <div class="error-input" *ngIf="checkFieldError('ingresos')">
+                        El campo ingresos es obligatorio *
+                    </div>
+                </div>
+                <div class="tarjeta-form-box-field">
+                    <label>Elegí tu filial</label>
+                    <input type="text" [ngClass]="{'error-border': checkFieldError('filial')}" formControlName="filial" placeholder="Filial">
+                    <div class="error-input" *ngIf="checkFieldError('filial')">
+                        El campo filial es obligatorio *
+                    </div>
+                </div>
+                <div class="tarjeta-form-box-field">
+                    <label>Mensaje*</label>
+                    <textarea formControlName="mensaje" [ngClass]="{'error-border': checkFieldError('mensaje')}" placeholder="Mensaje"></textarea>
+                    <div class="error-input" *ngIf="checkFieldError('mensaje')">
+                        El campo mensaje es obligatorio *
+                    </div>
+                </div>
+                <div class="tarjeta-form-box-field">
+                    <button type="submit" [disabled]="cargandoData">Solicitala ahora</button>
+                </div>
+            </form>
         </div>
     </div>
-</div>
-<div class="tarjeta">
-    <div class="box-title">
-        <p class="title-section">Solicitá tu tarjeta</p>
-        <p class="subtitle-section tarjeta-subtitle">Completá el formulario y 
-            recibí la tarjeta de tus pagos</p>
-    </div>
-    <div class="tarjeta-form-box">
-        <form>
-            <div class="tarjeta-form-box-field">
-                <label>Nombre</label>
-                <input type="text" placeholder="Nombre">
-            </div>
-            <div class="tarjeta-form-box-field">
-                <label>Email*</label>
-                <input type="text" placeholder="Email">
-            </div>
-            <div class="tarjeta-form-box-field">
-                <label>Teléfono</label>
-                <input type="text" placeholder="Teléfono">
-            </div>
-            <div class="tarjeta-form-box-field">
-                <label>Domicilio</label>
-                <input type="text" placeholder="Domicilio">
-            </div>
-            <div class="tarjeta-form-box-field">
-                <label>Ciudad</label>
-                <input type="text" placeholder="Ciudad">
-            </div>
-            <div class="tarjeta-form-box-field">
-                <label>D.N.I.</label>
-                <input type="text" placeholder="D.N.I.">
-            </div>
-            <div class="tarjeta-form-box-field">
-                <label>¿Cómo recibís tus ingresos?</label>
-                <input type="text" placeholder="¿Cómo recibís tus ingresos?">
-            </div>
-            <div class="tarjeta-form-box-field">
-                <label>Elegí tu filial</label>
-                <input type="text" placeholder="Filial">
-            </div>
-            <div class="tarjeta-form-box-field">
-                <label>Mensaje*</label>
-                <textarea placeholder="Mensaje"></textarea>
-            </div>
-            <div class="tarjeta-form-box-field">
-                <button>Solicitala ahora</button>
-            </div>
-        </form>
-    </div>
-</div>
-
-<div class="preguntas">
-    <div class="box-title">
-        <p class="title-section">Preguntas Frecuentes</p>
-        <p class="subtitle-section tarjeta-subtitle">Completá el formulario y 
-            recibí la tarjeta de tus pagos</p>
-        <button><a routerLink="/ayuda">Ingresá aquí</a></button>
+    
+    <div class="preguntas">
+        <div class="box-title">
+            <p class="title-section">Preguntas Frecuentes</p>
+            <p class="subtitle-section tarjeta-subtitle">Completá el formulario y
+                recibí la tarjeta de tus pagos</p>
+            <button><a routerLink="/ayuda">Ingresá aquí</a></button>
+        </div>
     </div>
 </div>

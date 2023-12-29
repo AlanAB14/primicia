@@ -201,6 +201,17 @@
             display: flex;
             flex-direction: column;
 
+            .error-input {
+                font-size: .85rem;
+                margin-top: 5px;
+                margin-left: 5px;
+                color: red;
+            }
+
+            .error-border {
+                border-color: red!important;
+            }
+
             @media (max-width: 950px) {
                 max-width: 100%;
             }
