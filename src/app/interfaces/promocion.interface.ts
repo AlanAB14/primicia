@@ -3,6 +3,6 @@ export interface Promocion {
     fechaInicio:   Date;
     fechaFin:      Date;
     diasPromocion: string;
-    promocion:     string;
+    promocion:     string | null;
     texto:         string;
 }

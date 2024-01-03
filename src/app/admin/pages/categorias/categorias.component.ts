@@ -41,20 +41,66 @@ export class CategoriasComponent implements OnInit {
       cancelButtonText: "Cancelar",
       showCancelButton: true
     })
-    .then(result => {
-      if(result.isConfirmed) {
-        if (result.value !== nombre) {
-          this.categoriasService.editCategoria(id, result.value)
-            .subscribe(resp => {
-              console.log(resp)
-              Swal.fire('Categoría actualizada con éxito','','success')
-              this.getCategorias();
-            }, (error) => {
-              Swal.fire('Error al actualizar categoría','','error')
-              console.log(error)
-            })
+      .then(result => {
+        if (result.isConfirmed) {
+          if (result.value !== nombre) {
+            this.categoriasService.editCategoria(id, result.value)
+              .subscribe(resp => {
+                console.log(resp)
+                Swal.fire('Categoría actualizada con éxito', '', 'success')
+                this.getCategorias();
+              }, (error) => {
+                Swal.fire('Error al actualizar categoría', '', 'error')
+                console.log(error)
+              })
+          }
         }
-      }
+      })
+  }
+
+  addCategoria() {
+    Swal.fire({
+      title: "Ingrese nombre de categoría",
+      input: "text",
+      confirmButtonText: "Agregar",
+      cancelButtonText: "Cancelar",
+      showCancelButton: true
     })
+      .then(result => {
+        if (result.isConfirmed) {
+          if (result.value !== '') {
+            this.categoriasService.addCategoria(result.value)
+              .subscribe(resp => {
+                console.log(resp)
+                Swal.fire('Categoría agregada con éxito', '', 'success')
+                this.getCategorias();
+              }, (error) => {
+                Swal.fire('Error al agregar categoría', '', 'error')
+                console.log(error)
+              })
+          }
+        }
+      })
+  }
+
+  deleteCategoria(id: number) {
+    Swal.fire({
+      title: "¿Estás seguro de eliminar la categoría?",
+      showCancelButton: true,
+      confirmButtonText: "Eliminar",
+      denyButtonText: `Cancelar`
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.categoriasService.deleteCategoria(id)
+          .subscribe(resp => {
+            console.log(resp)
+            Swal.fire('Categoría eliminada con éxito', '', 'success')
+            this.getCategorias();
+          }, (error) => {
+            Swal.fire('Error al eliminar categoría', 'Verifique que no hayan comercios adheridos a la categoría', 'error')
+            console.log(error)
+          })
+      }
+    });
   }
 }

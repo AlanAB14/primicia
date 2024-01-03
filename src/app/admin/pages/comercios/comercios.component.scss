@@ -1,0 +1,23 @@
+.comercios {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+}
+
+.button-agregar-comercio {
+  max-width: 25%;
+  margin: 0 auto;
+}
+
+.tabla-comercios {
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.field-search {
+  width: 100%;
+}
+
+.btn-edit-icon {
+  margin-right: .5rem;
+}

@@ -33,6 +33,14 @@ export class ComerciosService {
   getCatComerciosPorId(id: number): Observable<Categoria[]> {
     return this.http.get<Categoria[]>(`${ this._url }/categorias/${ id }`)
   }
+
+  addComercio(comercio: Comercio) {
+    return this.http.post(`${ this._url }/comercios`, comercio)
+  }
+
+  deleteComercio(id: number) {
+    return this.http.delete(`${ this._url }/comercios/${id}`)
+  }
   
 
 }

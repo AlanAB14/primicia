@@ -1,0 +1,23 @@
+<div class="admin-panel-section">
+    <div class="admin-panel-section--title">
+        Promociones
+    </div>
+    <div class="admin-panel-section--body">
+        <button mat-raised-button (click)="addPromocion()" color="primary">Agregar Promoción +</button>
+        <div class="promociones" *ngIf="promociones">
+            <div class="promocion-item" *ngFor="let promocion of promociones">
+                <p>{{ promocion.promocion }}</p>
+                <button (click)="editPromocion(promocion)" mat-mini-fab color="primary">
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <button (click)="deletePromocion(promocion.id)" mat-mini-fab color="primary">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="loader-primicia-box" *ngIf="cargandoData">
+    <span class="loader-primicia"></span>
+</div>

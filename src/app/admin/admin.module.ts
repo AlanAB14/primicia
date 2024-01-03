@@ -8,8 +8,25 @@ import { HeaderComponent } from './layout/header/header.component';
 import { MaterialModule } from '../material/material.module';
 import { HomeComponent } from './pages/home/home.component';
 import { CategoriasComponent } from './pages/categorias/categorias.component';
+import { ComerciosComponent } from './pages/comercios/comercios.component';
+import { LimitStringPipe } from '../pipes/limit-string.pipe';
+import { DialogComercioComponent } from './components/dialog-comercio/dialog-comercio.component';
+import { FilialesComponent } from './pages/filiales/filiales.component';
+import { PromocionesComponent } from './pages/promociones/promociones.component';
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+import { CustomDateAdapter } from '../helpers/custom-date-adapter';
 
-
+const MY_FORMATS = {
+  parse: {
+    dateInput: 'DD/MM/YYYY',
+  },
+  display: {
+    dateInput: 'DD/MM/YYYY',
+    monthYearLabel: 'MM/YYYY',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'MMMM YYYY',
+  },
+};
 
 
 @NgModule({
@@ -18,12 +35,22 @@ import { CategoriasComponent } from './pages/categorias/categorias.component';
     HomeComponent,
     SideBarComponent,
     HeaderComponent,
-    CategoriasComponent
+    CategoriasComponent,
+    ComerciosComponent,
+    FilialesComponent,
+    PromocionesComponent
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
-    MaterialModule
-  ]
+    MaterialModule,
+    LimitStringPipe,
+    DialogComercioComponent
+  ],
+  providers: [
+    { provide: MAT_DATE_LOCALE, useValue: 'es-ES' },
+    { provide: DateAdapter, useClass: CustomDateAdapter, deps: [MAT_DATE_LOCALE] },
+    { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
+  ],
 })
 export class AdminModule { }

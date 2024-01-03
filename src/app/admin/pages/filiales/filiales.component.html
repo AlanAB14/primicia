@@ -1,0 +1,23 @@
+<div class="admin-panel-section">
+    <div class="admin-panel-section--title">
+        Filiales
+    </div>
+    <div class="admin-panel-section--body">
+        <button mat-raised-button (click)="addFilial()" color="primary">Agregar Filial +</button>
+        <div class="filiales" *ngIf="filiales">
+            <div class="filial-item" *ngFor="let filial of filiales">
+                <p>{{ filial.localidad }}</p>
+                <button (click)="editFilial(filial)" mat-mini-fab color="primary">
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <button (click)="deleteFilial(filial.id)" mat-mini-fab color="primary">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="loader-primicia-box" *ngIf="cargandoData">
+    <span class="loader-primicia"></span>
+</div>

@@ -11,6 +11,21 @@ export class SideBarComponent {
       texto: 'Categorías',
       ruta: 'categorias',
       icon: 'fa fa-image'
+    },
+    {
+      texto: 'Comercios',
+      ruta: 'comercios',
+      icon: 'fa fa-image'
+    },
+    {
+      texto: 'Filiales',
+      ruta: 'filiales',
+      icon: 'fa fa-image'
+    },
+    {
+      texto: 'Promociones',
+      ruta: 'promociones',
+      icon: 'fa fa-image'
     }
   ]
 }
