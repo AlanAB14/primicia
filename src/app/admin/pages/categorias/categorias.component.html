@@ -1,0 +1,23 @@
+<div class="admin-panel-section">
+    <div class="admin-panel-section--title">
+        Categorias
+    </div>
+    <div class="admin-panel-section--body">
+        <button mat-raised-button color="primary">Agregar Categoria +</button>
+        <div class="categorias" *ngIf="categoriasArr">
+            <div class="categoria-item" *ngFor="let categoria of categoriasArr">
+                <p>{{ categoria.categoria }}</p>
+                <button (click)="editCategoria(categoria.id, categoria.categoria)" mat-mini-fab color="primary">
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-mini-fab color="primary">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="loader-primicia-box" *ngIf="cargandoData">
+    <span class="loader-primicia"></span>
+</div>

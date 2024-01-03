@@ -44,7 +44,7 @@ $primicia-theme: mat.define-light-theme((
 //       )));
 
 
-// @include mat.all-component-themes($primicia-theme);
+@include mat.all-component-themes($primicia-theme);
 
 @font-face {
   font-family: 'Space Grotesk';
@@ -230,3 +230,24 @@ body {
   font-family: Space Grotesk, sans-serif;
 }
 html, body { height: 100%; }
+
+
+.admin-panel-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &--title {
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  &--body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}

@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { Comercio } from 'src/app/interfaces/comercios.interface';
+import { Tasa } from 'src/app/interfaces/tasas.interface';
 
 @Component({
   selector: 'app-dropdown-item',
@@ -22,6 +23,7 @@ export class DropdownItemComponent implements OnInit{
   @Input() respuesta: string = '';
   @Input() concepto: boolean = false;
   @Input() promocionValida!: string;
+  @Input() tasas!: Tasa[];
 
   ngOnInit(): void {
     
@@ -29,6 +31,10 @@ export class DropdownItemComponent implements OnInit{
 
   completarConCero(numero: number) {
     return numero.toString().padStart(2, '0');
+  }
+
+  reemplazaPuntoPorComa(numero: number) {
+    return numero.toString().replace(/\./g, ',');
   }
 
   muestraPromocion(promocionId: number) {

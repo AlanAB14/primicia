@@ -49,7 +49,7 @@ export class LoginComponent {
         },
         (error) => {
           console.log(error)
-          Swal.fire('Ocurrió un error', `${ error.error.mensaje }`, 'error')
+          Swal.fire('Ocurrió un error', `${ error.error.message }`, 'error')
           this.usuId = ''
           this.password = ''
           this.cargando = false

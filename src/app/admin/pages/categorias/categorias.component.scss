@@ -1,0 +1,23 @@
+.categorias {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+}
+
+.categoria-item {
+  display: flex;
+  align-items: center;
+  p {
+    font-size: 1.12rem;
+    width: 25rem;
+  }
+  &:not(:last-of-type) {
+    margin-bottom: 1rem;
+  }
+
+  button {
+    &:first-of-type {
+      margin-right: .5rem;
+    }
+  }
+}

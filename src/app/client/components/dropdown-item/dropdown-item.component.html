@@ -1,5 +1,5 @@
 <div class="dropdown-item" [ngClass]="{'open' : !closed}">
-    <div class="dropdown-item-header">
+    <div class="dropdown-item-header" [ngClass]="{'item-pregunta': respuesta && title}">
         <div class="number" *ngIf="numero">
             <p>{{ completarConCero(numero) }}</p>
         </div>
@@ -26,34 +26,16 @@
         <div class="otra-data">
             <div class="concepto-data" *ngIf="concepto">
                 <div class="titles">
-                    <div class="title-item">
-                        <div class="title-item-header">TASA DE INTERES – FINANCIACION</div>
-                        <div class="title-item-sub">Comienza a aplicarse en la fecha de vencimiento del resumen, en el caso que deba financiar saldo.</div>
-                    </div>
-                    <div class="title-item">
-                        <div class="title-item-header">TASA DE INTERES – PUNITORIOS</div>
-                        <div class="title-item-sub">Comienza a aplicarse en la fecha de vencimiento del resumen, en el caso de no haber abonado el pago mínimo.</div>
-                    </div>
-                    <div class="title-item">
-                        <div class="title-item-header">TASA DE INTERES – ADELANTOS EN EFECTIVO</div>
-                        <div class="title-item-sub">Comienza a aplicarse desde la fecha en la que se realiza el adelanto en efectivo</div>
+                    <div class="title-item" *ngFor="let tasa of tasas">
+                        <div class="title-item-header">{{ tasa.tasaTitulo }}</div>
+                        <div class="title-item-sub">{{ tasa.tasaDescripcion }}</div>
                     </div>
                 </div>
                 <div class="numbers">
-                    <div class="number-item">
-                        <div class="number">128,20%</div>
-                        <div class="number">10,54%</div>
-                        <div class="number">238,32%</div>
-                    </div>
-                    <div class="number-item">
-                        <div class="number">64,10%</div>
-                        <div class="number">5,27%</div>
-                        <div class="number">119,16%</div>
-                    </div>
-                    <div class="number-item">
-                        <div class="number">128,20%</div>
-                        <div class="number">10,54%</div>
-                        <div class="number">238,32%</div>
+                    <div class="number-item" *ngFor="let tasa of tasas">
+                        <div class="number">{{ reemplazaPuntoPorComa(tasa.tna) }}%</div>
+                        <div class="number">{{ reemplazaPuntoPorComa(tasa.tem) }}%</div>
+                        <div class="number">{{ reemplazaPuntoPorComa(tasa.cft) }}%</div>
                     </div>
                 </div>
             </div>

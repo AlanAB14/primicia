@@ -7,25 +7,9 @@
         </div>
         <div class="preguntas-section" *ngIf="preguntas">
             <img src="assets/imgs/girl-answers.png" alt="">
-            <div class="preguntas-section-box">
-                <app-dropdown-item [numero]="01" [title]="'¿Qué tipo de estructura jurídica tiene Primicia?'"
-                    [respuesta]="'Ualá es una empresa constituida de acuerdo a la legislación de la República Argentina como una Sociedad Anónima Unipersonal (SAU). Está inscripta en el Registro Público de Comercio de la Ciudad Autónoma de Buenos Aires y cumple con todas las obligaciones impuestas por Ley para funcionar como tal.'">
-                </app-dropdown-item>
-            </div>
-            <div class="preguntas-section-box">
-                <app-dropdown-item [numero]="02" [title]="'¿Cómo protege Primicias los datos de sus usuarios?'"
-                    [respuesta]="'Ejemplo de respuesta'">
-                </app-dropdown-item>
-            </div>
-            <div class="preguntas-section-box">
-                <app-dropdown-item [numero]="03" [title]="'¿Qué puedo comprar con la tarjeta virtual de Primicia?'"
-                    [respuesta]="'Ejemplo de respuesta'">
-                </app-dropdown-item>
-            </div>
-            <div class="preguntas-section-box">
-                <app-dropdown-item [numero]="04"
-                    [title]="'¿Cuál es la diferencia entre la tarjeta virtual y la física?'"
-                    [respuesta]="'Ejemplo de respuesta'">
+            <div class="preguntas-section-box" *ngFor="let pregunta of preguntas; let i = index">
+                <app-dropdown-item class="item-pregunta-dd"  [numero]="i + 1" [title]="pregunta.pregunta"
+                    [respuesta]="pregunta.respuesta">
                 </app-dropdown-item>
             </div>
         </div>
@@ -39,6 +23,7 @@
             <div class="proteccion-section-box">
                 <app-dropdown-item 
                     [title]="'Concepto'"
+                    [tasas]="tasas"
                     [concepto]="true">
                 </app-dropdown-item>
             </div>
