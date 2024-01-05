@@ -38,6 +38,10 @@ export class ComerciosService {
     return this.http.post(`${ this._url }/comercios`, comercio)
   }
 
+  updateComercio(comercio: Comercio, id: number) {
+    return this.http.patch(`${ this._url }/comercios/${ id }`, comercio)
+  }
+
   deleteComercio(id: number) {
     return this.http.delete(`${ this._url }/comercios/${id}`)
   }

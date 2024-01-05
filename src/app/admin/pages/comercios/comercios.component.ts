@@ -138,13 +138,13 @@ export class ComerciosComponent implements OnInit, AfterViewInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log(result);
       if (result) {
-        this.editarComercio(result);
+        this.editarComercio(result, comercio.id);
       }
     });
   }
 
-  editarComercio(comercio: Comercio) {
-    this.comerciosService.addComercio(comercio)
+  editarComercio(comercio: Comercio, id: number) {
+    this.comerciosService.updateComercio(comercio, id)
     .subscribe(resp => {
       console.log(resp)
       Swal.fire('Comercio editado con éxito', '', 'success');

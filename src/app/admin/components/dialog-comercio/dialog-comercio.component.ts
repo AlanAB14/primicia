@@ -43,7 +43,7 @@ import { MaterialModule } from 'src/app/material/material.module';
       <mat-form-field>
         <mat-label>Promoción</mat-label>
         <mat-select formControlName="promocionId">
-            <mat-option [value]="null"></mat-option>
+            <mat-option [value]="0"></mat-option>
             <mat-option *ngFor="let promocion of data.promociones" [value]="promocion.id">{{promocion.promocion}}</mat-option>
         </mat-select>
       </mat-form-field>

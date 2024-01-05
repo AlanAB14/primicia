@@ -1,0 +1,36 @@
+.tarjetas {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+}
+
+.tabla-tarjetas {
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.field-search {
+  width: 100%;
+}
+
+.btn-edit-icon {
+  margin-right: .5rem;
+}
+
+.label-card {
+  font-weight: bold;
+}
+
+.table-section {
+  @media (max-width: 1000px) {
+    display: none;
+  }
+}
+
+.card-section {
+  display: none;
+  @media (max-width: 1000px) {
+    display: block;
+  }
+}
+

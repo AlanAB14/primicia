@@ -9,4 +9,5 @@ export interface TarjetaData {
     ingresos: string;
     filial: string;
     mensaje: string;
+    fecha?: string;
 }

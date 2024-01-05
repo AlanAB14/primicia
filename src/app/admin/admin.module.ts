@@ -15,6 +15,7 @@ import { FilialesComponent } from './pages/filiales/filiales.component';
 import { PromocionesComponent } from './pages/promociones/promociones.component';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { CustomDateAdapter } from '../helpers/custom-date-adapter';
+import { TarjetaComponent } from './pages/tarjeta/tarjeta.component';
 
 const MY_FORMATS = {
   parse: {
@@ -38,7 +39,8 @@ const MY_FORMATS = {
     CategoriasComponent,
     ComerciosComponent,
     FilialesComponent,
-    PromocionesComponent
+    PromocionesComponent,
+    TarjetaComponent
   ],
   imports: [
     CommonModule,

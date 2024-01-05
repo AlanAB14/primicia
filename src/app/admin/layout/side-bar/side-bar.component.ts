@@ -26,6 +26,11 @@ export class SideBarComponent {
       texto: 'Promociones',
       ruta: 'promociones',
       icon: 'fa fa-image'
+    },
+    {
+      texto: 'Solicitudes de Tarjeta',
+      ruta: 'tarjeta',
+      icon: 'fa fa-image'
     }
   ]
 }

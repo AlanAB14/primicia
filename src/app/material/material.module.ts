@@ -9,6 +9,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatCardModule} from '@angular/material/card';
+import {MatDividerModule} from '@angular/material/divider';
+
 
 
 
@@ -23,7 +26,9 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     MatInputModule,
     MatDialogModule,
     MatSelectModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatCardModule,
+    MatDividerModule
   ]
 })
 export class MaterialModule { }

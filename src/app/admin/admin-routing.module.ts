@@ -5,6 +5,7 @@ import { CategoriasComponent } from './pages/categorias/categorias.component';
 import { ComerciosComponent } from './pages/comercios/comercios.component';
 import { FilialesComponent } from './pages/filiales/filiales.component';
 import { PromocionesComponent } from './pages/promociones/promociones.component';
+import { TarjetaComponent } from './pages/tarjeta/tarjeta.component';
 
 
 const routes: Routes = [
@@ -27,6 +28,10 @@ const routes: Routes = [
   {
     path: 'promociones',
     component: PromocionesComponent
+  },
+  {
+    path: 'tarjeta',
+    component: TarjetaComponent
   },
 ];
 
