@@ -1,0 +1,58 @@
+<div class="usuarios-section">
+    <div style="text-align: center;" class="admin-panel-section--title">
+        Usuarios
+    </div>
+    <div class="usuarios-section__box">
+        <div class="buttons">
+            <button (click)="reestablecerContrasenia()" mat-raised-button>Reestablecer Contraseña</button>
+            <button *ngIf="super_admin" (click)="agregarUsuario()" mat-raised-button>Agregar Usuario</button>
+        </div>
+
+        <div *ngIf="super_admin">
+
+            <mat-form-field>
+                <mat-label>Usuario</mat-label>
+                <input matInput (keyup)="applyFilter($event)" #input>
+            </mat-form-field>
+
+            <div class="mat-elevation-z8">
+                <table mat-table [dataSource]="dataSource" *ngIf="!cargandoData">
+
+                    <ng-container matColumnDef="user">
+                        <th mat-header-cell *matHeaderCellDef> Usuario </th>
+                        <td mat-cell *matCellDef="let element"> {{element.user}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="super_admin">
+                        <th mat-header-cell *matHeaderCellDef> Administrador </th>
+                        <td mat-cell *matCellDef="let element"> {{element.super_admin ? 'Si' : 'No'}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="actions">
+                        <th mat-header-cell *matHeaderCellDef> Acciones </th>
+                        <td mat-cell *matCellDef="let element">
+                            <button (click)="editUser(element)" style="margin-right: .5rem;"
+                                mat-mini-fab><mat-icon>edit</mat-icon></button>
+                            <button (click)="deleteUser(element.id)" mat-mini-fab><mat-icon>delete</mat-icon></button>
+                        </td>
+                    </ng-container>
+
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+                        [style.display]="row.id === id ? 'none' : 'table-row'"></tr>
+
+                    <tr class="mat-row" *matNoDataRow>
+                        <td class="mat-cell" colspan="4">No se encontraron registros con el dato "{{input.value}}"</td>
+                    </tr>
+                </table>
+
+                <div class="loader-primicia-box" *ngIf="cargandoData">
+                    <span class="loader-primicia"></span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

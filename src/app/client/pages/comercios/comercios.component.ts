@@ -27,6 +27,10 @@ export class ComerciosComponent {
   private comerciosService = inject(ComerciosService);
   private filialesService = inject(FilialesService);
 
+  leerMasBeneficios: boolean = false;
+  leerMasAdhiero: boolean = false;
+  leerMasInstrucciones: boolean = false;
+
   getData() {
     this.cargandoData = true;
 

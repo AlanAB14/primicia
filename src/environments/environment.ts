@@ -1,6 +1,7 @@
 export const environment = {
     app: 'Primicia',
     apiBase: 'http://localhost:3000/api',
+    // apiBase: 'https://backend-primicia.onrender.com/api',
     SingleSignOn: false
 };
 

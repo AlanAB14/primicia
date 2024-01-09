@@ -1,0 +1,19 @@
+<div class="admin-panel-section">
+    <div class="admin-panel-section--title">
+        Tasas
+    </div>
+    <div class="admin-panel-section--body">
+        <div class="tasas" *ngIf="tasasArr">
+            <div class="tasa-item" *ngFor="let tasa of tasasArr">
+                <p>{{ tasa.tasaTitulo }}</p>
+                <button (click)="editTasa(tasa)" mat-mini-fab color="primary">
+                    <mat-icon>edit</mat-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="loader-primicia-box" *ngIf="cargandoData">
+    <span class="loader-primicia"></span>
+</div>

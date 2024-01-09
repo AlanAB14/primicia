@@ -5,20 +5,30 @@
             nuestros selectos comercios adheridos.</p>
     </div>
     <div class="comercios-info">
-        <div class="comercios-info-box">
+        <div class="comercios-info-box" [ngClass]="{'open': leerMasBeneficios}">
             <div class="title">
                 <p>Beneficios</p>
             </div>
             <hr>
             <div class="content">
-                <ul>
+                <ul *ngIf="!leerMasBeneficios">
                     <li>Acreditación de Ventas en caja de ahorro sin costo de mantenimiento</li>
                     <li>Acreditación acelerada (48hs ó 7 días corridos) a partir de la fecha de venta...</li>
                 </ul>
+                <ul *ngIf="leerMasBeneficios" class="animate__animated animate__fadeIn">
+                    <li>Acreditación de Ventas en caja de ahorro sin costo de mantenimiento</li>
+                    <li>Acreditación acelerada (48hs ó 7 días corridos) a partir de la fecha de venta</li>
+                    <li>Autorización telefónica on line con Costo de llamada local</li>
+                    <li>Autorización sistema terminal de captura (Posnet)</li>
+                    <li>Autorización las 24 horas, los 365 dias del año, líneas rotativas</li>
+                    <li>Consulta de ventas pendientes de acreditación Online</li>
+                    <li>Consulta e impresión de su resumen de venta Online</li>
+                </ul>
             </div>
             <div class="leer-mas">
-                <a>
-                    <p>Leer mas</p><img src="assets/imgs/primicia-leer-mas.png" alt="leer-mas">
+                <a (click)="leerMasBeneficios = !leerMasBeneficios">
+                    <div *ngIf="!leerMasBeneficios"><p>Leer más</p><img src="assets/imgs/primicia-leer-mas.png" alt="leer-mas"></div>
+                    <div *ngIf="leerMasBeneficios" class="animate__animated animate__fadeIn"><p>Mostrar menos</p><img src="assets/imgs/primicia-leer-mas.png" alt="leer-mas"></div>
                 </a>
             </div>
         </div>
@@ -37,8 +47,10 @@
             </div>
             <div class="leer-mas">
                 <a>
-                    <p>Leer mas</p><img src="assets/imgs/primicia-leer-mas.png" alt="leer-mas">
-                </a>
+                    <a (click)="leerMasAdhiero = !leerMasAdhiero">
+                        <div *ngIf="!leerMasAdhiero"><p>Leer más</p><img src="assets/imgs/primicia-leer-mas.png" alt="leer-mas"></div>
+                        <div *ngIf="leerMasAdhiero" class="animate__animated animate__fadeIn"><p>Mostrar menos</p><img src="assets/imgs/primicia-leer-mas.png" alt="leer-mas"></div>
+                    </a>                </a>
             </div>
         </div>
         <div class="comercios-info-box">
@@ -53,8 +65,10 @@
             </div>
             <div class="leer-mas">
                 <a>
-                    <p>Leer mas</p><img src="assets/imgs/primicia-leer-mas.png" alt="leer-mas">
-                </a>
+                    <a (click)="leerMasInstrucciones = !leerMasInstrucciones">
+                        <div *ngIf="!leerMasInstrucciones"><p>Leer más</p><img src="assets/imgs/primicia-leer-mas.png" alt="leer-mas"></div>
+                        <div *ngIf="leerMasInstrucciones" class="animate__animated animate__fadeIn"><p>Mostrar menos</p><img src="assets/imgs/primicia-leer-mas.png" alt="leer-mas"></div>
+                    </a>                </a>
             </div>
         </div>
     </div>

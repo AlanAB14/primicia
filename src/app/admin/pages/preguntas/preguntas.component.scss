@@ -1,10 +1,10 @@
-.tarjetas {
+.preguntas {
   display: flex;
   flex-direction: column;
   margin-top: 2rem;
 }
 
-.tabla-tarjetas {
+.tabla-preguntas {
   margin-top: 1rem;
   width: 100%;
 }
@@ -22,14 +22,14 @@
 }
 
 .table-section {
-  @media (max-width: 1000px) {
+  @media (max-width: 800px) {
     display: none;
   }
 }
 
 .card-section {
   display: none;
-  @media (max-width: 1000px) {
+  @media (max-width: 800px) {
     display: block;
   }
 }
@@ -38,3 +38,11 @@
   margin-bottom: .5rem;
 }
 
+
+.btn-editar-pregunta {
+  margin-right: .25rem;
+}
+
+.btn-add-pregunta {
+  margin: 0 auto;
+}

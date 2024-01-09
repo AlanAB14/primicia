@@ -17,4 +17,8 @@ export class TasasService {
     return this.http.get<Tasa[]>(`${ this._url }/tasas`)
   }
 
+  updateTasa(tasa: Tasa, id: number) {
+    return this.http.patch(`${ this._url }/tasas/${ id }`, tasa)
+  }
+
 }

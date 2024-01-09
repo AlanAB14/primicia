@@ -28,7 +28,13 @@
             box-shadow: 0px 5px 0px 0px var(--black);
             border-radius: 2.8125rem;
 
-            min-height: 21.6875rem;
+            min-height: 24.6875rem;
+            max-height: 24.6875rem;
+            -webkit-transition: max-height .2s;
+            -moz-transition: max-height .2s;
+            -ms-transition: max-height .2s;
+            -o-transition: max-height .2s;
+            transition: max-height .2s;
 
             @media (max-width: 818px) {
                 min-height: 20rem;
@@ -105,9 +111,11 @@
                 margin-top: auto;
 
                 a {
-                    display: flex;
-                    align-items: center;
-                    cursor: pointer;
+                    div {
+                        display: flex;
+                        align-items: center;
+                        cursor: pointer;
+                    }
                 }
 
                 p {
@@ -272,4 +280,8 @@
         }
     
     }
+}
+
+.open {
+    max-height: 40rem;
 }

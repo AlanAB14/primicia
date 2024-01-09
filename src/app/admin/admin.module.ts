@@ -16,6 +16,10 @@ import { PromocionesComponent } from './pages/promociones/promociones.component'
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { CustomDateAdapter } from '../helpers/custom-date-adapter';
 import { TarjetaComponent } from './pages/tarjeta/tarjeta.component';
+import { ContactoComponent } from './pages/contacto/contacto.component';
+import { PreguntasComponent } from './pages/preguntas/preguntas.component';
+import { TasasComponent } from './pages/tasas/tasas.component';
+import { UsuariosComponent } from './pages/usuarios/usuarios.component';
 
 const MY_FORMATS = {
   parse: {
@@ -40,7 +44,11 @@ const MY_FORMATS = {
     ComerciosComponent,
     FilialesComponent,
     PromocionesComponent,
-    TarjetaComponent
+    TarjetaComponent,
+    ContactoComponent,
+    PreguntasComponent,
+    TasasComponent,
+    UsuariosComponent
   ],
   imports: [
     CommonModule,

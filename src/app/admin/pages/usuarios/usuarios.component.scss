@@ -1,0 +1,26 @@
+.usuarios-section {
+  padding: 1rem;
+
+  .buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      & button {
+          width: 30%;
+          margin-bottom: 1rem;
+      }
+  }
+  &__box {
+      border: 1px solid rgb(163, 163, 163);
+      background-color: white;
+      padding: 1rem;
+      border-radius: 1rem;
+  }
+
+  .spinner-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+  }
+}

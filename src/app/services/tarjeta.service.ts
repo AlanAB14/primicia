@@ -21,4 +21,8 @@ export class TarjetaService {
     return this.http.post(`${ this._url }/tarjeta`, tarjetaData)
   }
 
+  deleteSolicitudTarjeta(id: number) {
+    return this.http.delete(`${ this._url }/tarjeta/${ id }`)
+  }
+
 }

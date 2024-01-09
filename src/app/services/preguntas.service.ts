@@ -17,4 +17,16 @@ export class PreguntasService {
     return this.http.get<Pregunta[]>(`${ this._url }/preguntas`)
   }
 
+  addPregunta(pregunta: Pregunta) {
+    return this.http.post(`${ this._url }/preguntas`, pregunta)
+  }
+
+  updatePregunta(id: number, pregunta: Pregunta) {
+    return this.http.patch(`${ this._url }/preguntas/${ id }`, pregunta)
+  }
+
+  deletePregunta(id: number) {
+    return this.http.delete(`${ this._url }/preguntas/${ id }`)
+  }
+
 }
