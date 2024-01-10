@@ -1,0 +1,76 @@
+<h2>{{ data }}</h2>
+<mat-dialog-content class="body-primicia">
+    <div class="content" *ngIf="data === 'Beneficios'">
+        <ul>
+          <li>Acreditación de Ventas en caja de ahorro sin costo de mantenimiento</li>
+          <li>Acreditación acelerada (48hs ó 7 días corridos) a partir de la fecha de venta</li>
+          <li>Autorización sistema terminal de captura (Posnet)</li>
+          <li>Autorización las 24 horas, los 365 dias del año, líneas rotativas</li>
+          <li>Consulta de ventas pendientes de acreditación Online</li>
+          <li>Consulta e impresión de su resumen de venta Online</li>
+        </ul>
+        <p class="title">Advertencia</p>
+        <p class="text">
+            Para la correcta aplicación del Régimen de Retención de Ingresos Brutos de la
+provincia de Santa Fe, le solicitamos tenga a bien remitirnos el Formulario Nº 1276
+WEB actualizado. De no hacerlo, se le aplicará la retención conforme a la normativa vigente para los casos de falta de presentación de dicho formulario.
+        </p>
+    </div>
+
+    <div class="content" *ngIf="data === '¿Cómo adhiero al comercio?'">
+        <p class="text-title">Personas físicas</p>
+        <ul>
+          <li>Fotocopia D.N.I.</li>
+          <li>Fotocopia inscripciones impositivas</li>
+          <li>Fotocopia de servicios</li>
+        </ul>
+        <p class="text-title">Personas jurídicas</p>
+        <ul>
+          <li>Fotocopia de Contrato Social – Estatuto</li>
+          <li>Fotocopia de acta de distribución de cargos vigentes</li>
+          <li>Fotocopia de inscripciones impositivas</li>
+          <li>Fotocopia de DNI de los integrantes de la sociedad</li>
+          <li>Fotocopia de un servicio de cada integrante</li>
+        </ul>
+    </div>
+
+    <div class="content" *ngIf="data === 'Instrucciones de uso.'">
+        <p style="margin-top: 0!important;" class="title">INSTRUCCIONES PARA REGISTRAR UNA VENTA</p>
+        <ul>
+          <li>Solicite al cliente la Tarjeta Primicia y el DNI.</li>
+          <li>Verifique que el nombre y apellido que figuran en la Tarjeta Primicia, coincidan con los del DNI.</li>
+          <li>Verifique que la firma del cliente coincida con la registrada en la Tarjeta Primicia</li>
+        </ul>
+        <p class="title">VENTAS TELEFÓNICAS ON LINE</p>
+        <ul>
+          <li>Comuníquese al teléfono de contacto 08108882222</li>
+          <li> Ingrese Nº de Comercio de 9 dígitos.</li>
+          <li>Ingrese Nº de Tarjeta de 9 dígitos (Ejemplo:00-0000000)</li>
+          <li>Ingrese Nº de Clave de Seguridad de Tarjeta de Usuario de 3 dígitos (al dorso).</li>
+          <li>Ingrese importe de la compra. En caso de corresponder a una venta con centavos ingresar * en reemplazo de la coma.</li>
+          <li>Digite 1 para confirmar monto.</li>
+          <li>Anote Nº de Autorización en el cupón de la venta.</li>
+          <li>Facilite el cupón al cliente para que lo firme.</li>
+          <li>Entregue una copia del cupón de venta al usuario y el original del cupón
+            queda para su archivo.</li>
+          <li>Devuelva la Tarjeta Primicia al cliente con el comprobante de la venta.</li>
+        </ul>
+
+        <p class="title">VENTA DE TERMINAL DE CAPTURAS</p>
+        <ul>
+          <li>Pase la Tarjeta y cargue el monto de la venta y la cantidad de cuotas.</li>
+          <li>Facilite el cupón al cliente para que lo firme.</li>
+          <li>Entregue una copia del cupón de venta al usuario y el original del cupón queda para su archivo.</li>
+          <li>Devuelva la Tarjeta Primicia al cliente con el comprobante de la venta.</li>
+        </ul>
+
+        <p class="title">MODALIDAD DE COBRO</p>
+        <p class="text">Al obtener el Código de Autorización para una venta, la operación ya estará finalizada.</p>
+        
+        <p class="title">PRECAUCIONES</p>
+        <p class="text">Recuerde de realizar el cierre de lote de forma diaria y evite la demora en su acreditación. En caso de no obtener el N° de código de autorización de la operación, no reitere el procedimiento. Simplemente digite 0810-888-2222 opción 3 y será atendido por nuestros operadores.</p>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close class="btn-cerrar">Cerrar</button>
+</mat-dialog-actions>

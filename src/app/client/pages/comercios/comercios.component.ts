@@ -1,10 +1,12 @@
 import { Component, inject } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { forkJoin } from 'rxjs';
 import { Categoria } from 'src/app/interfaces/categorias.interface';
 import { Comercio, ComercioData } from 'src/app/interfaces/comercios.interface';
 import { Filial } from 'src/app/interfaces/filiales.interface';
 import { ComerciosService } from 'src/app/services/comercios.service';
 import { FilialesService } from 'src/app/services/filiales.service';
+import { DialogComerciosComponent } from '../../components/dialog-comercios/dialog-comercios.component';
 
 @Component({
   templateUrl: './comercios.component.html',
@@ -27,9 +29,7 @@ export class ComerciosComponent {
   private comerciosService = inject(ComerciosService);
   private filialesService = inject(FilialesService);
 
-  leerMasBeneficios: boolean = false;
-  leerMasAdhiero: boolean = false;
-  leerMasInstrucciones: boolean = false;
+  constructor(public dialog: MatDialog) {}
 
   getData() {
     this.cargandoData = true;
@@ -109,6 +109,16 @@ export class ComerciosComponent {
     }, 300);
     const comerciosDeCategoria = this.comerciosData.filter(comercio => comercio.categoria.id === Number(this.categoriaSearch) && comercio.filial.localidad.toLocaleLowerCase().includes(this.filialSearch))
     this.comerciosDataSearch = comerciosDeCategoria;
+  }
+
+  openDialog(tipo: string) {
+    const dialogRef = this.dialog.open(DialogComerciosComponent, {
+      data: tipo
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
 }

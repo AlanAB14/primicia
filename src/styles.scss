@@ -31,6 +31,8 @@ $primicia-theme: mat.define-light-theme((
 
 
 @import 'animate.css';
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
 
 // $primicia-primary: mat.define-palette(mat.$indigo-palette);
 // $primicia-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);

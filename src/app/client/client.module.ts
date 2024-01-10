@@ -20,6 +20,9 @@ import { DropdownItemComponent } from './components/dropdown-item/dropdown-item.
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ComerciosShowComponent } from './components/comercios-show/comercios-show.component';
 import { RouterModule } from '@angular/router';
+import { DialogComerciosComponent } from './components/dialog-comercios/dialog-comercios.component';
+import { CarouselModule } from 'ngx-owl-carousel-o';
+import { DenunciaComponent } from './pages/denuncia/denuncia.component';
 
 
 @NgModule({
@@ -37,7 +40,9 @@ import { RouterModule } from '@angular/router';
     ContactoTemplateComponent,
     ContactoBoxComponent,
     DropdownItemComponent,
-    ComerciosShowComponent
+    ComerciosShowComponent,
+    DialogComerciosComponent,
+    DenunciaComponent
   ],
   imports: [
     CommonModule,
@@ -46,7 +51,8 @@ import { RouterModule } from '@angular/router';
     FormsModule,
     MaterialModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    CarouselModule
   ]
 })
 export class ClientModule { }

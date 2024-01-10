@@ -11,6 +11,7 @@ import { HttpRequestInterceptor } from './interceptors/http-request.interceptor'
 import { AuthService } from './auth/services/auth.service';
 import { CookieService } from 'ngx-cookie-service';
 import { LoginComponent } from './auth/login/login.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { LoginComponent } from './auth/login/login.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    RouterModule
   ],
   providers: [
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },

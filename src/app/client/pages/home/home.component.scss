@@ -24,6 +24,10 @@
             margin-right: 2rem;
         }
 
+        @media (max-width: 768px) {
+            margin-right: 0rem;
+        }
+
         .intro-title {
             padding-top: 1.75rem;
 
@@ -96,6 +100,10 @@
 
             @media (max-width: 1000px) {
                 width: 19rem;
+            }
+
+            @media (max-width: 500px) {
+                width: 14rem;
             }
         }
     }
