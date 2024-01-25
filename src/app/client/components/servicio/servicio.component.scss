@@ -88,14 +88,15 @@
                 }
 
                 .ingresa {
-                    display: flex;
-                    align-items: center;
-                    cursor: pointer;
+                    a {
+                        display: flex;
+                        align-items: center;
+                        cursor: pointer;
+                    }
 
                     @media (max-width: 455px) {
                         display: none;
                     }
-
                    
 
                     img {
@@ -129,8 +130,17 @@
 
                 .ingresa-img {
                     display: none;
+                    a {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        cursor: pointer;
+                        z-index: 10;
 
+                    }
+                    
                     @media (max-width: 455px) {
+
                         display: flex;
                         align-items: center;
                         justify-content: center;

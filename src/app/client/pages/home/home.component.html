@@ -28,8 +28,8 @@
     <div class="servicio-section">
         <app-servicio></app-servicio>
     </div>
-    <div class="promociones-section">
-        <app-promociones></app-promociones>
+    <div class="promociones-section" *ngIf="promociones">
+        <app-promocion-box [promocion]="promociones[0]"></app-promocion-box>
     </div>
     <div class="contacto-section">
         <app-contacto></app-contacto>
