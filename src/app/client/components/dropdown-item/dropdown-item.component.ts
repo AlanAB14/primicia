@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { Comercio } from 'src/app/interfaces/comercios.interface';
+import { Comision } from 'src/app/interfaces/comision.interface';
 import { Tasa } from 'src/app/interfaces/tasas.interface';
 
 @Component({
@@ -22,11 +23,11 @@ export class DropdownItemComponent implements OnInit{
   @Input() direccion: string = '';
   @Input() respuesta: string = '';
   @Input() concepto: boolean = false;
-  @Input() promocionValida!: string;
+  @Input() promocionValida!: any;
   @Input() tasas!: Tasa[];
+  @Input() comisiones!: Comision[];
 
   ngOnInit(): void {
-    
   }
 
   completarConCero(numero: number) {
@@ -41,7 +42,7 @@ export class DropdownItemComponent implements OnInit{
     if (this.promocionValida === '' || this.promocionValida === 'Todas') {
       return true
     }
-    if (this.promocionValida === 'si' && promocionId) {
+    if (this.promocionValida == promocionId) {
       return true
     }
     if (this.promocionValida === 'no' && !promocionId) {

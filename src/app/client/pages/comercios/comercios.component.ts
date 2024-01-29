@@ -7,6 +7,8 @@ import { Filial } from 'src/app/interfaces/filiales.interface';
 import { ComerciosService } from 'src/app/services/comercios.service';
 import { FilialesService } from 'src/app/services/filiales.service';
 import { DialogComerciosComponent } from '../../components/dialog-comercios/dialog-comercios.component';
+import { PromocionService } from 'src/app/services/promocion.service';
+import { Promocion } from 'src/app/interfaces/promocion.interface';
 
 @Component({
   templateUrl: './comercios.component.html',
@@ -19,15 +21,17 @@ export class ComerciosComponent {
   cargandoData: boolean = false;
   filialSearch: string = '';
   categoriaSearch: string = '';
-  promocionSearch: string = '';
+  promocionSearch: any = '';
   comerciosData: ComercioData[] = [];
   comerciosDataSearch : ComercioData[] = [];
   filiales!: Filial[];
   filialesEncontradas!: Filial[];
   comercios!: Comercio[];
+  promociones!: Promocion[];
   categorias!: Categoria[];
   private comerciosService = inject(ComerciosService);
   private filialesService = inject(FilialesService);
+  private promocionService = inject(PromocionService);
 
   constructor(public dialog: MatDialog) {}
 
@@ -36,9 +40,11 @@ export class ComerciosComponent {
 
     forkJoin([
       this.filialesService.getFiliales(),
+      this.promocionService.getPromociones(),
       this.comerciosService.getCatComercios()
-    ]).subscribe(([filiales, categorias]) => {
+    ]).subscribe(([filiales, promociones, categorias]) => {
       this.filiales = filiales;
+      this.promociones = promociones
       this.categorias = categorias;
       console.log(filiales, categorias)
 

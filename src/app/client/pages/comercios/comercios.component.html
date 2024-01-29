@@ -95,12 +95,12 @@
                         </option>
                     </select>
                 </div>
-                <div class="select-box">
-                    <select name="promocion" [(ngModel)]="promocionSearch" id="">
+                <div class="select-box" *ngIf="promociones">
+                    <select name="promocion" (change)="buscarPorFiltro()" [(ngModel)]="promocionSearch" id="">
                         <option disabled selected value="">Promoción</option>
                         <option value="Todas">Todas</option>
-                        <option value="si">Sí</option>
                         <option value="no">No</option>
+                        <option *ngFor="let promocion of promociones" [value]="promocion.id">{{ promocion.texto }}</option>
                     </select>
                 </div>
             </div>

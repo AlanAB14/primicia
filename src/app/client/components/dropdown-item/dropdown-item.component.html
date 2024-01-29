@@ -55,5 +55,12 @@
 
 
         </div>
+        <div class="comisiones" *ngIf="comisiones">
+            <div class="title">Detalle - Importe</div>
+            <div class="detalle-item" *ngFor="let comision of comisiones">
+                <div class="detalle-title">{{ comision.comisionTitulo }}</div>
+                <div class="detalle-importe">{{ comision.comisionImporte }}</div>
+            </div>
+        </div>
     </div>
 </div>

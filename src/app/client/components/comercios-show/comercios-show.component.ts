@@ -13,7 +13,7 @@ export class ComerciosShowComponent {
   @Input() categorias!: Categoria[];
   @Input() comercios!: Comercio[];
   @Input() comerciosData!: ComercioData[];
-  @Input() promocionValida!: string;
+  @Input() promocionValida!: any;
 
 
   getCategoriasDeFilial(filial: Filial) {

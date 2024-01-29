@@ -20,6 +20,7 @@ import { ContactoComponent } from './pages/contacto/contacto.component';
 import { PreguntasComponent } from './pages/preguntas/preguntas.component';
 import { TasasComponent } from './pages/tasas/tasas.component';
 import { UsuariosComponent } from './pages/usuarios/usuarios.component';
+import { ComisionesComponent } from './pages/comisiones/comisiones.component';
 
 const MY_FORMATS = {
   parse: {
@@ -48,6 +49,7 @@ const MY_FORMATS = {
     ContactoComponent,
     PreguntasComponent,
     TasasComponent,
+    ComisionesComponent,
     UsuariosComponent
   ],
   imports: [

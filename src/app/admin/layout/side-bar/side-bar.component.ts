@@ -48,6 +48,11 @@ export class SideBarComponent {
       icon: 'fa fa-percent'
     },
     {
+      texto: 'Comisiones',
+      ruta: 'comisiones',
+      icon: 'fa fa-percent'
+    },
+    {
       texto: 'Usuarios',
       ruta: 'usuarios',
       icon: 'fa fa-user'

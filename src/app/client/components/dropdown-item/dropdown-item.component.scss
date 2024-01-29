@@ -376,3 +376,34 @@
   }
 
 }
+
+.comisiones {
+  display: flex;
+  flex-direction: column;
+  .title {
+    font-size: 1.6rem;
+    display: flex;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+
+  .detalle-item {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+    padding-bottom: .5rem;
+    &:not(:last-of-type) {
+      margin-bottom: .75rem;
+    }
+
+    @media (max-width: 550px) {
+      flex-direction: column;
+      .detalle-importe {
+        text-align: center;
+      }
+    }
+  }
+}
