@@ -59,6 +59,7 @@ export class ComerciosComponent {
 
 
   getComerciosPorFilialYCategoria() {
+    this.comerciosData = [];
     this.cargandoData = true;
     this.filiales.forEach(filial => {
       this.categorias.forEach(category => {

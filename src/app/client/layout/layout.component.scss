@@ -50,3 +50,19 @@
         position: relative;
     }
 }
+
+.whatsapp-icon {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    border: 1px solid rgb(202, 202, 202);
+    background-color: white;
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5rem;
+    cursor: pointer;
+    color: #24cc63;
+  }
