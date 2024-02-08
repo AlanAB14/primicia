@@ -312,12 +312,12 @@
 }
 
 .open-body {
-  max-height: 40rem;
-  -webkit-transition: max-height .6s;
-  -moz-transition: max-height .6s;
-  -ms-transition: max-height .6s;
-  -o-transition: max-height .6s;
-  transition: max-height .6s;
+  max-height: 800rem;
+  -webkit-transition: max-height 2s;
+  -moz-transition: max-height 2s;
+  -ms-transition: max-height 2s;
+  -o-transition: max-height 2s;
+  transition: max-height 2s;
 }
 
 .item-pregunta {

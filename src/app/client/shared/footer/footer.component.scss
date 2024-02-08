@@ -4,7 +4,7 @@
         justify-content: space-around;
         flex-wrap: wrap;
 
-        img {
+        a {
             width: 30%;
             min-width: 15.6rem;
 
@@ -27,6 +27,10 @@
                     margin-bottom: 1rem;
                 }
             }
+            img {
+                width: 100%;
+            }
+
         }
 
         margin: 4.375rem 0;

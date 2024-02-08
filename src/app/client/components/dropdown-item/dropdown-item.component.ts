@@ -27,8 +27,7 @@ export class DropdownItemComponent implements OnInit{
   @Input() tasas!: Tasa[];
   @Input() comisiones!: Comision[];
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   completarConCero(numero: number) {
     return numero.toString().padStart(2, '0');

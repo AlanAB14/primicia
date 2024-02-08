@@ -22,6 +22,10 @@ export class ComerciosService {
     return this.http.get<Comercio[]>(`${ this._url }/comerciosPorFilial/${ id }`)
   }
 
+  getComerciosPorFilialCategoriaPromocion(obj: any) {
+    return this.http.post(`${ this._url }/comerciosPorFilialCategoriaPromocion`, obj)
+  }
+
   getComerciosPorCategoriaYFilial(obj: any): Observable<Comercio[]> {
     return this.http.post<Comercio[]>(`${ this._url }/comerciosPorCategoriaYFilial`, obj)
   }
