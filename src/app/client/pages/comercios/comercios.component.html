@@ -105,8 +105,38 @@
                 </div>
             </div>
         </form>
-        <app-comercios-show [promocionValida]="promocionSearch" [filiales]="filiales" [categorias]="categorias"
-            [comerciosData]="comerciosDataSearch" />
+        <!-- <app-comercios-show [promocionValida]="promocionSearch" [filiales]="filiales" [categorias]="categorias"
+            [comerciosData]="comerciosDataSearch" /> -->
+
+            <div class="results" *ngFor="let filial of filiales; let i = index">
+                <div class="results-title">
+                    <div class="box-title">
+                        <p class="title-section">{{ filial.localidad }}</p>
+                        <p class="subtitle-section comercios-subtitle">Aprovecha al máximo tu tarjeta con ofertas y promociones en
+                            nuestros selectos comercios adheridos.</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="btn-mostrar-comercios">
+                        <button *ngIf="!filial.comerciosVisible" (click)="buscarComerciosDeFilial(filial.id)">Mostrar Comercios</button>
+                    </div>
+                    <div class="spinner" *ngIf="filial.id === filialIdSeleccionada && cargandoDataFilial">
+                        <mat-spinner></mat-spinner>
+                    </div>
+                </div>
+                <!-- <div class="results-data" *ngFor="let categoria of getCategoriasDeFilial(filial); let c = index;">
+                    <img *ngIf="i === 0 && c === 0" src="assets/imgs/girl-comercios.png" alt="results-img">
+                    <div *ngFor="let comercio of getComerciosDeCategoria(filial, categoria.categoria)">
+                        <app-dropdown-item [numero]="c + 1"
+                                           [promocionValida]="promocionValida"
+                                           [title]="categoria.categoria.categoria"
+                                           [comercios]="comercio.comercios">
+                        </app-dropdown-item>
+                    </div>
+                </div> -->
+            </div>
+
+
     </div>
 
 </div>

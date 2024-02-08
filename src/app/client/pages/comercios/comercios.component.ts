@@ -19,12 +19,14 @@ import { Promocion } from 'src/app/interfaces/promocion.interface';
 export class ComerciosComponent {
   showComercios: boolean = false;
   cargandoData: boolean = false;
+  cargandoDataFilial: boolean = false;
+  filialIdSeleccionada!: number;
   filialSearch: string = '';
   categoriaSearch: string = '';
   promocionSearch: any = '';
   comerciosData: ComercioData[] = [];
-  comerciosDataSearch : ComercioData[] = [];
-  filiales!: Filial[];
+  comerciosDataSearch: ComercioData[] = [];
+  filiales!: any[];
   filialesEncontradas!: Filial[];
   comercios!: Comercio[];
   promociones!: Promocion[];
@@ -33,30 +35,58 @@ export class ComerciosComponent {
   private filialesService = inject(FilialesService);
   private promocionService = inject(PromocionService);
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog) { }
+
+  // getData() {
+  //   this.cargandoData = true;
+
+  //   forkJoin([
+  //     this.filialesService.getFiliales(),
+  //     this.promocionService.getPromociones(),
+  //     this.comerciosService.getCatComercios()
+  //   ]).subscribe(([filiales, promociones, categorias]) => {
+  //     this.filiales = filiales;
+  //     this.promociones = promociones
+  //     this.categorias = categorias;
+  //     console.log(filiales, categorias)
+
+  //     this.getComerciosPorFilialYCategoria();
+  //     this.showComercios = true;
+  //     this.cargandoData = false;
+  //   }, error => {
+  //     console.log(error);
+  //     this.cargandoData = false;
+  //   });
+  // }
 
   getData() {
     this.cargandoData = true;
-
-    forkJoin([
-      this.filialesService.getFiliales(),
-      this.promocionService.getPromociones(),
-      this.comerciosService.getCatComercios()
-    ]).subscribe(([filiales, promociones, categorias]) => {
-      this.filiales = filiales;
-      this.promociones = promociones
-      this.categorias = categorias;
-      console.log(filiales, categorias)
-
-      this.getComerciosPorFilialYCategoria();
-      this.showComercios = true;
-      this.cargandoData = false;
-    }, error => {
-      console.log(error);
-      this.cargandoData = false;
-    });
+    this.filialesService.getFiliales()
+      .subscribe((filiales) => {
+        this.filiales = filiales.map(filial => ({ ...filial, comerciosVisible: false }));
+        this.cargandoData = false;
+        this.showComercios = true;
+      }, (error) => {
+        console.log(error);
+        this.cargandoData = false;
+      })
   }
 
+
+  buscarComerciosDeFilial(filialId: number) {
+    this.cargandoDataFilial = true;
+    this.filiales = this.filiales.map(filial => {
+      if (filial.id === filialId) {
+        return { ...filial, comerciosVisible: !filial.comerciosVisible };
+      } else {
+        return filial;
+      }
+    });
+    this.filialIdSeleccionada = filialId;
+    this.comerciosService.getComerciosPorFilial(filialId)
+      .subscribe( console.log )
+
+  }
 
   getComerciosPorFilialYCategoria() {
     this.comerciosData = [];
@@ -65,10 +95,10 @@ export class ComerciosComponent {
       this.categorias.forEach(category => {
         const obj = {
           filialId: filial.id,
-          categoriaId: category.id 
+          categoriaId: category.id
         }
         this.comerciosService.getComerciosPorCategoriaYFilial(obj)
-          .subscribe( comerciosRes => {
+          .subscribe(comerciosRes => {
             if (comerciosRes !== null) {
               this.comerciosData.push({
                 filial,
@@ -85,7 +115,7 @@ export class ComerciosComponent {
 
   buscarPorFiltro() {
     this.cargandoData = true
-    if (this.filialSearch === '' && (this.categoriaSearch === '' || this.categoriaSearch === 'Todas') && ( this.promocionSearch === '' || this.promocionSearch === 'Todas')) {
+    if (this.filialSearch === '' && (this.categoriaSearch === '' || this.categoriaSearch === 'Todas') && (this.promocionSearch === '' || this.promocionSearch === 'Todas')) {
       this.comerciosDataSearch = this.comerciosData
       setTimeout(() => {
         this.cargandoData = false;
