@@ -4,4 +4,5 @@ export interface Filial {
     direccion: string;
     email: string;
     telefono: string;
+    receptoria: number;
 }

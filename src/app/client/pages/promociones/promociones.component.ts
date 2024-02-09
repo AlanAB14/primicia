@@ -11,9 +11,18 @@ export class PromocionesComponent implements OnInit{
   promociones!: Promocion[];
   promocionService = inject(PromocionService);
   ngOnInit(): void {
+    this.getPromociones();
+  }
+
+  getPromociones() {
+    this.cargandoData = true;
     this.promocionService.getPromociones()
       .subscribe(promociones => {
         this.promociones = promociones
+        this.cargandoData = false
+      }, (error) => {
+        console.log(error);
+        this.cargandoData = false;
       })
   }
 

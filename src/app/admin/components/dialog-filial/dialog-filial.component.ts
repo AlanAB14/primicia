@@ -36,6 +36,10 @@ import { MaterialModule } from 'src/app/material/material.module';
         <input matInput (keydown)="onKeyDown($event)" formControlName="telefono">
       </mat-form-field>
 
+      <div>
+        <mat-checkbox formControlName="receptoria"  class="example-margin">Receptoría</mat-checkbox>
+      </div>
+
     </form>
   </mat-dialog-content>
   <mat-dialog-actions align="end">
@@ -52,7 +56,8 @@ export class DialogFilialComponent {
     localidad: [ this.data && this.data.filial ? this.data.filial.localidad : '', Validators.required],
     direccion: [  this.data && this.data.filial ? this.data.filial.direccion : '', Validators.required],
     email: [ this.data && this.data.filial ? this.data.filial.email : '', [Validators.required, Validators.email]],
-    telefono: [ this.data && this.data.filial ? this.data.filial.telefono : '', Validators.required],
+    telefono: [ this.data && this.data.filial ? this.data.filial.telefono : ''],
+    receptoria: [ this.data && this.data.filial ? this.data.filial.receptoria : 0, Validators.required],
   })
 
   constructor(
