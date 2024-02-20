@@ -146,11 +146,13 @@
                     <div class="animate__animated animate__fadeIn">
                         <div class="results-data" *ngFor="let categoria of retornaArrayCategoriasTraidas(comerciosPorSearch); let c = index;">
                             <img *ngIf="i === 0 && c === 0" src="assets/imgs/girl-comercios.png" alt="results-img">
-                                <app-dropdown-item [numero]="c + 1"
-                                                   [promocionValida]="''"
-                                                   [title]="categoria.categoria"
-                                                   [comercios]="getComerciosDeCategoriaTraida(comerciosPorSearch, categoria)">
-                                </app-dropdown-item>
+                                <div *ngIf="getComerciosDeCategoriaTraidaPorFilial(comerciosPorSearch, categoria, filial).length !== 0">
+                                    <app-dropdown-item [numero]="c + 1"
+                                                       [promocionValida]="''"
+                                                       [title]="categoria.categoria"
+                                                       [comercios]="getComerciosDeCategoriaTraidaPorFilial(comerciosPorSearch, categoria, filial)">
+                                    </app-dropdown-item>
+                                </div>    
                         </div>
                     </div>
                 </div>

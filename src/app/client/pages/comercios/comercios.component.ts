@@ -157,10 +157,10 @@ export class ComerciosComponent {
     return comerciosDeCategoria;
   }
 
-  getComerciosDeCategoriaTraida(comercios: any, categoria: any) {
+  getComerciosDeCategoriaTraidaPorFilial(comercios: any, categoria: any, filial: any) {
     let comerciosDeCategoria: any[] = [];
     comercios.forEach((comercio: any) => {
-      if (comercio.categoriaId === categoria.id) {
+      if (comercio.categoriaId === categoria.id && comercio.filialId === filial.id) {
         comerciosDeCategoria.push(comercio)
       }
     })
@@ -192,8 +192,8 @@ export class ComerciosComponent {
 
     this.cargandoData = true;
     this.comerciosService.getComerciosPorFilialCategoriaPromocion(obj)
-
       .subscribe((comercios: any) => {
+        console.log(comercios)
         this.comerciosPorSearch = comercios;
         this.buscadoPorSearch = true;
         this.cargandoData = false;
@@ -206,7 +206,6 @@ export class ComerciosComponent {
   }
 
   setIdLocalidad() {
-    console.log(this.filiales)
     let arrayLocalidades: any = [];
     this.filiales.forEach(filial => {
       if (filial.localidad.toLowerCase().includes(this.formSearch.value.localidad.trim().toLowerCase())) {
