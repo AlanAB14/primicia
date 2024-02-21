@@ -13,9 +13,9 @@ export class HomeComponent {
 
   ngOnInit(): void {
     this.cargandoData = true;
-    this.promocionService.getPromociones()
+    this.promocionService.getPromocionesConImagen()
       .subscribe(promociones => {
-        console.log(promociones[0].texto)
+        console.log(promociones[0])
         this.promociones = promociones
         this.cargandoData = false;
       },

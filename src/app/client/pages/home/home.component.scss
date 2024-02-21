@@ -1,5 +1,24 @@
-.intro-section {
+.carousel-section {
     padding-top: 4rem;
+    position: relative;
+    background-color: #031A44;
+    color: #FFF;
+    margin-left: -6.25rem;
+    margin-right: -6.25rem;
+    
+    @media (max-width: 1000px) {
+        margin-left: -2.25rem;
+        margin-right: -2.25rem;
+    }
+
+    @media (max-width: 1200px) {
+        margin-left: -4.25rem;
+        margin-right: -4.25rem;
+    }
+}
+
+.intro-section {
+    padding-top: 8rem;
     display: flex;
     justify-content: center;
     align-items: start;
@@ -68,6 +87,7 @@
             @media (max-width: 768px) {
                 text-align: center;
             }
+
             button {
                 cursor: pointer;
                 border-radius: .875rem;
@@ -86,6 +106,7 @@
                 @media (max-width: 1000px) {
                     font-size: 1rem;
                 }
+
                 strong {
                     font-weight: 700;
                 }

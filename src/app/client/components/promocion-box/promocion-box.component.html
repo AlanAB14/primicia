@@ -4,7 +4,10 @@
 </div>
 
 <div class="promocion">
-    <div class="promocion-box">
+    <div class="promocion-spinner" *ngIf="!existenDias()">
+        <mat-spinner />
+    </div>
+    <div class="promocion-box" *ngIf="existenDias()">
         <div class="promocion-box-timer">
             <div class="promocion-box-timer-title">
                 <p class="timer-title">{{ promocion.diasPromocion }} <strong>{{ promocion.promocion }}</strong></p>

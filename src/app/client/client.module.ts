@@ -22,6 +22,7 @@ import { RouterModule } from '@angular/router';
 import { DialogComerciosComponent } from './components/dialog-comercios/dialog-comercios.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { DenunciaComponent } from './pages/denuncia/denuncia.component';
+import { PromocionesCarouselComponent } from './components/promociones-carousel/promociones-carousel.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { DenunciaComponent } from './pages/denuncia/denuncia.component';
     DropdownItemComponent,
     ComerciosShowComponent,
     DialogComerciosComponent,
-    DenunciaComponent
+    DenunciaComponent,
+    PromocionesCarouselComponent
   ],
   imports: [
     CommonModule,

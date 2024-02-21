@@ -10,6 +10,10 @@
                     <input formControlName="motivo" [ngClass]="{'error-border': contactoForm.controls['motivo'].errors && checkFieldError('motivo')}" class="input-radio-circle" type="radio" id="opcion2" name="motivo" value="Ayuda">
                     <label for="opcion2">Ayuda</label>
                 </div>
+                <div class="radio-group">
+                    <input formControlName="motivo" [ngClass]="{'error-border': contactoForm.controls['motivo'].errors && checkFieldError('motivo')}" class="input-radio-circle" type="radio" id="opcion3" name="motivo" value="Adelanto">
+                    <label for="opcion3">Adelanto</label>
+                </div>
             </div>
             <div class="error-input error-input-radio" *ngIf="checkFieldError('motivo')">
                 Este campo es obligatorio *

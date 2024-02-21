@@ -23,7 +23,7 @@ export class PromocionesComponent implements OnInit {
 
   getPromociones() {
     this.cargandoData = true;
-    this.promocionService.getPromociones()
+    this.promocionService.getPromocionesConImagen()
       .subscribe(promociones => {
         this.promociones = promociones;
       }, (error) => {

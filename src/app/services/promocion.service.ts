@@ -16,6 +16,10 @@ export class PromocionService {
   getPromociones(): Observable<Promocion[]> {
     return this.http.get<Promocion[]>(`${ this._url }/promociones`)
   }
+  
+  getPromocionesConImagen(): Observable<Promocion[]> {
+    return this.http.get<Promocion[]>(`${ this._url }/promocionesConImagen`)
+  }
 
   addPromocion(promocion: Promocion) {
     return this.http.post(`${ this._url }/promociones`, promocion)

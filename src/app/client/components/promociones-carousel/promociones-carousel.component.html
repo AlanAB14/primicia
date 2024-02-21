@@ -1,0 +1,12 @@
+<owl-carousel-o [options]="customOptions">
+    <ng-template carouselSlide *ngFor="let promocion of promociones">
+      <div class="presentacion">
+          <div class="presentacion-texto">
+            {{ promocion.texto }}
+          </div>
+          <div class="presentacion-imagen">
+            <img [src]="promocion.image ? ('data:image/png;base64,' + promocion.image) : ''" alt="">
+        </div>
+      </div>
+    </ng-template>
+</owl-carousel-o>

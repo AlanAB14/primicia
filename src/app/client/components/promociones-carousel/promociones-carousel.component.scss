@@ -1,0 +1,10 @@
+.presentacion {
+  display: flex;
+  padding: 2rem 4rem;
+  &-texto {
+    width: 50%;
+  }
+  &-imagen {
+    width: 50%;
+  }
+}

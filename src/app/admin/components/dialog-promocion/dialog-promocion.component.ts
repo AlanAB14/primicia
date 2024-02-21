@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Inject, inject } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import * as moment from 'moment';
@@ -43,6 +43,16 @@ import { MaterialModule } from 'src/app/material/material.module';
     </mat-form-field>
 
 
+    <input type="file" 
+           #f_input_image
+           accept="image/png, image/gif, image/jpeg"
+           hidden
+           (change)="uploadFile($event)">
+    <div class="media-box">
+      <button class="btn-media" mat-raised-button (click)="f_input_image.click()">Cambiar Image</button>
+      <img class="service-image" [src]="promocionForm.value.image ? ('data:image/png;base64,' + promocionForm.value.image) : ''">
+    </div>
+
 
     </form>
   </mat-dialog-content>
@@ -53,7 +63,7 @@ import { MaterialModule } from 'src/app/material/material.module';
   styleUrls: ['./dialog-promocion.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DialogPromocionComponent { 
+export class DialogPromocionComponent {
   fb = inject(FormBuilder);
 
   minDate: Date = new Date();
@@ -62,17 +72,19 @@ export class DialogPromocionComponent {
 
 
   promocionForm: FormGroup = this.fb.group({
-    fechaInicio: [ this.data && this.data.promocion ? moment(this.data.promocion.fechaInicio).toDate() : '', Validators.required],
-    fechaFin: [  this.data && this.data.promocion ? moment(this.data.promocion.fechaFin).toDate() : '', Validators.required],
-    diasPromocion: [ this.data && this.data.promocion ? this.data.promocion.diasPromocion : '', Validators.required],
-    promocion: [ this.data && this.data.promocion ? this.data.promocion.promocion : '', Validators.required],
-    texto: [ this.data && this.data.promocion ? this.data.promocion.texto : ''],
+    fechaInicio: [this.data && this.data.promocion ? moment(this.data.promocion.fechaInicio).toDate() : '', Validators.required],
+    fechaFin: [this.data && this.data.promocion ? moment(this.data.promocion.fechaFin).toDate() : '', Validators.required],
+    diasPromocion: [this.data && this.data.promocion ? this.data.promocion.diasPromocion : '', Validators.required],
+    promocion: [this.data && this.data.promocion ? this.data.promocion.promocion : '', Validators.required],
+    texto: [this.data && this.data.promocion ? this.data.promocion.texto : ''],
+    image: [this.data && this.data.promocion && this.data.promocion.image ? this.data.promocion.image : ''],
   })
 
 
   constructor(
     public dialogRef: MatDialogRef<any>,
     @Inject(MAT_DIALOG_DATA) public data: any,
+    private cdRef: ChangeDetectorRef,
   ) { }
 
   ngOnInit(): void {
@@ -81,7 +93,7 @@ export class DialogPromocionComponent {
 
   guardarPromocion() {
     if (!this.promocionForm.valid) {
-    console.log(this.promocionForm.value)
+      console.log(this.promocionForm.value)
       console.log('No es válido');
       this.promocionForm.markAllAsTouched();
       return
@@ -100,6 +112,34 @@ export class DialogPromocionComponent {
     const fechaFinDate = moment(this.promocionForm.value.fechaFin).toDate()
     this.promocionForm.patchValue({
       fechaFin: fechaFinDate
+    })
+  }
+
+  uploadFile(event: any) {
+    this.imageBlob(event)
+      .then((result: any) => {
+        this.promocionForm.controls['image'].setValue(result.split(',')[1])
+        this.promocionForm.get('image')?.markAsDirty();
+        console.log(this.promocionForm.value.image)
+        this.cdRef.detectChanges();
+      })
+      .catch(err => console.log(err))
+  }
+
+  imageBlob(event: any) {
+    const files: FileList = event.target.files;
+    const file: File = files[0];
+
+    return new Promise((resolve, reject) => {
+      var reader = new FileReader();
+      reader.addEventListener("load", function () {
+        resolve(reader.result);
+      }, false);
+
+      reader.onerror = () => {
+        return reject(this);
+      };
+      reader.readAsDataURL(file);
     })
   }
 

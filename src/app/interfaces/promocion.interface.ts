@@ -5,4 +5,5 @@ export interface Promocion {
     diasPromocion: string;
     promocion:     string | null;
     texto:         string;
+    image:         string | null;
 }

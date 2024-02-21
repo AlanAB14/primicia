@@ -10,10 +10,10 @@ export class PromocionBoxComponent implements OnInit {
   @Input() promocion!: Promocion;
   linkImage: string = `assets/imgs/descuento/descuento-${1}.png`;
   timer: any;
-  days: number = 0;
-  hours: number = 0;
-  minutes: number = 0;
-  seconds: number = 0;
+  days: number | null = null;
+  hours: number | null = null;
+  minutes: number | null = null;
+  seconds: number | null = null;
 
   ngOnInit(): void {
     if (!this.promocion.fechaInicio || !this.promocion.fechaFin) {
@@ -50,8 +50,16 @@ export class PromocionBoxComponent implements OnInit {
     }
   }
 
-  unCaracter(value: number) {
-    if (value.toString().length <= 1) {
+  existenDias() {
+    if (this.days !== null && this.hours !== null && this.minutes !== null && this.seconds !== null) {
+      return true     
+    }else {
+      return false
+    }
+  }
+
+  unCaracter(value: number | null) {
+    if (value!.toString().length <= 1) {
       return true
     }else {
       return false
