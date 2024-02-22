@@ -26,7 +26,6 @@ export class PromocionService {
   }
 
   updatePromocion(promocion: Promocion, id: number): Observable<Promocion> {
-    console.log(promocion, 'Promocion')
     return this.http.patch<Promocion>(`${ this._url }/promociones/${ id }`, promocion)
   }
 
