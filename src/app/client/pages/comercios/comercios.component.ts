@@ -24,6 +24,7 @@ export class ComerciosComponent {
   cargandoDataFilial: boolean = false;
   filialIdSeleccionada!: number;
   buscadoPorSearch: boolean = false;
+  fromPromociones: boolean = false;
   comerciosData: ComercioData[] = [];
   comerciosDataSearch: ComercioData[] = [];
   comerciosPorSearch = [];
@@ -53,9 +54,10 @@ export class ComerciosComponent {
       let dataJson = JSON.parse(data)
       console.log(dataJson)
       if (dataJson) {
+        this.fromPromociones = true;
         this.setValores().subscribe(() => {
           this.formSearch.patchValue({
-            promocion: dataJson.id
+            promocion: dataJson
           })
           this.buscarPorFiltro();
         })
@@ -292,11 +294,19 @@ export class ComerciosComponent {
 
   setIdLocalidad() {
     let arrayLocalidades: any = [];
+    const removeAccents = (str: string) => {
+      return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    };
+
+    const localidadSinAcentos = removeAccents(this.formSearch.value.localidad.trim().toLowerCase());
+
     this.filiales.forEach(filial => {
-      if (filial.localidad.toLowerCase().includes(this.formSearch.value.localidad.trim().toLowerCase())) {
-        arrayLocalidades.push(filial.id)
+      const filialSinAcentos = removeAccents(filial.localidad.toLowerCase());
+      if (filialSinAcentos.includes(localidadSinAcentos)) {
+        arrayLocalidades.push(filial.id);
       }
-    })
+    });
+
     return arrayLocalidades;
   }
 

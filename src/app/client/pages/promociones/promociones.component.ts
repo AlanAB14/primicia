@@ -28,7 +28,7 @@ export class PromocionesComponent implements OnInit{
       })
   }
 
-  goToComercios(promocion: Promocion) {
+  goToComercios(promocion: number) {
     const url = this.router.serializeUrl(this.router.createUrlTree(['comercios', { c: btoa(JSON.stringify(promocion)) }]));
     window.open(`${url}`, '_self');
   }
