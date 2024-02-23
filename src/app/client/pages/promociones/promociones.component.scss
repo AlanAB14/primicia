@@ -6,3 +6,28 @@
     }
 
 }
+
+.box-button {
+    margin-top: 2rem;
+    .comercios-adheridos-btn {
+        display: flex;
+        justify-content: center;
+    
+    
+        button {
+            border-radius: .875rem;
+            background-color: var(--blue);
+            padding: 1.25rem 2.1875rem;
+            outline: none;
+            border: none;
+            color: #FFF;
+    
+            text-align: center;
+            font-family: Space Grotesk;
+            font-size: 1.25rem;
+            font-style: normal;
+            line-height: 1.75rem;
+            cursor: pointer;
+        }
+    }
+}

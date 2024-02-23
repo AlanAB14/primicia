@@ -1,7 +1,5 @@
 import { Component, inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { forkJoin } from 'rxjs';
-import { Categoria } from 'src/app/interfaces/categorias.interface';
 import { Comercio, ComercioData } from 'src/app/interfaces/comercios.interface';
 import { Filial } from 'src/app/interfaces/filiales.interface';
 import { ComerciosService } from 'src/app/services/comercios.service';
@@ -11,6 +9,8 @@ import { PromocionService } from 'src/app/services/promocion.service';
 import { Promocion } from 'src/app/interfaces/promocion.interface';
 import { CategoriasService } from 'src/app/services/categorias.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { catchError, forkJoin, tap } from 'rxjs';
 
 @Component({
   templateUrl: './comercios.component.html',
@@ -44,7 +44,33 @@ export class ComerciosComponent {
 
 
   constructor(public dialog: MatDialog,
-    public fb: FormBuilder) { }
+    public fb: FormBuilder,
+    private route: ActivatedRoute) { }
+
+  ngOnInit(): void {
+    try {
+      const data = atob(this.route.snapshot.paramMap.get('c')!)
+      let dataJson = JSON.parse(data)
+      console.log(dataJson)
+      if (dataJson) {
+        this.setValores().subscribe(() => {
+          this.formSearch.patchValue({
+            promocion: dataJson.id
+          })
+          this.buscarPorFiltro();
+        })
+      }
+    } catch (error) {
+    }
+  }
+
+  setValores() {
+    return forkJoin({
+      filiales: this.getFilialesServicio(),
+      categorias: this.getCategoriasServicio(),
+      promociones: this.getPromocionesServicio()
+    });
+  }
 
   getData() {
     this.comerciosPorSearch = [];
@@ -53,6 +79,43 @@ export class ComerciosComponent {
     this.getFiliales();
     this.getCategorias();
     this.getPromociones();
+  }
+
+
+  getFilialesServicio() {
+    return this.filialesService.getFiliales()
+      .pipe(
+        tap(filiales => {
+          this.filiales = filiales.map(filial => ({ ...filial, comerciosVisible: false }));
+          this.showComercios = true;
+        }),
+        catchError(error => {
+          console.log(error);
+          return [];
+        })
+      );
+  }
+
+  getCategoriasServicio() {
+    return this.categoriasService.getCategorias()
+      .pipe(
+        tap(categorias => this.categorias = categorias),
+        catchError(error => {
+          console.log(error);
+          return [];
+        })
+      );
+  }
+
+  getPromocionesServicio() {
+    return this.promocionService.getPromociones()
+      .pipe(
+        tap(promociones => this.promociones = promociones),
+        catchError(error => {
+          console.log(error);
+          return [];
+        })
+      );
   }
 
   getFiliales() {
@@ -135,6 +198,15 @@ export class ComerciosComponent {
       categoriasSet.add(this.categorias.find(categoria => categoria.id === comercio.categoriaId))
     })
     let categorias: any = Array.from(categoriasSet).sort();
+    categorias.sort((a: any, b: any) => {
+      if (a.categoria < b.categoria) {
+          return -1;
+      }
+      if (a.categoria > b.categoria) {
+          return 1;
+      }
+      return 0;
+    })
     return categorias;
   }
 
@@ -144,6 +216,15 @@ export class ComerciosComponent {
       filialesSet.add(this.filiales.find(filial => filial.id === comercio.filialId))
     })
     let filiales: any = Array.from(filialesSet).sort();
+    filiales.sort((a: any, b: any) => {
+      if (a.localidad < b.localidad) {
+          return -1;
+      }
+      if (a.localidad > b.localidad) {
+          return 1;
+      }
+      return 0;
+    })
     return filiales;
   }
 
@@ -180,6 +261,7 @@ export class ComerciosComponent {
       return
     }
 
+
     let obj = {
       localidad: '',
       categoria: '',
@@ -189,6 +271,9 @@ export class ComerciosComponent {
     obj.localidad = this.setIdLocalidad()
     obj.categoria = this.formSearch.value.categoria;
     obj.promocion = this.formSearch.value.promocion;
+
+    console.log(obj)
+
 
     this.cargandoData = true;
     this.comerciosService.getComerciosPorFilialCategoriaPromocion(obj)

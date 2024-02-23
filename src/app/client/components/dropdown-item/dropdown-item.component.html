@@ -25,18 +25,25 @@
         <hr>
         <div class="otra-data">
             <div class="concepto-data" *ngIf="concepto">
-                <div class="titles">
-                    <div class="title-item" *ngFor="let tasa of tasas">
-                        <div class="title-item-header">{{ tasa.tasaTitulo }}</div>
-                        <div class="title-item-sub">{{ tasa.tasaDescripcion }}</div>
+                <div class="box">
+                    <div class="titles">
+                        <div class="title-item" *ngFor="let tasa of tasas">
+                            <div class="title-item-header">{{ tasa.tasaTitulo }}</div>
+                            <div class="title-item-sub">{{ tasa.tasaDescripcion }}</div>
+                        </div>
+                    </div>
+                    <div class="numbers">
+                        <div class="number-item" *ngFor="let tasa of tasas">
+                            <div class="number">{{ reemplazaPuntoPorComa(tasa.tna) }}%</div>
+                            <div class="number">{{ reemplazaPuntoPorComa(tasa.tem) }}%</div>
+                            <div class="number">{{ reemplazaPuntoPorComa(tasa.cft) }}%</div>
+                        </div>
                     </div>
                 </div>
-                <div class="numbers">
-                    <div class="number-item" *ngFor="let tasa of tasas">
-                        <div class="number">{{ reemplazaPuntoPorComa(tasa.tna) }}%</div>
-                        <div class="number">{{ reemplazaPuntoPorComa(tasa.tem) }}%</div>
-                        <div class="number">{{ reemplazaPuntoPorComa(tasa.cft) }}%</div>
-                    </div>
+                <div class="text-desc-box">
+                    <p class="text-desc">
+                        (*) T.N.A.: Tasa Nominal Anual – T.E.M.: Tasa Efectiva Mensual – C.F.T.: Costo Financiero Total
+                    </p>
                 </div>
             </div>
             <div class="respuesta" *ngIf="respuesta">
