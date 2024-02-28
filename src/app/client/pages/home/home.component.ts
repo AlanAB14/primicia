@@ -38,11 +38,13 @@ export class HomeComponent {
     mouseDrag: true,
     touchDrag: true,
     navSpeed: 700,
+    autoplayTimeout: 3500,
+    autoplaySpeed: 600,
     margin: 100,
     navText: ['', ''],
     items: 1,
     autoplay: true,
-    dots: false,
+    dots: true,
     responsive: {
       0: {
         items: 1,
