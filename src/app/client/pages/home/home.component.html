@@ -2,7 +2,67 @@
     <!-- <div class="carousel-section" *ngIf="promociones">
         <app-promociones-carousel [promociones]="promociones" />
     </div> -->
-    <div class="intro-section">
+    <owl-carousel-o #carousel [options]="customOptions">
+        <ng-template carouselSlide>
+            <div class="intro-section">
+                <div class="intro-section-data">
+                    <div class="intro-title">
+                        <p>
+                            <span class="intro-title-upper">La tarjeta</span>
+                            <br>
+                            de tus pagos
+                        </p>
+                    </div>
+                    <div class="intro-text">
+                        <p>
+                            Tarjeta Primicia es un servicio de Mutual entre 
+                            Asociados de Cooperación Mutual Patronal 
+                            presentado al mercado en el año 2002. Es una 
+                            tarjeta de crédito propia con marca registrada 
+                            a nivel nacional.
+                        </p>
+                    </div>
+                    <div class="intro-button">
+                        <button><a [routerLink]="'nosotros'" [fragment]="'pedirTarjeta'"><strong>¡Pedila</strong> ahora!</a></button>
+                    </div>
+                </div>
+                <div class="intro-section-image">
+                    <img src="assets/imgs/girl-primicia.png" alt="girl-image">
+                </div>
+            </div>
+        </ng-template>
+
+        <ng-template carouselSlide *ngFor="let promocion of promociones">
+          <div class="intro-section">
+            <div class="intro-section-data">
+                <div class="intro-title">
+                    <p>
+                        <span class="intro-title-upper">{{ promocion.diasPromocion }}</span>
+                        <br>
+                        {{ promocion.promocion }}
+                    </p>
+                </div>
+                <div class="intro-text">
+                    <p>
+                        {{ promocion.texto }}
+                    </p>
+                    <br>
+                    <p>
+                        {{ promocion.fechaInicio | appFecha }} al {{ promocion.fechaFin | appFecha }}
+                    </p>
+                </div>
+                <div class="intro-button">
+                    <button><a [routerLink]="'nosotros'" [fragment]="'pedirTarjeta'"><strong>¡Pedila</strong> ahora!</a></button>
+                </div>
+            </div>
+            <div class="intro-section-image">
+                <img [src]="promocion.image ? ('data:image/png;base64,' + promocion.image) : ''" alt="girl-image">
+            </div>
+        </div>
+        </ng-template>
+    </owl-carousel-o>
+
+    <!-- <div class="intro-section">
         <div class="intro-section-data">
             <div class="intro-title">
                 <p>
@@ -27,7 +87,7 @@
         <div class="intro-section-image">
             <img src="assets/imgs/girl-primicia.png" alt="girl-image">
         </div>
-    </div>
+    </div> -->
     <div class="servicio-section">
         <app-servicio></app-servicio>
     </div>

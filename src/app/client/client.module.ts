@@ -23,6 +23,7 @@ import { DialogComerciosComponent } from './components/dialog-comercios/dialog-c
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { DenunciaComponent } from './pages/denuncia/denuncia.component';
 import { PromocionesCarouselComponent } from './components/promociones-carousel/promociones-carousel.component';
+import { FechaPipe } from '../pipes/fecha.pipe';
 
 
 @NgModule({
@@ -52,6 +53,7 @@ import { PromocionesCarouselComponent } from './components/promociones-carousel/
     MaterialModule,
     ReactiveFormsModule,
     RouterModule,
+    FechaPipe,
     CarouselModule
   ]
 })
