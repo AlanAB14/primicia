@@ -11,11 +11,14 @@
                     <p>Nuestro servicio</p>
                 </div>
                 <div class="primicia-box-text-content">
-                    Tarjeta Primicia es un servicio de Mutual entre Asociados de Cooperación Mutual Patronal presentado al
-                    mercado en el año 2002. Es una tarjeta de crédito propia con marca registrada a nivel nacional.
+                    SOLUCIONES CREADAS POR PERSONAS DE ACÁ PARA PERSONAS DE ACÁ.
+                    <br>
+                    Somos un servicio de Mutual entre Asociados de Cooperación Mutual Patronal con más de 20 años en el
+                    mercado. Nacimos para hacer que las finanzas sean más accesibles y convenientes para las personas.
+
                 </div>
                 <div class="primicia-box-text-link">
-                    <a>
+                    <a (click)="openDialog('Nuestro servicio')">
                         <p>Leer mas</p><img src="assets/imgs/primicia-leer-mas.png" alt="leer-mas">
                     </a>
                 </div>
@@ -26,13 +29,16 @@
                 </div>
                 <div class="primicia-box-text-content">
                     <p>
-                        La zona de influencia se encuentra desarrollada desde la Casa Central en la ciudad de Venado Tuerto
-                        hacia 30 regiones en el sur de la provincia de Santa Fe, y en las ciudades de San Nicolás de los
-                        Arroyos, Villa...
+                        SOMOS DE ACÁ, COMO VOS.
+                        <br>
+                        Nuestra Casa Central se encuentra emplazada en la Ciudad de Venado Tuerto. Contamos, además, con
+                        6 sucursales y 6 receptorías en la provincia de Santa Fe y 2 sucursales en la provincia de
+                        Buenos Aires.
+
                     </p>
                 </div>
                 <div class="primicia-box-text-link">
-                    <a>
+                    <a (click)="openDialog('Zona de influencia')">
                         <p>Leer mas</p><img src="assets/imgs/primicia-leer-mas.png" alt="leer-mas">
                     </a>
                 </div>
@@ -42,12 +48,18 @@
                     <p>Política comercial</p>
                 </div>
                 <div class="primicia-box-text-content">
-                    <p>La política comercial de PRIMICIA es la expansión hacia otras regiones del país, tratando de llevar
-                        el servicio a nivel nacional, encontrándose ya en desarrollo la estrategia de ampliación hacia las
-                        zonas de influencia de las...</p>
+                    <p>NUESTRA POLÍTICA COMERCIAL ESTÁ ENFOCADA EN VOS.
+                        <br>
+                        En un mundo cada vez más interconectado y digitalizado, nuestra política comercial se orienta
+                        hacia la expansión estratégica y la adopción proactiva de nuevas tecnologías.
+                        Nuestra visión se centra en la creación de alianzas sólidas con comercios locales, con la
+                        intención de que todas las promociones las tengas en tu ciudad, pero sin dejar de planificar
+                        nuestra expansión, buscando aumentar la accesibilidad de nuestra tarjeta de crédito, permitiendo
+                        a más personas disfrutar de sus beneficios.
+                    </p>
                 </div>
                 <div class="primicia-box-text-link">
-                    <a>
+                    <a (click)="openDialog('Política comercial')">
                         <p>Leer mas</p><img src="assets/imgs/primicia-leer-mas.png" alt="leer-mas">
                     </a>
                 </div>
@@ -67,15 +79,18 @@
             <form [formGroup]="tarjetaForm" (ngSubmit)="sendData()">
                 <div class="tarjeta-form-box-field">
                     <label>Nombre</label>
-                    <input type="text" [ngClass]="{'error-border': checkFieldError('nombre')}" formControlName="nombre" placeholder="Nombre">
+                    <input type="text" [ngClass]="{'error-border': checkFieldError('nombre')}" formControlName="nombre"
+                        placeholder="Nombre">
                     <div class="error-input" *ngIf="checkFieldError('nombre')">
                         El campo nombre es obligatorio *
                     </div>
                 </div>
                 <div class="tarjeta-form-box-field">
                     <label>Email*</label>
-                    <input type="text" [ngClass]="{'error-border': checkFieldError('email')}" formControlName="email" placeholder="Email">
-                    <div class="error-input" *ngIf="checkFieldError('email') && tarjetaForm.get('email')!.hasError('required')">
+                    <input type="text" [ngClass]="{'error-border': checkFieldError('email')}" formControlName="email"
+                        placeholder="Email">
+                    <div class="error-input"
+                        *ngIf="checkFieldError('email') && tarjetaForm.get('email')!.hasError('required')">
                         El campo email es obligatorio *
                     </div>
                     <div class="error-input" *ngIf="tarjetaForm.get('email')!.hasError('email')">
@@ -84,49 +99,57 @@
                 </div>
                 <div class="tarjeta-form-box-field">
                     <label>Teléfono</label>
-                    <input type="text" [ngClass]="{'error-border': checkFieldError('telefono')}" (keydown)="onKeyDown($event)" formControlName="telefono" placeholder="Teléfono">
+                    <input type="text" [ngClass]="{'error-border': checkFieldError('telefono')}"
+                        (keydown)="onKeyDown($event)" formControlName="telefono" placeholder="Teléfono">
                     <div class="error-input" *ngIf="checkFieldError('telefono')">
                         El campo teléfono es obligatorio *
                     </div>
                 </div>
                 <div class="tarjeta-form-box-field">
                     <label>Domicilio</label>
-                    <input type="text" [ngClass]="{'error-border': checkFieldError('domicilio')}" formControlName="domicilio" placeholder="Domicilio">
+                    <input type="text" [ngClass]="{'error-border': checkFieldError('domicilio')}"
+                        formControlName="domicilio" placeholder="Domicilio">
                     <div class="error-input" *ngIf="checkFieldError('domicilio')">
                         El campo domicilio es obligatorio *
                     </div>
                 </div>
                 <div class="tarjeta-form-box-field">
                     <label>Ciudad</label>
-                    <input type="text" [ngClass]="{'error-border': checkFieldError('ciudad')}" formControlName="ciudad" placeholder="Ciudad">
+                    <input type="text" [ngClass]="{'error-border': checkFieldError('ciudad')}" formControlName="ciudad"
+                        placeholder="Ciudad">
                     <div class="error-input" *ngIf="checkFieldError('ciudad')">
                         El campo ciudad es obligatorio *
                     </div>
                 </div>
                 <div class="tarjeta-form-box-field">
                     <label>D.N.I.</label>
-                    <input type="text" [ngClass]="{'error-border': checkFieldError('dni')}" (keydown)="onKeyDown($event)" (input)="onInputChange($event, 'dni')" formControlName="dni" placeholder="D.N.I.">
+                    <input type="text" [ngClass]="{'error-border': checkFieldError('dni')}"
+                        (keydown)="onKeyDown($event)" (input)="onInputChange($event, 'dni')" formControlName="dni"
+                        placeholder="D.N.I.">
                     <div class="error-input" *ngIf="checkFieldError('dni')">
                         El campo dni es obligatorio *
                     </div>
                 </div>
                 <div class="tarjeta-form-box-field">
                     <label>¿Cómo recibís tus ingresos?</label>
-                    <input type="text" [ngClass]="{'error-border': checkFieldError('ingresos')}" formControlName="ingresos" placeholder="¿Cómo recibís tus ingresos?">
+                    <input type="text" [ngClass]="{'error-border': checkFieldError('ingresos')}"
+                        formControlName="ingresos" placeholder="¿Cómo recibís tus ingresos?">
                     <div class="error-input" *ngIf="checkFieldError('ingresos')">
                         El campo ingresos es obligatorio *
                     </div>
                 </div>
                 <div class="tarjeta-form-box-field">
                     <label>Elegí tu filial</label>
-                    <input type="text" [ngClass]="{'error-border': checkFieldError('filial')}" formControlName="filial" placeholder="Filial">
+                    <input type="text" [ngClass]="{'error-border': checkFieldError('filial')}" formControlName="filial"
+                        placeholder="Filial">
                     <div class="error-input" *ngIf="checkFieldError('filial')">
                         El campo filial es obligatorio *
                     </div>
                 </div>
                 <div class="tarjeta-form-box-field">
                     <label>Mensaje*</label>
-                    <textarea formControlName="mensaje" [ngClass]="{'error-border': checkFieldError('mensaje')}" placeholder="Mensaje"></textarea>
+                    <textarea formControlName="mensaje" [ngClass]="{'error-border': checkFieldError('mensaje')}"
+                        placeholder="Mensaje"></textarea>
                     <div class="error-input" *ngIf="checkFieldError('mensaje')">
                         El campo mensaje es obligatorio *
                     </div>
@@ -137,7 +160,7 @@
             </form>
         </div>
     </div>
-    
+
     <div class="preguntas">
         <div class="box-title">
             <p class="title-section">Preguntas Frecuentes</p>

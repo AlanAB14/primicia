@@ -1,7 +1,9 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { TarjetaService } from 'src/app/services/tarjeta.service';
 import Swal from 'sweetalert2';
+import { DialogComerciosComponent } from '../../components/dialog-comercios/dialog-comercios.component';
 
 @Component({
   templateUrl: './nosotros.component.html',
@@ -22,6 +24,8 @@ export class NosotrosComponent {
     filial: ['', Validators.required],
     mensaje: ['', Validators.required],
   })
+
+  constructor( public dialog: MatDialog ) { }
 
   checkFieldError(campo: string) {
     if (this.tarjetaForm.get(campo)!.invalid && (this.tarjetaForm.get(campo)!.dirty || this.tarjetaForm.get(campo)!.touched)) {
@@ -92,6 +96,16 @@ export class NosotrosComponent {
       } else {
         control.markAsTouched();
       }
+    });
+  }
+
+  openDialog(tipo: string) {
+    const dialogRef = this.dialog.open(DialogComerciosComponent, {
+      data: tipo
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
     });
   }
 }
