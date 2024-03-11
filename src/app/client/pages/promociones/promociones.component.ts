@@ -29,7 +29,7 @@ export class PromocionesComponent implements OnInit{
   }
 
   goToComercios(promocion: Promocion) {
-    const url = this.router.serializeUrl(this.router.createUrlTree(['comercios', { c: btoa(JSON.stringify(promocion)) }]));
+    const url = this.router.serializeUrl(this.router.createUrlTree(['comercios', { c: btoa(JSON.stringify(promocion.id)) }]));
     window.open(`${url}`, '_self');
   }
 }

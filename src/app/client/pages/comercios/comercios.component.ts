@@ -55,7 +55,7 @@ export class ComerciosComponent {
       if (dataJson) {
         this.setValores().subscribe(() => {
           this.formSearch.patchValue({
-            promocion: dataJson.id
+            promocion: dataJson
           })
           this.buscarPorFiltro();
         })
