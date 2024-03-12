@@ -16,7 +16,7 @@ export class ContactoComponent implements OnInit, AfterViewInit{
   contactoService = inject(ContactoService)
   cargandoData: boolean = false;
   contactos: Contacto[] = [];
-  displayedColumns: string[] = ['motivo', 'nombre', 'email', 'mensaje', 'fecha', 'acciones'];
+  displayedColumns: string[] = ['motivo', 'nombre', 'dni', 'ciudad', 'email', 'mensaje', 'fecha', 'acciones'];
   dataSource!: MatTableDataSource<Contacto>;
   
   @ViewChild(MatPaginator, { static: true }) paginatorCard!: MatPaginator;

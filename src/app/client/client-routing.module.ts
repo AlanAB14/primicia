@@ -7,6 +7,7 @@ import { PromocionesComponent } from './pages/promociones/promociones.component'
 import { AyudaComponent } from './pages/ayuda/ayuda.component';
 import { ContactoComponent } from './pages/contacto/contacto.component';
 import { DenunciaComponent } from './pages/denuncia/denuncia.component';
+import { InfoComponent } from './pages/info/info.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,10 @@ const routes: Routes = [
   {
     path: 'denuncia',
     component: DenunciaComponent
+  },
+  {
+    path: 'info',
+    component: InfoComponent
   },
   {
     path: '**',

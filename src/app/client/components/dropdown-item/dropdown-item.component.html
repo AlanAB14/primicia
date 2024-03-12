@@ -4,7 +4,30 @@
             <p>{{ completarConCero(numero) }}</p>
         </div>
         <div class="title">
-            <p>{{ title }}</p>
+            <p *ngIf="(title !== 'info-usuario') && (title !== 'consulta-reclamo')">{{ title }}</p>
+            <div *ngIf="title === 'info-usuario'" class="title__info principal">
+                <div class="sucursal">
+                    <p>Sucursal</p>
+                </div>
+                <div class="nombre">
+                    <p>Nombre</p>
+                </div>
+                <div class="domicilio">
+                    <p>Domicilio</p>
+                </div>
+                <div class="telefono">
+                    <p>Tel.</p>
+                </div>
+                <div class="email">
+                    <p>Email</p>
+                </div>
+            </div>
+            <div *ngIf="title === 'info-usuario'" class="title__info responsive">
+                <p>Información al Usuario</p>
+            </div>
+            <div *ngIf="title === 'consulta-reclamo'" class="title__consulta">
+                    <p>¿Consultas o reclamos?</p>
+            </div>
         </div>
         <div class="concepto-title-box" *ngIf="concepto">
             <div class="concepto-item">
@@ -48,6 +71,331 @@
             </div>
             <div class="respuesta" *ngIf="respuesta">
                 <p>{{ respuesta }}</p>
+            </div>
+            <div class="info-datos" *ngIf="title === 'info-usuario'">
+                <div class="conjunto-datos">
+                    <div class="sucursal">
+                        <p>Casa Central</p>
+                    </div>
+                    <div class="nombre">
+                        <p>ALÉ Andrea Verónica</p>
+                        <p>BOSSA Gerardo</p>    
+                    </div>
+                    <div class="domicilio">
+                        <p>Mitre 664</p>
+                        <p>Mitre 664</p>
+                    </div>
+                    <div class="telefono">
+                        <p>03462430655</p>
+                        <p>03462430655</p>
+                    </div>
+                    <div class="email">
+                        <p><a href="mailto:aaale@tarjetaprimicia.com.ar">aaale@tarjetaprimicia.com.ar</a></p>
+                        <p><a href="mailto:gbossa@mutualentreasoc.com.ar">gbossa@mutualentreasoc.com.ar</a></p>
+                    </div>
+                </div>
+
+                <div class="conjunto-datos">
+                    <div class="sucursal">
+                        <p>Filial Venado</p>
+                    </div>
+                    <div class="nombre">
+                        <p>MERLONGHI Pamela</p>
+                        <p>BURGUES Vanina</p>     
+                    </div>
+                    <div class="domicilio">
+                        <p>Mitre 664</p>
+                        <p>Mitre 664</p>
+                    </div>
+                    <div class="telefono">
+                        <p>03462430655</p>
+                        <p>03462430655</p>
+                    </div>
+                    <div class="email">
+                        <p><a href="mailto:pmerlonghi@mutualentreasoc.com.ar">pmerlonghi@mutualentreasoc.com.ar</a></p>
+                        <p><a href="mailto:vburgues@mutualentreasoc.com.ar">vburgues@mutualentreasoc.com.ar</a></p>    
+                    </div>
+                </div>
+
+                <div class="conjunto-datos">
+                    <div class="sucursal">
+                        <p>Filial Rufino</p>
+                    </div>
+                    <div class="nombre">
+                        <p>BONETTO Héctor</p>
+                        <p>BELMUDEZ Horacio</p>
+                    </div>
+                    <div class="domicilio">
+                        <p>España 247</p>
+                        <p>España 247</p>
+                    </div>
+                    <div class="telefono">
+                        <p>03382420300</p>
+                        <p>03382420300</p>
+                    </div>
+                    <div class="email">
+                        <p><a href="mailto:hbonetto@mutualentreasoc.com.ar">hbonetto@mutualentreasoc.com.ar</a></p>
+                        <p><a href="mailto:hbelmudez@mutualentreasoc.com.ar">hbelmudez@mutualentreasoc.com.ar</a></p>    
+                    </div>
+                </div>
+                
+                <div class="conjunto-datos">
+                    <div class="sucursal">
+                        <p>Filial Villa Cañas</p>
+                    </div>
+                    <div class="nombre">
+                        <p>BARONIO Roberto</p>
+                        <p>MOREYRA Macarena</p>    
+                    </div>
+                    <div class="domicilio">
+                        <p>Av. 50 y calle 57</p>
+                        <p>Av. 50 y calle 57</p>
+                    </div>
+                    <div class="telefono">
+                        <p>03462451867</p>
+                        <p>03462451867</p>
+                    </div>
+                    <div class="email">
+                        <p><a href="mailto:rbaronio@mutualentreasoc.com.ar">rbaronio@mutualentreasoc.com.ar</a></p>
+                        <p><a href="mailto:mmoreyra@mutualentreasoc.com.ar">mmoreyra@mutualentreasoc.com.ar</a></p>    
+                    </div>
+                </div>
+                
+                <div class="conjunto-datos">
+                    <div class="sucursal">
+                        <p>Filial San Gregorio</p>
+                    </div>
+                    <div class="nombre">
+                        <p>LUNA Verónica Noemí</p>
+                        <p>LONTOYA María Alejandra</p>    
+                    </div>
+                    <div class="domicilio">
+                        <p>San Martín 865</p>
+                        <p>San Martín 865</p>
+                    </div>
+                    <div class="telefono">
+                        <p>03382471031</p>
+                        <p>03382471031</p>
+                    </div>
+                    <div class="email">
+                        <p><a href="mailto:vluna@mutualentreasoc.com.ar">vluna@mutualentreasoc.com.ar</a></p>
+                        <p><a href="mailto:mlontoya@mutualentreasoc.com.ar">mlontoya@mutualentreasoc.com.ar</a></p>    
+                    </div>
+                </div>
+                
+                <div class="conjunto-datos">
+                    <div class="sucursal">
+                        <p>Filial Firmat</p>
+                    </div>
+                    <div class="nombre">
+                        <p>TINNIRELLO Florencia</p>
+                        <p>WOITOVICH Melisa</p> 
+                    </div>
+                    <div class="domicilio">
+                        <p>Córdoba 1232</p>
+                        <p>Córdoba 1232</p>
+                    </div>
+                    <div class="telefono">
+                        <p>03465424545</p>
+                        <p>03465424545</p>
+                    </div>
+                    <div class="email">
+                        <p><a href="mailto:ftinnirello@tarjetaprimicia.com.ar">ftinnirello@tarjetaprimicia.com.ar</a></p>
+                        <p><a href="mailto:mwoitovich@tarjetaprimicia.com.ar">mwoitovich@tarjetaprimicia.com.ar</a></p>    
+                    </div>
+                </div>
+                
+                <div class="conjunto-datos">
+                    <div class="sucursal">
+                        <p>Filial San Nicolás</p>
+                    </div>
+                    <div class="nombre">
+                        <p>LOPEZ Juan Pablo</p>
+                        <p>ALTAMIRANO Analía</p>
+                    </div>
+                    <div class="domicilio">
+                        <p>Urquiza 39</p>
+                        <p>Urquiza 39</p>
+                    </div>
+                    <div class="telefono">
+                        <p>03364437333</p>
+                        <p>03364437333</p>
+                    </div>
+                    <div class="email">
+                        <p><a href="mailto:jlopez@tarjetaprimicia.com.ar">jlopez@tarjetaprimicia.com.ar</a></p>
+                        <p><a href="mailto:aaltamirano@tarjetaprimicia.com.ar">aaltamirano@tarjetaprimicia.com.ar</a></p>    
+                    </div>
+                </div>
+                
+                <div class="conjunto-datos">
+                    <div class="sucursal">
+                        <p>Filial Villa Constitución</p>
+                    </div>
+                    <div class="nombre">
+                        <p>ETTOMI Marianela</p>
+                        <p>ISOLA Gabriela</p>
+                    </div>
+                    <div class="domicilio">
+                        <p>Entre Ríos 424</p>
+                        <p>Entre Ríos 424</p>
+                    </div>
+                    <div class="telefono">
+                        <p>03400471500</p>
+                        <p>03400471500</p>
+                    </div>
+                    <div class="email">
+                        <p><a href="mailto:mettomi@tarjetaprimicia.com.ar">mettomi@tarjetaprimicia.com.ar</a></p>
+                        <p><a href="mailto:gisola@tarjetaprimicia.com.ar">gisola@tarjetaprimicia.com.ar</a></p>    
+                    </div>
+                </div>
+
+                <div class="conjunto-datos">
+                    <div class="sucursal">
+                        <p>Filial Villa Ramallo</p>
+                    </div>
+                    <div class="nombre">
+                        <p>DOMINGUEZ Virginia</p>
+                        <p>SANCHEZ Mirta</p>
+                    </div>
+                    <div class="domicilio">
+                        <p>San Martín 234</p>
+                        <p>San Martín 234</p>
+                    </div>
+                    <div class="telefono">
+                        <p>03407480489</p>
+                        <p>03407480489</p>
+                    </div>
+                    <div class="email">
+                        <p><a href="mailto:vdominguez@tarjetaprimicia.com.ar">vdominguez@tarjetaprimicia.com.ar</a></p>
+                        <p><a href="mailto:msanchez@tarjetaprimicia.com.ar">msanchez@tarjetaprimicia.com.ar</a></p>    
+                    </div>
+                </div>
+
+                <!-- <div class="sucursal">
+                    <p>Casa Central</p>
+                    <p>Filial Venado</p>
+                    <p>Filial Rufino</p>
+                    <p>Filial Villa Cañas</p>
+                    <p>Filial San Gregorio</p>
+                    <p>Filial Firmat</p>
+                    <p>Filial San Nicolás</p>
+                    <p>Filial Villa Constitución</p>
+                    <p>Filial Villa Ramallo</p>
+                </div>
+                <div class="nombre">
+                    <p>ALÉ Andrea Verónica</p>
+                    <p>BOSSA Gerardo</p>
+                    <p>MERLONGHI Pamela</p>
+                    <p>BURGUES Vanina</p>
+                    <p>BONETTO Héctor</p>
+                    <p>BELMUDEZ Horacio</p>
+                    <p>BARONIO Roberto</p>
+                    <p>MOREYRA Macarena</p>
+                    <p>LUNA Verónica Noemí</p>
+                    <p>LONTOYA María Alejandra</p>
+                    <p>TINNIRELLO Florencia</p>
+                    <p>WOITOVICH Melisa</p>
+                    <p>LOPEZ Juan Pablo</p>
+                    <p>ALTAMIRANO Analía</p>
+                    <p>ETTOMI Marianela</p>
+                    <p>ISOLA Gabriela</p>
+                    <p>DOMINGUEZ Virginia</p>
+                    <p>SANCHEZ Mirta</p>
+                </div>
+                <div class="domicilio">
+                    <p>Mitre 664</p>
+                    <p>Mitre 664</p>
+                    <p>Mitre 664</p>
+                    <p>Mitre 664</p>
+                    <p>España 247</p>
+                    <p>España 247</p>
+                    <p>Av. 50 y calle 57</p>
+                    <p>Av. 50 y calle 57</p>
+                    <p>San Martín 865</p>
+                    <p>San Martín 865</p>
+                    <p>Córdoba 1232</p>
+                    <p>Córdoba 1232</p>
+                    <p>Urquiza 39</p>
+                    <p>Urquiza 39</p>
+                    <p>Entre Ríos 424</p>
+                    <p>Entre Ríos 424</p>
+                    <p>San Martín 234</p>
+                    <p>San Martín 234</p>
+                </div>
+                <div class="telefono">
+                    <p>03462430655</p>
+                    <p>03462430655</p>
+                    <p>03462430655</p>
+                    <p>03462430655</p>
+                    <p>03382420300</p>
+                    <p>03382420300</p>
+                    <p>03462451867</p>
+                    <p>03462451867</p>
+                    <p>03382471031</p>
+                    <p>03382471031</p>
+                    <p>03465424545</p>
+                    <p>03465424545</p>
+                    <p>03364437333</p>
+                    <p>03364437333</p>
+                    <p>03400471500</p>
+                    <p>03400471500</p>
+                    <p>03407480489</p>
+                    <p>03407480489</p>
+                </div>
+                <div class="email">
+                    <p><a href="mailto:aaale@tarjetaprimicia.com.ar">aaale@tarjetaprimicia.com.ar</a></p>
+                    <p><a href="mailto:gbossa@mutualentreasoc.com.ar">gbossa@mutualentreasoc.com.ar</a></p>
+                    <p><a href="mailto:pmerlonghi@mutualentreasoc.com.ar">pmerlonghi@mutualentreasoc.com.ar</a></p>
+                    <p><a href="mailto:vburgues@mutualentreasoc.com.ar">vburgues@mutualentreasoc.com.ar</a></p>
+                    <p><a href="mailto:hbonetto@mutualentreasoc.com.ar">hbonetto@mutualentreasoc.com.ar</a></p>
+                    <p><a href="mailto:hbelmudez@mutualentreasoc.com.ar">hbelmudez@mutualentreasoc.com.ar</a></p>
+                    <p><a href="mailto:rbaronio@mutualentreasoc.com.ar">rbaronio@mutualentreasoc.com.ar</a></p>
+                    <p><a href="mailto:mmoreyra@mutualentreasoc.com.ar">mmoreyra@mutualentreasoc.com.ar</a></p>
+                    <p><a href="mailto:vluna@mutualentreasoc.com.ar">vluna@mutualentreasoc.com.ar</a></p>
+                    <p><a href="mailto:mlontoya@mutualentreasoc.com.ar">mlontoya@mutualentreasoc.com.ar</a></p>
+                    <p><a href="mailto:ftinnirello@tarjetaprimicia.com.ar">ftinnirello@tarjetaprimicia.com.ar</a></p>
+                    <p><a href="mailto:mwoitovich@tarjetaprimicia.com.ar">mwoitovich@tarjetaprimicia.com.ar</a></p>
+                    <p><a href="mailto:jlopez@tarjetaprimicia.com.ar">jlopez@tarjetaprimicia.com.ar</a></p>
+                    <p><a href="mailto:aaltamirano@tarjetaprimicia.com.ar">aaltamirano@tarjetaprimicia.com.ar</a></p>
+                    <p><a href="mailto:mettomi@tarjetaprimicia.com.ar">mettomi@tarjetaprimicia.com.ar</a></p>
+                    <p><a href="mailto:gisola@tarjetaprimicia.com.ar">gisola@tarjetaprimicia.com.ar</a></p>
+                    <p><a href="mailto:vdominguez@tarjetaprimicia.com.ar">vdominguez@tarjetaprimicia.com.ar</a></p>
+                    <p><a href="mailto:msanchez@tarjetaprimicia.com.ar">msanchez@tarjetaprimicia.com.ar</a></p>
+                </div> -->
+            </div>
+
+            <div class="consulta-reclamo-datos" *ngIf="title === 'consulta-reclamo'">
+                <div class="data">
+                    <div class="title">
+                        <p>El Banco Central te sugiere:</p>
+                    </div>
+                    <div class="body">
+                        <ul>
+                            <li>Contactate con Tarjeta Primicia a través de:</li>
+                            <li style="list-style: none; margin-left: -1.5rem;">Sitio web: <span style="text-decoration: underline; font-weight: bold;">www.tarjetaprimicia.com.ar</span></li>
+                            <li style="list-style: none; margin-left: -1.5rem;">Teléfono: <span style="font-weight: bold;">03462 430655</span></li>
+                            <li style="list-style: none; margin-left: -1.5rem;">E-mail: <a href="mailto:casacentral@tarjetaprimicia.com.ar"><span style="text-decoration: underline;">casacentral@tarjetaprimicia.com.ar</span></a></li>
+                            <li>Pedí el número de reclamo para su seguimiento.</li>
+                            <li>¡Recordá! Tarjeta Primicia tiene un máximo de 20 días hábiles para dar respuesta a partir de su recepción.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="data">
+                    <div class="title">
+                        <p style="color: #848484;">Los casos de falta de respuesta de los sujetos obligados o de disconformidad con las resoluciones por ellos adoptadas, podrán ser informados por los usuarios de Servicios Financieros al Banco Central de la República Argentina.
+                            El Banco Central de la República Argentina dispone de un área de Protección al Usuarios de Servicios Financieros que podrá contactar ingresando a: <a href="www.usuariosfinancieros.gob.ar" target="_blank"><span style="text-decoration: underline;">www.usuariosfinancieros.gob.ar</span></a></p>
+                    </div>
+                    <div class="body">
+                        <ul>
+                            <li style="list-style: none; margin-left: -1.5rem;">Contactate con el Banco Central para:</li>
+                            <li>Comparar precios y condiciones de productos.</li>
+                            <li>Conocer tu situación crediticia y acceder a la central de cheques rechazados y denunciarlos.</li>
+                            <li>Consultar información sobre productos y servicios financieros.</li>
+                            <li>Evitar sugerencias y quejas.</li>
+                            <li style="list-style: none; margin-left: -1.5rem;">Conocé más en: <a href="www.usuariosfinancieros.gob.ar" target="_blank"><span style="text-decoration: underline; font-weight: bold;">www.usuariosfinancieros.gob.ar</span></a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="data" *ngFor="let comercio of comercios">

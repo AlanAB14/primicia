@@ -15,6 +15,8 @@ export class ContactoBoxComponent {
   contactoForm: FormGroup = this.fb.group({
     motivo: ['', Validators.required],
     nombre: [''],
+    dni: ['', Validators.required],
+    ciudad: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
     mensaje: ['', Validators.required]
   })
