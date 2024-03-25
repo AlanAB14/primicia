@@ -23,6 +23,9 @@ import { DialogComerciosComponent } from './components/dialog-comercios/dialog-c
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { DenunciaComponent } from './pages/denuncia/denuncia.component';
 import { PromocionesCarouselComponent } from './components/promociones-carousel/promociones-carousel.component';
+import { FechaPipe } from '../pipes/fecha.pipe';
+import { InfoComponent } from './pages/info/info.component';
+import { NumberFormatPipe } from '../pipes/number-format.pipe';
 
 
 @NgModule({
@@ -42,7 +45,8 @@ import { PromocionesCarouselComponent } from './components/promociones-carousel/
     ComerciosShowComponent,
     DialogComerciosComponent,
     DenunciaComponent,
-    PromocionesCarouselComponent
+    PromocionesCarouselComponent,
+    InfoComponent
   ],
   imports: [
     CommonModule,
@@ -52,7 +56,9 @@ import { PromocionesCarouselComponent } from './components/promociones-carousel/
     MaterialModule,
     ReactiveFormsModule,
     RouterModule,
-    CarouselModule
+    FechaPipe,
+    CarouselModule,
+    NumberFormatPipe
   ]
 })
 export class ClientModule { }

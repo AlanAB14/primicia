@@ -1,6 +1,7 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ContactoService } from 'src/app/services/contacto.service';
+import { FilialesService } from 'src/app/services/filiales.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -8,16 +9,32 @@ import Swal from 'sweetalert2';
   templateUrl: './contacto-box.component.html',
   styleUrls: ['./contacto-box.component.scss']
 })
-export class ContactoBoxComponent {
+export class ContactoBoxComponent implements OnInit{
   fb = inject(FormBuilder);
   contactoService = inject(ContactoService);
+  filialesService = inject(FilialesService);
   cargandoData: boolean = false;
+  filiales: any;
   contactoForm: FormGroup = this.fb.group({
     motivo: ['', Validators.required],
     nombre: [''],
+    dni: ['', Validators.required],
+    ciudad: ['', Validators.required],
+    filial: ['',  Validators.required],
     email: ['', [Validators.required, Validators.email]],
     mensaje: ['', Validators.required]
   })
+  
+  ngOnInit(): void {
+    this.getFiliales()
+  }
+
+  getFiliales() {
+    this.filialesService.getFiliales()
+    .subscribe(filiales => {
+      this.filiales = filiales
+    })
+  }
 
   sendData() {
     console.log(this.contactoForm.value)

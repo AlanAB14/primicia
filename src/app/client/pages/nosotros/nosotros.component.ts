@@ -1,13 +1,17 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { TarjetaService } from 'src/app/services/tarjeta.service';
 import Swal from 'sweetalert2';
+import { DialogComerciosComponent } from '../../components/dialog-comercios/dialog-comercios.component';
+import { FilialesService } from 'src/app/services/filiales.service';
 
 @Component({
   templateUrl: './nosotros.component.html',
   styleUrls: ['./nosotros.component.scss']
 })
-export class NosotrosComponent {
+export class NosotrosComponent implements OnInit{
+  filiales: any;
   fb = inject(FormBuilder);
   tarjetaService = inject(TarjetaService);
   cargandoData: boolean = false;
@@ -23,11 +27,25 @@ export class NosotrosComponent {
     mensaje: ['', Validators.required],
   })
 
+  constructor( public dialog: MatDialog,
+               public filialesService: FilialesService ) { }
+
+  ngOnInit(): void {
+    this.getFiliales();
+  }
+
   checkFieldError(campo: string) {
     if (this.tarjetaForm.get(campo)!.invalid && (this.tarjetaForm.get(campo)!.dirty || this.tarjetaForm.get(campo)!.touched)) {
       return true;
     }
     return false;
+  }
+
+  getFiliales() {
+    this.filialesService.getFiliales()
+      .subscribe(filiales => {
+        this.filiales = filiales;
+      })
   }
 
   onInputChange(event: any, input: string) {
@@ -53,6 +71,8 @@ export class NosotrosComponent {
       return
     }
     this.cargandoData = true
+    console.log(this.tarjetaForm.value)
+    return
     this.tarjetaService.createSolicitudTarjeta(this.tarjetaForm.value)
       .subscribe((resp: any) => {
         console.log(resp)
@@ -92,6 +112,16 @@ export class NosotrosComponent {
       } else {
         control.markAsTouched();
       }
+    });
+  }
+
+  openDialog(tipo: string) {
+    const dialogRef = this.dialog.open(DialogComerciosComponent, {
+      data: tipo
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
     });
   }
 }

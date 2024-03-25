@@ -51,6 +51,36 @@
       font-size: 1.875rem;
       font-weight: 600;
 
+      width: 100%;
+
+      &__consulta {
+        @media (max-width: 400px) {
+          p {
+            text-align: center;
+          }
+        }
+      }
+
+      &__info {
+        display: flex;
+        width: 100%;
+
+        .sucursal,
+        .email {
+          width: 23.3%;
+        }
+
+        .nombre {
+          width: 20%;
+        }
+
+        .domicilio,
+        .telefono {
+          width: 19%;
+        }
+
+      }
+
       @media (max-width: 768px) {
         font-size: 1.375rem;
       }
@@ -145,6 +175,132 @@
       justify-content: space-between;
       padding-bottom: 1rem;
 
+      .consulta-reclamo-datos {
+        width: -webkit-fill-available;
+
+        @media (max-width: 325px) {
+          word-wrap: break-word;
+        }
+        .data {
+          &:first-of-type {
+            margin-bottom: 1rem;
+          }
+
+          .title {
+            margin-bottom: 1rem;
+          }
+          .body {
+            ul {
+              margin-left: 1.5rem;
+              li {
+                list-style: disc;
+              }
+            }
+          }
+
+          @media (max-width: 768px) {
+            font-size: .8rem;
+          }
+        }
+      }
+
+      .info-datos {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        margin-right: 3.625rem;
+
+        @media (max-width: 1000px) {
+          flex-direction: row;
+          flex-wrap: wrap;
+        }
+
+        @media (max-width: 768px) {
+          margin-right: 3rem;
+        }
+
+        @media (max-width: 600px) {
+          margin-right: 2.5rem;
+        }
+
+        @media (max-width: 580px) {
+          margin-right: 0rem;
+        }
+
+        .conjunto-datos {
+          display: flex;
+
+
+          &:not(:last-of-type) {
+            margin-bottom: 1.5rem;
+          }
+
+          @media (max-width: 1300px) {
+            font-size: .85rem;
+          }
+          @media (max-width: 1000px) {
+            flex-direction: column;
+            margin-right: .5rem;
+            .sucursal,
+            .nombre,
+            .domicilio,
+            .telefono {
+              margin-bottom: .5rem;
+              width: 100%;
+            }
+          }
+
+          @media (max-width: 580px) {
+            width: -webkit-fill-available;
+            .email {
+              width: 100%;
+              overflow-wrap: break-word;
+            }
+          }
+        }
+
+
+
+        .sucursal,
+        .email {
+          width: 23.3%;
+        }
+
+        .nombre {
+          width: 20%;
+        }
+
+        .domicilio,
+        .telefono {
+          width: 19%;
+        }
+
+        .sucursal {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          p {
+            font-weight: bold;
+            font-size: 1.4rem;
+          }
+        }
+
+        .telefono {
+          p {
+            font-weight: bold;
+          }
+        }
+
+        .email {
+          p {
+            text-decoration: underline;
+            @media (max-width: 1400px) {
+              font-size: .75rem;
+            }
+          }
+        }
+      }
+
       .empresa {
         text-transform: uppercase;
         font-size: 1.125rem;
@@ -187,6 +343,8 @@
       }
 
       .concepto-data {
+        width: 100%;
+
         .text-desc-box {
           margin-top: 2rem;
         }
@@ -427,6 +585,26 @@
       .detalle-importe {
         text-align: center;
       }
+    }
+  }
+}
+
+.principal {
+  display: flex!important;
+  @media (max-width: 1000px) {
+    display: none!important;
+  }
+}
+
+.responsive {
+  display: none!important;
+  @media (max-width: 1000px) {
+    display: block!important;
+  }
+
+  @media (max-width: 400px) {
+    p {
+      text-align: center;
     }
   }
 }

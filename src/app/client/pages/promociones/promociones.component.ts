@@ -28,8 +28,8 @@ export class PromocionesComponent implements OnInit{
       })
   }
 
-  goToComercios(promocion: Promocion) {
-    const url = this.router.serializeUrl(this.router.createUrlTree(['comercios', { c: btoa(JSON.stringify(promocion.id)) }]));
+  goToComercios(promocion: number) {
+    const url = this.router.serializeUrl(this.router.createUrlTree(['comercios', { c: btoa(JSON.stringify(promocion)) }]));
     window.open(`${url}`, '_self');
   }
 }

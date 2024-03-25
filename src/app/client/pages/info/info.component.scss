@@ -1,0 +1,15 @@
+.info {
+  padding: 6rem 0;
+
+  @media (max-width: 1400px) {
+      padding: 3.5rem 0;
+  }
+
+  .box-title-info {
+    margin-bottom: 3.4375rem;
+  }
+
+  .info-box-usuario {
+    margin-bottom: 2.5rem;
+  }
+}

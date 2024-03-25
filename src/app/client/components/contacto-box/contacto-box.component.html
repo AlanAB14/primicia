@@ -32,6 +32,30 @@
                     El campo ingresado no es un email
                 </div>
             </div>
+            <div class="contacto-box-form--input">
+                <label>DNI*</label>
+                <input type="number" class="input-area" [ngClass]="{'error-border': checkFieldError('dni')}" formControlName="dni" placeholder="DNI" [value]="contactoForm.get('dni')!.value | appNumberFormat" />
+                <div class="error-input" *ngIf="checkFieldError('dni')">
+                    Este campo es obligatorio *
+                </div>
+            </div>
+            <div class="contacto-box-form--input">
+                <label>Ciudad*</label>
+                <input type="text" class="input-area" [ngClass]="{'error-border': checkFieldError('ciudad')}" formControlName="ciudad" placeholder="Ciudad" />
+                <div class="error-input" *ngIf="checkFieldError('ciudad')">
+                    Este campo es obligatorio *
+                </div>
+            </div>
+            <div class="contacto-box-form--input">
+                <label>Filial*</label>
+                <select class="input-area" [ngClass]="{'error-border': checkFieldError('filial')}" formControlName="filial">
+                    <option value="" disabled selected>Elegí tu filial</option>
+                    <option *ngFor="let filial of filiales" [value]="filial.localidad">{{ filial.localidad }}</option>
+                </select>
+                <div class="error-input" *ngIf="checkFieldError('filial')">
+                    Este campo es obligatorio *
+                </div>
+            </div>
             <div class="contacto-box-form--input mensaje">
                 <label>Mensaje*</label>
                 <textarea class="input-area" [ngClass]="{'error-border': checkFieldError('mensaje')}" formControlName="mensaje" placeholder="Mensaje"></textarea>
