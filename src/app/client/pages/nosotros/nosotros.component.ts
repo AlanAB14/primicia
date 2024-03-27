@@ -71,8 +71,6 @@ export class NosotrosComponent implements OnInit{
       return
     }
     this.cargandoData = true
-    console.log(this.tarjetaForm.value)
-    return
     this.tarjetaService.createSolicitudTarjeta(this.tarjetaForm.value)
       .subscribe((resp: any) => {
         console.log(resp)
