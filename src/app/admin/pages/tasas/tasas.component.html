@@ -10,6 +10,13 @@
                     <img style="fill: white;" src="assets/icons/edit_material.svg" alt="edit">
                 </button>
             </div>
+            
+            <div class="tasa-item tasa-item-fecha">
+                <p>Fecha de actualizacion: {{ tasasFech | date:'dd/MM/YYYY' }}</p>
+                <button (click)="editTasaFec(tasasFech)" mat-mini-fab color="primary">
+                    <img style="fill: white;" src="assets/icons/edit_material.svg" alt="edit">
+                </button>
+            </div>
         </div>
     </div>
 </div>

@@ -175,6 +175,29 @@
       justify-content: space-between;
       padding-bottom: 1rem;
 
+      .data-image {
+        display: flex;
+        justify-content: space-between;
+        @media (max-width: 768px) {
+          flex-direction: column;
+        }
+        .image-info {
+          width: 45%;
+          @media (max-width: 768px) {
+            width: 100%;
+          }
+          &:first-of-type {
+            @media (max-width: 768px) {
+              margin-bottom: 1rem;
+            }
+          }
+          img {
+            width: -webkit-fill-available;
+            height: auto;
+          }
+        }
+      }
+
       .consulta-reclamo-datos {
         width: -webkit-fill-available;
 

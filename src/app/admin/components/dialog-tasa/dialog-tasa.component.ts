@@ -12,7 +12,7 @@ import { MaterialModule } from 'src/app/material/material.module';
     MaterialModule,
     ReactiveFormsModule
   ],
-  template: `<h2 mat-dialog-title> {{ data ? 'Editar Pregunta' : 'Nueva Pregunta' }} </h2>
+  template: `<h2 mat-dialog-title> {{ data ? 'Editar Tasa' : 'Nueva Tasa' }} </h2>
   <mat-dialog-content>
     <form [formGroup]="tasasForm" class="form-tasas">
 

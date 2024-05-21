@@ -16,9 +16,17 @@ export class TasasService {
   getTasas(): Observable<Tasa[]>{
     return this.http.get<Tasa[]>(`${ this._url }/tasas`)
   }
+  
+  getTasasFecha() {
+    return this.http.get(`${ this._url }/tasasFecha`)
+  }
 
   updateTasa(tasa: Tasa, id: number) {
     return this.http.patch(`${ this._url }/tasas/${ id }`, tasa)
+  }
+
+  updateTasaFecha(fecha_actualizacion: any) {
+    return this.http.patch(`${ this._url }/tasasFecha`, fecha_actualizacion)
   }
 
 }

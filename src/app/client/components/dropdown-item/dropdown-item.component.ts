@@ -10,7 +10,7 @@ import { Tasa } from 'src/app/interfaces/tasas.interface';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DropdownItemComponent implements OnInit{
-
+  hidePlusBtn: boolean = false;
   closed: boolean = true;
   urlPlus: string = 'assets/imgs/plus-icon.png'
   urlMinus: string = 'assets/imgs/minus-icon.png'
@@ -25,9 +25,15 @@ export class DropdownItemComponent implements OnInit{
   @Input() concepto: boolean = false;
   @Input() promocionValida!: any;
   @Input() tasas!: Tasa[];
+  @Input() tasasFecha!: string;
   @Input() comisiones!: Comision[];
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    if (this.title === 'Tasas' || this.title === 'Comisiones y cargos' || this.title === 'info-usuario' || this.title === 'consulta-reclamo') {
+      this.hidePlusBtn = true;
+      this.closed = false;
+    }
+  }
 
   completarConCero(numero: number) {
     return numero.toString().padStart(2, '0');
