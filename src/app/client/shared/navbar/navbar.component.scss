@@ -27,7 +27,14 @@
             align-items: center;
             list-style-type: none;
 
-            li {
+            img {
+                width: 2rem;
+                @media (max-width: 1200px) {
+                    width: 1.7rem;
+                }
+            }
+            
+            li, img {
                 margin-right: 2.5rem;
 
                 @media (max-width: 1200px) {
@@ -150,9 +157,16 @@
 
 }
 
-.btn-home-responsive {
+.cart-icon {
     margin-left: auto;
+    img {
+        width: 2rem;
+    }
+}
+
+.btn-home-responsive {
     cursor: pointer;
+    margin-left: 1rem;
     background-color: white;
     color: #031A44;
     text-align: center;
