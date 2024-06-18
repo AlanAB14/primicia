@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import * as moment from 'moment';
 import { MaterialModule } from 'src/app/material/material.module';
@@ -12,6 +13,7 @@ import { MaterialModule } from 'src/app/material/material.module';
     CommonModule,
     MaterialModule,
     ReactiveFormsModule,
+    MatCheckboxModule
   ],
   template: `<h2 mat-dialog-title> {{ data && data.filial ? 'Editar Promoción' : 'Nueva Promoción' }} </h2>
   <mat-dialog-content>
@@ -53,6 +55,9 @@ import { MaterialModule } from 'src/app/material/material.module';
       <img class="service-image" [src]="promocionForm.value.image ? ('data:image/png;base64,' + promocionForm.value.image) : ''">
     </div>
 
+    <div class="check">
+      <mat-checkbox color="primary" formControlName="tieneContador" class="example-margin">Tiene Contador</mat-checkbox>
+    </div>
 
     </form>
   </mat-dialog-content>
@@ -78,6 +83,7 @@ export class DialogPromocionComponent {
     promocion: [this.data && this.data.promocion ? this.data.promocion.promocion : '', Validators.required],
     texto: [this.data && this.data.promocion ? this.data.promocion.texto : ''],
     image: [this.data && this.data.promocion && this.data.promocion.image ? this.data.promocion.image : ''],
+    tieneContador: [this.data ? this.data.promocion.tieneContador : true],
   })
 
 
@@ -88,7 +94,7 @@ export class DialogPromocionComponent {
   ) { }
 
   ngOnInit(): void {
-    console.log(this.data)
+    console.log('Data', this.data.promocion)
   }
 
   guardarPromocion() {

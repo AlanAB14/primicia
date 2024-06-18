@@ -17,3 +17,13 @@
   width: 8rem;
   margin-left: 2rem;
 }
+
+::ng-deep .mdc-form-field {
+  label {
+    margin-bottom: 0 !important;
+  }
+}
+
+.check {
+  margin-top: 1.2rem;
+}

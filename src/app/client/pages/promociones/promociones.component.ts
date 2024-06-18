@@ -9,7 +9,7 @@ import { PromocionService } from 'src/app/services/promocion.service';
 })
 export class PromocionesComponent implements OnInit{
   cargandoData: boolean = false;
-  promociones!: Promocion[];
+  promociones: Promocion[] = [];
   promocionService = inject(PromocionService);
   router = inject(Router)
   ngOnInit(): void {
@@ -18,14 +18,24 @@ export class PromocionesComponent implements OnInit{
 
   getPromociones() {
     this.cargandoData = true;
+    this.promociones = [];
     this.promocionService.getPromociones()
       .subscribe(promociones => {
-        this.promociones = promociones
+        console.log(promociones)
+        this.asignaPromocionesConContador(promociones)
         this.cargandoData = false
       }, (error) => {
         console.log(error);
         this.cargandoData = false;
       })
+  }
+
+  asignaPromocionesConContador(promociones: any) {
+    promociones.forEach((promocion: any) => {
+      if (promocion.tieneContador) {
+        this.promociones.push(promocion)
+      }
+    });
   }
 
   goToComercios(promocion: number) {

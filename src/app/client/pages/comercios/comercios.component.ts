@@ -31,7 +31,7 @@ export class ComerciosComponent {
   filiales!: any[];
   filialesEncontradas!: Filial[];
   comercios!: Comercio[];
-  promociones!: Promocion[];
+  promociones: Promocion[] = [];
   categorias!: any[];
   formSearch: FormGroup = this.fb.group({
     localidad: [''],
@@ -112,12 +112,20 @@ export class ComerciosComponent {
   getPromocionesServicio() {
     return this.promocionService.getPromociones()
       .pipe(
-        tap(promociones => this.promociones = promociones),
+        tap(promociones => this.seteoPromociones(promociones)),
         catchError(error => {
           console.log(error);
           return [];
         })
       );
+  }
+
+  seteoPromociones(promociones: any) {
+    promociones.forEach((promocion: any) => {
+      if (promocion.tieneContador) {
+        this.promociones.push(promocion)
+      }
+    });
   }
 
   getFiliales() {
@@ -149,7 +157,7 @@ export class ComerciosComponent {
     this.cargandoData = true;
     this.promocionService.getPromociones()
       .subscribe(promociones => {
-        this.promociones = promociones;
+        this.seteoPromociones(promociones)
         this.cargandoData = false;
       }, (error) => {
         console.log(error);
