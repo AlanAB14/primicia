@@ -52,7 +52,8 @@
                     </p>
                 </div>
                 <div class="intro-button">
-                    <button><a [routerLink]="'nosotros'" [fragment]="'pedirTarjeta'"><strong>¡Pedila</strong> ahora!</a></button>
+                    <button *ngIf="promocion.promocion === 'SORTEO 2 viajes a Temaiken'"><a (click)="openDocument()"><strong>Ver</strong> bases y condiciones</a></button>
+                    <button *ngIf="promocion.promocion !== 'SORTEO 2 viajes a Temaiken'"><a [routerLink]="'nosotros'" [fragment]="'pedirTarjeta'"><strong>¡Pedila</strong> ahora!</a></button>
                 </div>
             </div>
             <div class="intro-section-image">

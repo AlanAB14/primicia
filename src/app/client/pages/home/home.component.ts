@@ -23,8 +23,8 @@ export class HomeComponent {
     this.cargandoData = true;
     this.promocionService.getPromocionesConImagen()
       .subscribe(promociones => {
-        console.log(promociones[0])
         this.promociones = promociones
+        console.log(promociones)
         this.cargandoData = false;
       },
         (error) => {
@@ -59,6 +59,11 @@ export class HomeComponent {
         items: 1,
       }
     },
+  }
+
+  openDocument() {
+    const url = 'assets/data/sorteo-bases.pdf';
+    window.open(url, '_blank');
   }
   
 
