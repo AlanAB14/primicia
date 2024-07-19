@@ -94,7 +94,9 @@ export class DialogPromocionComponent {
   ) { }
 
   ngOnInit(): void {
-    console.log('Data', this.data.promocion)
+    if (this.data) {
+      console.log('Data', this.data.promocion)
+    }
   }
 
   guardarPromocion() {

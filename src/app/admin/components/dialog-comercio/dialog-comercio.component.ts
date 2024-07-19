@@ -41,8 +41,8 @@ import { MaterialModule } from 'src/app/material/material.module';
       </mat-form-field>
 
       <mat-form-field>
-        <mat-label>Promoción</mat-label>
-        <mat-select formControlName="promocionId">
+        <mat-label>Promociónes</mat-label>
+        <mat-select formControlName="promocionesId" multiple (selectionChange)="onSelectionChange($event)">
             <mat-option [value]="0"></mat-option>
             <mat-option *ngFor="let promocion of data.promociones" [value]="promocion.id">{{promocion.promocion}}</mat-option>
         </mat-select>
@@ -66,7 +66,7 @@ export class DialogComercioComponent implements OnInit {
     categoriaId: [ this.data.comercio ? this.data.comercio.categoriaId : '', Validators.required],
     direccion: [ this.data.comercio ? this.data.comercio.direccion : '', Validators.required],
     filialId: [ this.data.comercio ? this.data.comercio.filialId : '', Validators.required],
-    promocionId: [ (this.data.comercio && this.data.comercio.promocionId ) ? this.data.comercio.promocionId : null]
+    promocionesId: [ (this.data.comercio && this.data.comercio.promocionesId ) ? JSON.parse(this.data.comercio.promocionesId) : null]
   })
 
   constructor(
@@ -78,12 +78,21 @@ export class DialogComercioComponent implements OnInit {
     console.log(this.data)
   }
 
+  onSelectionChange(event: any) {
+    const selectedValues = event.value;
+    if (selectedValues.includes(0)) {
+      this.comercioForm.get('promocionesId')?.setValue(null);
+    }
+  }
+
   guardarComercio() {
     if (!this.comercioForm.valid) {
       console.log('No es válido');
       this.comercioForm.markAllAsTouched();
       return
     }
+
+    console.log(this.comercioForm.value)
     this.dialogRef.close(this.comercioForm.value)
   }
 

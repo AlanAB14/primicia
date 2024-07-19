@@ -272,6 +272,7 @@ export class ComerciosComponent {
     }
 
 
+
     let obj = {
       localidad: '',
       categoria: '',
@@ -282,7 +283,11 @@ export class ComerciosComponent {
     obj.categoria = this.formSearch.value.categoria;
     obj.promocion = this.formSearch.value.promocion;
 
-    console.log(obj)
+    if (obj.localidad.length === 0) {
+      this.buscadoPorSearch = true;
+      this.comerciosPorSearch = [];
+      return
+    }
 
 
     this.cargandoData = true;

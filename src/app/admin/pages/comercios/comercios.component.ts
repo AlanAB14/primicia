@@ -185,9 +185,18 @@ export class ComerciosComponent implements OnInit, AfterViewInit {
     const filial = this.filiales.find(filial => filial.id === id)
     return filial?.localidad
   }
+  
+  retornaPromocionNombre(promocionesId: any): string {
+    const promocionesIdArray = JSON.parse(promocionesId)
+    if (!promocionesIdArray) {
+      return '';
+    }
 
-  retornaPromocionNombre(id: number) {
-    const promocion = this.promociones.find(promocion => promocion.id === id)
-    return promocion!.promocion
+    const promocionesNombres = promocionesIdArray.map((id: any) => {
+      const promocion = this.promociones.find((p: any) => p.id === id);
+      return promocion ? promocion.promocion : '';
+    });
+
+    return promocionesNombres.filter((name: any) => name !== '').join(', ');
   }
 }
