@@ -96,8 +96,8 @@
                 <div class="select-box" *ngIf="promociones">
                     <select name="promocion" formControlName="promocion" id="">
                         <option disabled selected value="">Promoción</option>
-                        <option value="Todas">Todas</option>
-                        <option value="no">No</option>
+                        <option value="Todas">Todos</option>
+                        <!-- <option value="no">No</option> -->
                         <option *ngFor="let promocion of promociones" [value]="promocion.id">{{ promocion.texto }}</option>
                     </select>
                 </div>
