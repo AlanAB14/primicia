@@ -54,6 +54,9 @@
                             <div class="title-item-header">{{ tasa.tasaTitulo }}</div>
                             <div class="title-item-sub">{{ tasa.tasaDescripcion }}</div>
                         </div>
+                        <div class="costo-financiero" *ngFor="let costo of costoFinanciero">
+                            <div class="costo-financiero-item">COSTO FINANCIERO TOTAL {{ reemplazaPuntoPorComa(costo.percentage) }}%</div>
+                        </div>
                     </div>
                     <div class="numbers">
                         <div class="number-item" *ngFor="let tasa of tasas">
@@ -408,6 +411,9 @@
                         </div>
                         <div class="image-info">
                             <img src="assets/imgs/info/legales-primicia-2.jpg" alt="legales">
+                        </div>
+                        <div class="image-info">
+                            <img src="assets/imgs/info/legales-primicia-3.png" alt="legales">
                         </div>
                     </div>
                 </div>

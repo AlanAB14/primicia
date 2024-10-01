@@ -53,6 +53,11 @@ export class SideBarComponent {
       icon: 'fa fa-percent'
     },
     {
+      texto: 'Costo Financiero',
+      ruta: 'costo-financiero',
+      icon: 'fa fa-percent'
+    },
+    {
       texto: 'Usuarios',
       ruta: 'usuarios',
       icon: 'fa fa-user'
