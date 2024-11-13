@@ -15,13 +15,13 @@
                 <div class="filiales-content-box">
                     <div class="filiales-content-box-header">
                         <div class="title">{{ filial.localidad }}</div>
-                        <div class="subtitle">Mutual Entre Asociados 
+                        <div class="subtitle">Mutual Entre Asociados
                             de Cooperación Mutual Patronal</div>
                     </div>
                     <hr>
                     <div class="filiales-content-box-body">
                         <ul>
-                            <li>{{ filial.direccion + ' - ' ?? '' }}{{ filial.telefono ?? '' }}</li>
+                            <li>{{ (filial.direccion && filial.direccion !== '-') ? (filial.direccion + ' - ') : '' }}{{ filial.telefono ?? '' }}</li>
                             <li>{{ filial.email.toLowerCase() ?? '' }}</li>
                         </ul>
                     </div>
@@ -42,7 +42,7 @@
                 <hr>
                 <div class="filiales-content-box-body">
                     <ul>
-                        <li>{{ filial.direccion + ' - ' ?? '' }}{{ filial.telefono ?? '' }}</li>
+                        <li>{{ (filial.direccion && filial.direccion !== '-') ? (filial.direccion + ' - ') : '' }}{{ filial.telefono ?? '' }}</li>
                         <li>{{ filial.email.toLowerCase() ?? '' }}</li>
                     </ul>
                 </div>
