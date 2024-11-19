@@ -28,6 +28,11 @@ export class SideBarComponent {
       icon: 'fa fa-dollar'
     },
     {
+      texto: 'Promociones Especiales',
+      ruta: 'promociones-especiales',
+      icon: 'fa fa-dollar'
+    },
+    {
       texto: 'Solicitudes de Tarjeta',
       ruta: 'tarjeta',
       icon: 'fa fa-credit-card'

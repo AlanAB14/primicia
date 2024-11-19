@@ -1,0 +1,28 @@
+<div class="admin-panel-section">
+  <div class="admin-panel-section--title">
+      Promociones Especiales
+  </div>
+  <div class="check-function" *ngIf="funcionPromocionesEspeciales">
+    <button mat-raised-button (click)="showModal()">{{funcionPromocionesEspeciales.activated ? 'Ocultar promociones especiales' : 'Mostrar promociones especiales'}}</button>
+  </div>
+
+  <div class="admin-panel-section--body">
+      <button mat-raised-button (click)="addPromocion()" color="primary">Agregar Promoción +</button>
+      <div class="promociones" *ngIf="promociones">
+          <div class="promocion-item" *ngFor="let promocion of promociones">
+              <p>{{ promocion.promocion }}</p>
+              <button (click)="editPromocion(promocion)" mat-mini-fab color="primary">
+                  <img style="fill: white;" src="assets/icons/edit_material.svg" alt="edit">
+              </button>
+              <button (click)="deletePromocion(promocion.id)" mat-mini-fab color="primary">
+                  <img style="fill: white;" src="assets/icons/delete_material.svg" alt="edit">
+              </button>
+          </div>
+      </div>
+  </div>
+
+</div>
+
+<div class="loader-primicia-box" *ngIf="cargandoData">
+  <span class="loader-primicia"></span>
+</div>
