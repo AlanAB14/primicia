@@ -12,8 +12,8 @@
     .comercios-adheridos-btn {
         display: flex;
         justify-content: center;
-    
-    
+
+
         button {
             border-radius: .875rem;
             background-color: var(--blue);
@@ -21,7 +21,7 @@
             outline: none;
             border: none;
             color: #FFF;
-    
+
             text-align: center;
             font-family: Space Grotesk;
             font-size: 1.25rem;
@@ -30,4 +30,10 @@
             cursor: pointer;
         }
     }
+}
+
+.promociones-especiales {
+  button {
+    background-color: #5da5c2!important;
+  }
 }

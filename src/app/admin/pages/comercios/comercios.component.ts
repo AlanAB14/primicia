@@ -13,6 +13,8 @@ import { FilialesService } from 'src/app/services/filiales.service';
 import { PromocionService } from 'src/app/services/promocion.service';
 import { DialogComercioComponent } from '../../components/dialog-comercio/dialog-comercio.component';
 import Swal from 'sweetalert2';
+import { lastValueFrom } from 'rxjs';
+import { PromocionEspecialService } from 'src/app/services/promocionEspecial.service';
 
 @Component({
   selector: 'app-comercios',
@@ -25,10 +27,12 @@ export class ComerciosComponent implements OnInit, AfterViewInit {
   categoriasService = inject(CategoriasService)
   filialService = inject(FilialesService)
   promocionService = inject(PromocionService)
+  promocionEspecialService = inject(PromocionEspecialService)
   categorias!: Categoria[];
   filiales!: Filial[];
   promociones!: Promocion[];
-  displayedColumns: string[] = ['nombre', 'categoriaId', 'direccion', 'filialId', 'promocionId', 'acciones'];
+  promocionesEspeciales!: Promocion[];
+  displayedColumns: string[] = ['nombre', 'categoriaId', 'direccion', 'filialId', 'promocionId', 'promocionesEspecialesId', 'acciones'];
   dataSource!: MatTableDataSource<Comercio>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -36,11 +40,34 @@ export class ComerciosComponent implements OnInit, AfterViewInit {
 
   constructor(public dialog: MatDialog) {}
 
-  ngOnInit(): void {
-    this.getCategorias();
-    this.getFiliales();
-    this.getPromociones();
-    this.getComercios();
+  async ngOnInit(): Promise<void> {
+    try {
+      this.cargandoData = true;
+
+      const categorias = await lastValueFrom(this.categoriasService.getCategorias());
+      this.categorias = categorias;
+
+      const filiales = await lastValueFrom(this.filialService.getFiliales());
+      this.filiales = filiales;
+
+      const promociones = await lastValueFrom(this.promocionService.getPromociones());
+      this.promociones = promociones;
+
+      const promocionesEspeciales = await lastValueFrom(this.promocionEspecialService.getPromociones());
+      this.promocionesEspeciales = promocionesEspeciales;
+
+      const comercios = await lastValueFrom(this.comerciosService.getComercios());
+
+      this.dataSource = new MatTableDataSource(comercios);
+      if (this.paginator) this.dataSource.paginator = this.paginator;
+      if (this.sort) this.dataSource.sort = this.sort;
+
+    } catch (error) {
+      console.error('Error cargando datos', error);
+      Swal.fire('Error', 'Ocurrió un error al cargar los datos', 'error');
+    } finally {
+      this.cargandoData = false;
+    }
   }
 
   ngAfterViewInit() {
@@ -105,6 +132,17 @@ export class ComerciosComponent implements OnInit, AfterViewInit {
     this.cargandoData = false;
   }
 
+  getPromocionesEspeciales() {
+    this.cargandoData = true
+    this.promocionEspecialService.getPromociones()
+      .subscribe((promociones: Promocion[]) => {
+        this.promocionesEspeciales = promociones
+      }, (error) => {
+        console.log(error)
+      })
+    this.cargandoData = false;
+  }
+
   addComercio() {
     const dialogRef = this.dialog.open(DialogComercioComponent, {
       data: { categorias: this.categorias, filiales: this.filiales, promociones: this.promociones }
@@ -117,7 +155,7 @@ export class ComerciosComponent implements OnInit, AfterViewInit {
       }
     });
   }
-  
+
   agregarComercio(comercio: Comercio) {
     this.comerciosService.addComercio(comercio)
     .subscribe(resp => {
@@ -132,7 +170,7 @@ export class ComerciosComponent implements OnInit, AfterViewInit {
 
   editComercio(comercio: Comercio) {
     const dialogRef = this.dialog.open(DialogComercioComponent, {
-      data: { categorias: this.categorias, filiales: this.filiales, promociones: this.promociones, comercio }
+      data: { categorias: this.categorias, filiales: this.filiales, promociones: this.promociones, promocionesEspeciales: this.promocionesEspeciales, comercio }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -186,8 +224,31 @@ export class ComerciosComponent implements OnInit, AfterViewInit {
     return filial?.localidad
   }
 
-  retornaPromocionNombre(id: number) {
-    const promocion = this.promociones.find(promocion => promocion.id === id)
-    return promocion!.promocion
+  retornaPromocionNombre(promocionesId: any): string {
+    const promocionesIdArray = JSON.parse(promocionesId)
+    if (!promocionesIdArray) {
+      return '';
+    }
+
+    const promocionesNombres = promocionesIdArray.map((id: any) => {
+      const promocion = this.promociones.find((p: any) => p.id === id);
+      return promocion ? promocion.promocion : '';
+    });
+
+    return promocionesNombres.filter((name: any) => name !== '').join(', ');
+  }
+
+  retornaPromocionEspecialNombre(promocionesId: any): string {
+    const promocionesIdArray = JSON.parse(promocionesId)
+    if (!promocionesIdArray) {
+      return '';
+    }
+
+    const promocionesNombres = promocionesIdArray.map((id: any) => {
+      const promocion = this.promocionesEspeciales.find((p: any) => p.id === id);
+      return promocion ? promocion.promocion : '';
+    });
+
+    return promocionesNombres.filter((name: any) => name !== '').join(', ');
   }
 }

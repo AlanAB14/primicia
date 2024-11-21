@@ -45,12 +45,12 @@ import { MaterialModule } from 'src/app/material/material.module';
     </mat-form-field>
 
 
-    <input type="file" 
+    <input type="file"
            #f_input_image
            accept="image/png, image/gif, image/jpeg"
            hidden
            (change)="uploadFile($event)">
-    <div class="media-box">
+    <div class="media-box" [ngClass]="{'hide-item': isSpecial}">
       <button class="btn-media" mat-raised-button (click)="f_input_image.click()">Cambiar Image</button>
       <img class="service-image" [src]="promocionForm.value.image ? ('data:image/png;base64,' + promocionForm.value.image) : ''">
     </div>
@@ -75,6 +75,8 @@ export class DialogPromocionComponent {
   minDateFin!: Date;
   fechaPrimerDia = new Date();
 
+  isSpecial: boolean = false;
+
 
   promocionForm: FormGroup = this.fb.group({
     fechaInicio: [this.data && this.data.promocion ? moment(this.data.promocion.fechaInicio).toDate() : '', Validators.required],
@@ -83,7 +85,7 @@ export class DialogPromocionComponent {
     promocion: [this.data && this.data.promocion ? this.data.promocion.promocion : '', Validators.required],
     texto: [this.data && this.data.promocion ? this.data.promocion.texto : ''],
     image: [this.data && this.data.promocion && this.data.promocion.image ? this.data.promocion.image : ''],
-    tieneContador: [this.data ? this.data.promocion.tieneContador : true],
+    tieneContador: [this.data && this.data.promocion ? this.data.promocion.tieneContador : true],
   })
 
 
@@ -94,7 +96,12 @@ export class DialogPromocionComponent {
   ) { }
 
   ngOnInit(): void {
-    console.log('Data', this.data.promocion)
+    if (this.data) {
+      console.log('Data', this.data.promocion)
+      if (this.data.isSpecial) {
+        this.isSpecial = this.data.isSpecial;
+      }
+    }
   }
 
   guardarPromocion() {

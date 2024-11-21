@@ -96,9 +96,17 @@
                 <div class="select-box" *ngIf="promociones">
                     <select name="promocion" formControlName="promocion" id="">
                         <option disabled selected value="">Promoción</option>
-                        <option value="Todas">Todas</option>
-                        <option value="no">No</option>
+                        <option value="Todas">Todos</option>
+                        <!-- <option value="no">No</option> -->
                         <option *ngFor="let promocion of promociones" [value]="promocion.id">{{ promocion.texto }}</option>
+                    </select>
+                </div>
+                <div class="select-box" *ngIf="showPromocionesEspeciales && promocionesEspeciales.length > 0">
+                    <select name="promocion" formControlName="promocionEspecial" id="">
+                        <option disabled selected value="">Promoción Especial</option>
+                        <option value="Todas">Todos</option>
+                        <!-- <option value="no">No</option> -->
+                        <option *ngFor="let promocion of promocionesEspeciales" [value]="promocion.id">{{ promocion.texto }}</option>
                     </select>
                 </div>
             </div>
@@ -152,7 +160,7 @@
                                                        [title]="categoria.categoria"
                                                        [comercios]="getComerciosDeCategoriaTraidaPorFilial(comerciosPorSearch, categoria, filial)">
                                     </app-dropdown-item>
-                                </div>    
+                                </div>
                         </div>
                     </div>
                 </div>

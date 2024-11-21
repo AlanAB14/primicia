@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { Comercio } from 'src/app/interfaces/comercios.interface';
 import { Comision } from 'src/app/interfaces/comision.interface';
+import { CostoFinanciero } from 'src/app/interfaces/costoFinanciero.interface';
 import { Tasa } from 'src/app/interfaces/tasas.interface';
 
 @Component({
@@ -25,6 +26,7 @@ export class DropdownItemComponent implements OnInit{
   @Input() concepto: boolean = false;
   @Input() promocionValida!: any;
   @Input() tasas!: Tasa[];
+  @Input() costoFinanciero!: CostoFinanciero[];
   @Input() tasasFecha!: string;
   @Input() comisiones!: Comision[];
 

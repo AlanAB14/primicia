@@ -1,14 +1,28 @@
 <div *ngIf="promociones" class="animate__animated animate__fadeIn">
     <div class="promociones" *ngFor="let promocion of promociones">
         <div class="box-promocion">
-            <app-promocion-box [promocion]="promocion"></app-promocion-box>
+            <app-promocion-box [promocion]="promocion" [isSpecial]="false"></app-promocion-box>
         </div>
         <div class="box-button">
             <div class="comercios-adheridos-btn">
                 <button (click)="goToComercios(promocion.id)"><strong>Comercios</strong> Adheridos</button>
             </div>
-        
+
         </div>
+    </div>
+
+    <div *ngIf="showPromocionesEspeciales && promocionesEspeciales.length > 0">
+      <div class="promociones promociones-especiales" *ngFor="let promocion of promocionesEspeciales">
+          <div class="box-promocion">
+              <app-promocion-box [promocion]="promocion" [isSpecial]="true"></app-promocion-box>
+          </div>
+          <div class="box-button">
+              <div class="comercios-adheridos-btn">
+                  <button (click)="goToComerciosEspeciales(promocion.id)"><strong>Comercios</strong> Adheridos</button>
+              </div>
+
+          </div>
+      </div>
     </div>
 
 </div>

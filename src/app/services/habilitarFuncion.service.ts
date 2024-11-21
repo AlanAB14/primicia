@@ -10,8 +10,13 @@ import { Observable } from 'rxjs';
 export class HabilitarFuncionService {
 
   private _url = environment.apiBase
+  funciones: Funcion[] = [];
 
   constructor(private http: HttpClient) { }
+
+  setFunciones(funciones: Funcion[]) {
+    this.funciones = funciones;
+  }
 
   getHabilitarFunciones():  Observable<Funcion[]>{
     return this.http.get<Funcion[]>(`${ this._url }/habilitarFuncion`)

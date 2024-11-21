@@ -25,4 +25,27 @@ export class ContactoComponent implements OnInit {
         this.cargandoData = false;
       })
   }
+
+  getSubtitle(localidad: string) {
+    switch (localidad) {
+      case 'Alcorta':
+        return 'Alcorta Bochas Club Mutual, Social y Deportivo'
+      case 'Carmen':
+        return 'Asociación Mutual entre socios del Club Atlético Sportman'
+      case 'Elortondo':
+        return 'Club Atlético Peñarol Mutual Social y Biblioteca'
+      case 'María Teresa':
+        return 'Asociación Mutual del Club Belgrano'
+      case 'Melincué':
+        return 'Club Atlético Peñarol Mutual Social y Biblioteca'
+      case 'Sancti Spíritu':
+        return 'Mutual de Socios Belgrano Football Club'
+      case 'Santa Isabel':
+        return 'Asociación Mutual del Club Belgrano'
+      case 'Teodelina':
+        return 'Asociación Mutual entre Socios de Racing Club de Teodelina'
+      default:
+        return 'Mutual Entre Asociados de Cooperación Mutual Patronal';
+    }
+  }
 }

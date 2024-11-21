@@ -11,6 +11,7 @@ import { PreguntasComponent } from './pages/preguntas/preguntas.component';
 import { TasasComponent } from './pages/tasas/tasas.component';
 import { UsuariosComponent } from './pages/usuarios/usuarios.component';
 import { ComisionesComponent } from './pages/comisiones/comisiones.component';
+import { CostoFinancieroComponent } from './pages/costo-financiero/costo-financiero.component';
 import { PromocionesEspecialesComponent } from './pages/promociones-especiales/promociones-especiales.component';
 
 
@@ -58,6 +59,10 @@ const routes: Routes = [
   {
     path: 'comisiones',
     component: ComisionesComponent
+  },
+  {
+    path: 'costo-financiero',
+    component: CostoFinancieroComponent
   },
   {
     path: 'usuarios',

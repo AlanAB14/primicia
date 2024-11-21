@@ -28,10 +28,13 @@
                 border: 1px solid #191A23;
                 background: #FFF;
                 box-shadow: 0px 5px 0px 0px #191A23;
+                display: flex;
+                flex-direction: column;
 
                 &-header {
                     display: flex;
                     flex-direction: column;
+                    margin-bottom: auto;
 
                     .title {
                         font-size: 1.25rem;

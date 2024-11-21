@@ -17,6 +17,7 @@ export class PromocionesEspecialesComponent {
   cargandoData: boolean = false;
   promociones!: Promocion[];
   funcionPromocionesEspeciales!: Funcion;
+  isSpecial: boolean = true;
   promocionEspecialService = inject(PromocionEspecialService);
   habilitarFuncionService = inject(HabilitarFuncionService);
   cdrService = inject(ChangeDetectorRef);
@@ -32,7 +33,6 @@ export class PromocionesEspecialesComponent {
     this.habilitarFuncionService.getHabilitarFuncion(1)
       .subscribe(funcion => {
         this.funcionPromocionesEspeciales = funcion;
-        console.log(this.funcionPromocionesEspeciales)
         this.cargandoData = false;
         this.cdrService.detectChanges();
       }, (error) => {
@@ -56,7 +56,8 @@ export class PromocionesEspecialesComponent {
   }
 
   addPromocion() {
-    const dialogRef = this.dialog.open(DialogPromocionComponent);
+    const isSpecial = this.isSpecial;
+    const dialogRef = this.dialog.open(DialogPromocionComponent, {data: {isSpecial}});
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(result);
@@ -103,8 +104,9 @@ export class PromocionesEspecialesComponent {
   }
 
   editPromocion(promocion: Promocion) {
+    const isSpecial = this.isSpecial;
     const dialogRef = this.dialog.open(DialogPromocionComponent, {
-      data: { promocion }
+      data: { promocion, isSpecial }
     });
 
     dialogRef.afterClosed().subscribe(result => {

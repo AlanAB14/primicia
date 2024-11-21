@@ -8,6 +8,8 @@ import { Promocion } from 'src/app/interfaces/promocion.interface';
 })
 export class PromocionBoxComponent implements OnInit {
   @Input() promocion!: Promocion;
+  @Input() isSpecial: boolean = false;
+
   linkImage: string = `assets/imgs/descuento/descuento-${1}.png`;
   timer: any;
   days: number | null = null;
@@ -52,7 +54,7 @@ export class PromocionBoxComponent implements OnInit {
 
   existenDias() {
     if (this.days !== null && this.hours !== null && this.minutes !== null && this.seconds !== null) {
-      return true     
+      return true
     }else {
       return false
     }
@@ -63,6 +65,14 @@ export class PromocionBoxComponent implements OnInit {
       return true
     }else {
       return false
+    }
+  }
+
+  getImageLink() {
+    if (this.isSpecial) {
+      return `assets/imgs/girl-comercios.png`
+    } else {
+      return `assets/imgs/descuento/descuento-${1}.png`
     }
   }
 }

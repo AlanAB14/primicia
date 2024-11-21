@@ -1,5 +1,5 @@
-<div class="box-title">
-    <p class="title-section">Promociones</p>
+<div class="box-title" [ngClass]="{'promocion-especial-title': isSpecial}">
+    <p class="title-section">{{isSpecial ? 'Promoción Especial' : 'Promoción'}}</p>
     <p class="subtitle-section comercios-subtitle">{{ promocion.texto }}</p>
 </div>
 
@@ -7,7 +7,7 @@
     <div class="promocion-spinner" *ngIf="!existenDias()">
         <mat-spinner />
     </div>
-    <div class="promocion-box" *ngIf="existenDias()">
+    <div class="promocion-box" [ngClass]="{'promocion-especial-box': isSpecial}" *ngIf="existenDias()">
         <div class="promocion-box-timer">
             <div class="promocion-box-timer-title">
                 <p class="timer-title">{{ promocion.diasPromocion }} <strong>{{ promocion.promocion }}</strong></p>
@@ -32,7 +32,7 @@
             </div>
         </div>
         <div class="promocion-box-image">
-            <img [src]="linkImage" alt="promocion-img">
+            <img [src]="getImageLink()" alt="promocion-img">
         </div>
     </div>
 </div>

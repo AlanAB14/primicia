@@ -10,7 +10,9 @@ import { Promocion } from 'src/app/interfaces/promocion.interface';
 import { CategoriasService } from 'src/app/services/categorias.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { catchError, forkJoin, tap } from 'rxjs';
+import { catchError, forkJoin, lastValueFrom, tap } from 'rxjs';
+import { PromocionEspecialService } from 'src/app/services/promocionEspecial.service';
+import { HabilitarFuncionService } from 'src/app/services/habilitarFuncion.service';
 
 @Component({
   templateUrl: './comercios.component.html',
@@ -25,6 +27,7 @@ export class ComerciosComponent {
   filialIdSeleccionada!: number;
   buscadoPorSearch: boolean = false;
   fromPromociones: boolean = false;
+  showPromocionesEspeciales!: boolean;
   comerciosData: ComercioData[] = [];
   comerciosDataSearch: ComercioData[] = [];
   comerciosPorSearch = [];
@@ -32,45 +35,76 @@ export class ComerciosComponent {
   filialesEncontradas!: Filial[];
   comercios!: Comercio[];
   promociones: Promocion[] = [];
+  promocionesEspeciales: Promocion[] = [];
   categorias!: any[];
   formSearch: FormGroup = this.fb.group({
     localidad: [''],
     categoria: [''],
-    promocion: ['']
+    promocion: [''],
+    promocionEspecial: ['']
   })
   private comerciosService = inject(ComerciosService);
   private categoriasService = inject(CategoriasService);
   private filialesService = inject(FilialesService);
   private promocionService = inject(PromocionService);
+  private promocionEspecialService = inject(PromocionEspecialService);
+  private habilitarFuncionService = inject(HabilitarFuncionService);
 
 
   constructor(public dialog: MatDialog,
     public fb: FormBuilder,
     private route: ActivatedRoute) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    if (this.habilitarFuncionService.funciones) {
+      const funcionPromociones = this.habilitarFuncionService.funciones.find(funcion => funcion.nombre === 'promociones_especiales')
+      if (funcionPromociones?.activated) {
+        this.showPromocionesEspeciales = true;
+      }
+    }
+
     try {
-      const data = atob(this.route.snapshot.paramMap.get('c')!)
-      let dataJson = JSON.parse(data)
-      console.log(dataJson)
-      if (dataJson) {
-        this.fromPromociones = true;
-        this.setValores().subscribe(() => {
-          this.formSearch.patchValue({
-            promocion: dataJson
-          })
-          this.buscarPorFiltro();
-        })
+      const paramC = this.route.snapshot.paramMap.get('c');
+      if (paramC) {
+        const data = atob(paramC);
+        const dataJson = JSON.parse(data);
+        if (dataJson) {
+          this.fromPromociones = true;
+          this.setValores().subscribe(() => {
+            this.formSearch.patchValue({
+              promocion: dataJson
+            });
+            this.buscarPorFiltro();
+          });
+        }
+      }
+
+      const paramCE = this.route.snapshot.paramMap.get('ce');
+      if (paramCE) {
+        const data = atob(paramCE);
+        const dataJson = JSON.parse(data);
+        if (dataJson) {
+          this.fromPromociones = true;
+          this.setValores().subscribe(() => {
+            this.formSearch.patchValue({
+              promocionEspecial: dataJson
+            });
+            this.buscarPorFiltro();
+          });
+        }
       }
     } catch (error) {
+      console.error('Error al procesar los parámetros:', error);
     }
   }
+
 
   setValores() {
     return forkJoin({
       filiales: this.getFilialesServicio(),
       categorias: this.getCategoriasServicio(),
-      promociones: this.getPromocionesServicio()
+      promociones: this.getPromocionesServicio(),
+      promocionesEspeciales: this.getPromocionesEspecialesServicio()
     });
   }
 
@@ -81,6 +115,7 @@ export class ComerciosComponent {
     this.getFiliales();
     this.getCategorias();
     this.getPromociones();
+    this.getPromocionesEspeciales();
   }
 
 
@@ -120,10 +155,29 @@ export class ComerciosComponent {
       );
   }
 
+  getPromocionesEspecialesServicio() {
+    return this.promocionEspecialService.getPromociones()
+      .pipe(
+        tap(promociones => this.seteoPromocionesEspeciales(promociones)),
+        catchError(error => {
+          console.log(error);
+          return [];
+        })
+      );
+  }
+
   seteoPromociones(promociones: any) {
     promociones.forEach((promocion: any) => {
       if (promocion.tieneContador) {
         this.promociones.push(promocion)
+      }
+    });
+  }
+
+  seteoPromocionesEspeciales(promociones: any) {
+    promociones.forEach((promocion: any) => {
+      if (promocion.tieneContador) {
+        this.promocionesEspeciales.push(promocion)
       }
     });
   }
@@ -165,6 +219,17 @@ export class ComerciosComponent {
       })
   }
 
+  getPromocionesEspeciales() {
+    this.cargandoData = true;
+    this.promocionEspecialService.getPromociones()
+      .subscribe(promociones => {
+        this.seteoPromocionesEspeciales(promociones)
+        this.cargandoData = false;
+      }, (error) => {
+        console.log(error);
+        this.cargandoData = false;
+      })
+  }
 
   buscarComerciosDeFilial(filialId: number) {
     this.cargandoDataFilial = true;
@@ -210,10 +275,10 @@ export class ComerciosComponent {
     let categorias: any = Array.from(categoriasSet).sort();
     categorias.sort((a: any, b: any) => {
       if (a.categoria < b.categoria) {
-          return -1;
+        return -1;
       }
       if (a.categoria > b.categoria) {
-          return 1;
+        return 1;
       }
       return 0;
     })
@@ -228,10 +293,10 @@ export class ComerciosComponent {
     let filiales: any = Array.from(filialesSet).sort();
     filiales.sort((a: any, b: any) => {
       if (a.localidad < b.localidad) {
-          return -1;
+        return -1;
       }
       if (a.localidad > b.localidad) {
-          return 1;
+        return 1;
       }
       return 0;
     })
@@ -261,7 +326,7 @@ export class ComerciosComponent {
 
   buscarPorFiltro() {
     this.comerciosPorSearch = [];
-    if (this.formSearch.value.localidad === '' && (this.formSearch.value.categoria === '' || this.formSearch.value.categoria === 'Todas') && (this.formSearch.value.promocion === '' || this.formSearch.value.promocion === 'Todas')) {
+    if (this.formSearch.value.localidad === '' && (this.formSearch.value.categoria === '' || this.formSearch.value.categoria === 'Todas') && (this.formSearch.value.promocion === '' || this.formSearch.value.promocion === 'Todas') && (this.formSearch.value.promocionEspecial === '' || this.formSearch.value.promocionEspecial === 'Todas')) {
       console.log('No se ingreso dato')
       this.buscadoPorSearch = false;
       this.filiales = this.filiales.map(filial => {
@@ -272,17 +337,24 @@ export class ComerciosComponent {
     }
 
 
+
     let obj = {
       localidad: '',
       categoria: '',
-      promocion: ''
+      promocion: '',
+      promocionEspecial: ''
     };
 
     obj.localidad = this.setIdLocalidad()
     obj.categoria = this.formSearch.value.categoria;
     obj.promocion = this.formSearch.value.promocion;
+    obj.promocionEspecial = this.formSearch.value.promocionEspecial;
 
-    console.log(obj)
+    if (obj.localidad.length === 0) {
+      this.buscadoPorSearch = true;
+      this.comerciosPorSearch = [];
+      return
+    }
 
 
     this.cargandoData = true;

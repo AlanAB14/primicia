@@ -1,0 +1,19 @@
+<div class="admin-panel-section">
+    <div class="admin-panel-section--title">
+        Costo Financiero
+    </div>
+    <div class="admin-panel-section--body">
+        <div class="tasas" *ngIf="costoFinancieroArr">
+            <div class="tasa-item" *ngFor="let cf of costoFinancieroArr">
+                <p>Editar costo financiero</p>
+                <button (click)="editTasa(cf)" mat-mini-fab color="primary">
+                    <img style="fill: white;" src="assets/icons/edit_material.svg" alt="edit">
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="loader-primicia-box" *ngIf="cargandoData">
+    <span class="loader-primicia"></span>
+</div>

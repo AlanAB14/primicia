@@ -6,7 +6,24 @@
   }
 
   .box-title-info {
+    margin-bottom: 1rem;
+  }
+
+  .new-text {
     margin-bottom: 3.4375rem;
+
+    p {
+      font-size: 1.125rem;
+      font-style: italic;
+
+      @media (max-width: 768px) {
+        font-size: .9rem;
+      }
+    }
+
+    a {
+      text-decoration: underline;
+    }
   }
 
   .info-box-usuario {
@@ -18,7 +35,7 @@
   margin-top: 6.625rem;
 
   .box-title-proteccion {
-    margin-bottom: 3.4375rem;
+    margin-bottom: 1rem;
   }
 
   &-box {

@@ -15,10 +15,10 @@
                     </div>
                     <div class="intro-text">
                         <p>
-                            Tarjeta Primicia es un servicio de Mutual entre 
-                            Asociados de Cooperación Mutual Patronal 
-                            presentado al mercado en el año 2002. Es una 
-                            tarjeta de crédito propia con marca registrada 
+                            Tarjeta Primicia es un servicio de Mutual entre
+                            Asociados de Cooperación Mutual Patronal
+                            presentado al mercado en el año 2002. Es una
+                            tarjeta de crédito propia con marca registrada
                             a nivel nacional.
                         </p>
                     </div>
@@ -52,7 +52,8 @@
                     </p>
                 </div>
                 <div class="intro-button">
-                    <button><a [routerLink]="'nosotros'" [fragment]="'pedirTarjeta'"><strong>¡Pedila</strong> ahora!</a></button>
+                    <button *ngIf="promocion.promocion === 'SORTEO 2 viajes a Temaiken'"><a (click)="openDocument()"><strong>Ver</strong> bases y condiciones</a></button>
+                    <button *ngIf="promocion.promocion !== 'SORTEO 2 viajes a Temaiken'"><a [routerLink]="'nosotros'" [fragment]="'pedirTarjeta'"><strong>¡Pedila</strong> ahora!</a></button>
                 </div>
             </div>
             <div class="intro-section-image">
@@ -93,6 +94,10 @@
     </div>
     <div class="promociones-section" *ngIf="promociones">
         <app-promocion-box [promocion]="promociones[0]"></app-promocion-box>
+    </div>
+
+    <div class="promociones-section" *ngIf="promocionesEspeciales && showPromocionesEspeciales">
+        <app-promocion-box [promocion]="promocionesEspeciales[0]" [isSpecial]="true"></app-promocion-box>
     </div>
     <div class="contacto-section">
         <app-contacto></app-contacto>
