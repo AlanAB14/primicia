@@ -94,11 +94,14 @@
     </div>
     <div class="promociones-section" *ngIf="promociones">
         <app-promocion-box [promocion]="promociones[0]"></app-promocion-box>
+        <div class="box-button">
+          <div class="comercios-adheridos-btn">
+              <button (click)="goToPromociones()"><strong>Ver</strong> más</button>
+          </div>
+        </div>
     </div>
 
-    <div class="promociones-section" *ngIf="promocionesEspeciales && showPromocionesEspeciales">
-        <app-promocion-box [promocion]="promocionesEspeciales[0]" [isSpecial]="true"></app-promocion-box>
-    </div>
+
     <div class="contacto-section">
         <app-contacto></app-contacto>
     </div>

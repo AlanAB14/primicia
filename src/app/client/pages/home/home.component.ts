@@ -1,4 +1,5 @@
 import { Component, ElementRef, HostListener, ViewChild, inject } from '@angular/core';
+import { Router } from '@angular/router';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { Promocion } from 'src/app/interfaces/promocion.interface';
 import { HabilitarFuncionService } from 'src/app/services/habilitarFuncion.service';
@@ -16,8 +17,7 @@ export class HomeComponent {
   cargandoData: boolean = false;
   @ViewChild('carousel') carousel!: any;
   private promocionService = inject(PromocionService);
-  private promocionEspecialService = inject(PromocionEspecialService);
-  private habilitarFuncionService = inject(HabilitarFuncionService);
+  private route = inject(Router);
 
   // @HostListener('window:resize', ['$event'])
   // onResize(event: any) {
@@ -64,30 +64,15 @@ export class HomeComponent {
           console.log(error)
           this.cargandoData = false;
         })
-    if (this.habilitarFuncionService.funciones) {
-      const funcionPromociones = this.habilitarFuncionService.funciones.find(funcion => funcion.nombre === 'promociones_especiales')
-      if (funcionPromociones?.activated) {
-        this.showPromocionesEspeciales = true;
-        this.getPromocionesEspeciales();
-      }
-    }
-  }
-
-  getPromocionesEspeciales() {
-    this.cargandoData = true;
-    this.promocionEspecialService.getPromociones()
-      .subscribe(promociones => {
-        this.promocionesEspeciales = promociones;
-        this.cargandoData = false;
-      }, (error) => {
-        console.error(error);
-        this.cargandoData = false;
-      })
   }
 
   openDocument() {
     const url = 'assets/data/sorteo-bases.pdf';
     window.open(url, '_blank');
+  }
+
+  goToPromociones() {
+    this.route.navigateByUrl('promociones');
   }
 
 
