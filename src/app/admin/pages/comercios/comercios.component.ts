@@ -145,7 +145,7 @@ export class ComerciosComponent implements OnInit, AfterViewInit {
 
   addComercio() {
     const dialogRef = this.dialog.open(DialogComercioComponent, {
-      data: { categorias: this.categorias, filiales: this.filiales, promociones: this.promociones }
+      data: { categorias: this.categorias, filiales: this.filiales, promociones: this.promociones, promocionesEspeciales: this.promocionesEspeciales }
     });
 
     dialogRef.afterClosed().subscribe(result => {
