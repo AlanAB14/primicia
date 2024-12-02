@@ -67,7 +67,7 @@ export class HomeComponent {
   }
 
   openDocument() {
-    const url = 'assets/data/sorteo-bases.pdf';
+    const url = 'assets/data/Bases-SorteoFiestas2024.pdf';
     window.open(url, '_blank');
   }
 

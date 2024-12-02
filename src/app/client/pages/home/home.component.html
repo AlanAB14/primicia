@@ -52,8 +52,8 @@
                     </p>
                 </div>
                 <div class="intro-button">
-                    <button *ngIf="promocion.promocion === 'SORTEO 2 viajes a Temaiken'"><a (click)="openDocument()"><strong>Ver</strong> bases y condiciones</a></button>
-                    <button *ngIf="promocion.promocion !== 'SORTEO 2 viajes a Temaiken'"><a [routerLink]="'nosotros'" [fragment]="'pedirTarjeta'"><strong>¡Pedila</strong> ahora!</a></button>
+                    <button *ngIf="promocion.promocion === 'Escaneá el QR y dejá tu deseo navideño. Sorteamos una BICICLETA!'"><a (click)="openDocument()"><strong>Bases</strong> y condiciones</a></button>
+                    <button *ngIf="promocion.promocion !== 'Escaneá el QR y dejá tu deseo navideño. Sorteamos una BICICLETA!'"><a [routerLink]="'nosotros'" [fragment]="'pedirTarjeta'"><strong>¡Pedila</strong> ahora!</a></button>
                 </div>
             </div>
             <div class="intro-section-image">
